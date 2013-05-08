@@ -1,5 +1,6 @@
 language: java
-install: mvn install -Dmaven.repository=http://repository.exoplatform.org/public
+script: mvn clean install -s settings.xml
 notifications:
   email:
     - phamtuanchip@gmail.com
+  

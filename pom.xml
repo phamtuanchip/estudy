@@ -20,7 +20,12 @@
     <module>service</module>
     <module>webui</module>
   </modules>
-  
+   <scm>
+    <connection>scm:git:git://github.com/phamtuanchip/estudy.git</connection>
+    <developerConnection>scm:git:git@github.com:phamtuanchip/estudy.git</developerConnection>
+    <tag>HEAD</tag>
+    <url>http://https://travis-ci.org/phamtuanchip/estudy</url>
+  </scm>
   <properties>
     <project.version>1.0-SNAPSHOT</project.version>
      <org.exoplatform.depmgt.version>6</org.exoplatform.depmgt.version>
