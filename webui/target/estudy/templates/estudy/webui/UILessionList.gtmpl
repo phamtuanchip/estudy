@@ -1,8 +1,0 @@
-<%
-  def rcontext = _ctx.getRequestContext() ;
-%>
-<div id="UILessionList" class="UILessionList" style="height:500px">
- <a href="#" onclick="<%=uicomponent.event("AddLession")%>" class="settingActionBar  pull-right"  rel="tooltip" data-placement="bottom" title="add new lession">
-      <i class="uiIconSetting uiIconLightGray">add lession</i>
- </a>
-</div>

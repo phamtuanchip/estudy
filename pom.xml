@@ -240,4 +240,22 @@
       </plugins>
     </pluginManagement>
   </build>  
+  <repositories>
+    <repository>
+      <releases>
+        <enabled>false</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>warn</checksumPolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+      </snapshots>
+      <id>exo-public</id>
+      <name>exo public repository</name>
+      <url>http://repository.exoplatform.org/public</url>
+      <layout>default</layout>
+    </repository>
+  </repositories>
 </project>

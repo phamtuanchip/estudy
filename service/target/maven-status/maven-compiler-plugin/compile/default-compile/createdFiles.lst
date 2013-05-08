@@ -1,8 +1,0 @@
-org/estudy/learning/model/ECategory.class
-org/estudy/learning/Util.class
-org/estudy/learning/model/ESession.class
-org/estudy/learning/service/EStudyWebService.class
-org/estudy/learning/storage/impl/JcrDataStorage.class
-org/estudy/learning/storage/DataStorage.class
-org/estudy/learning/model/EQuestion.class
-org/estudy/learning/model/ETesting.class
