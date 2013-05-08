@@ -23,3 +23,6 @@ login page http://localhost:8080/portal by root with pass gtn
 import all application in application registry page 
 create new page and add estudy portlet to that page
 
+
+[![Build Status](https://travis-ci.org/phamtuanchip/estudy.png)](https://travis-ci.org/phamtuanchip/estudy)
+
