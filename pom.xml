@@ -240,6 +240,7 @@
       </plugins>
     </pluginManagement>
   </build>  
+  <!--
   <repositories>
     <repository>
       <releases>
@@ -258,4 +259,5 @@
       <layout>default</layout>
     </repository>
   </repositories>
+ -->
 </project>
