@@ -2,6 +2,7 @@ E-STUDY READ ME
 This is an open source project to adap e learing system basic on plf frame work 
 Compatible with tomcat download from jboss gatein 3.5.3 Final
 
+public page http://phamtuanchip.github.io/estudy
 wiki page http://wiki.vfossa.vn/mhst:ideas:mhst2013:gatein01
 
 integration build test https://travis-ci.org/phamtuanchip/estudy
