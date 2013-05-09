@@ -1,6 +1,10 @@
+
+
 language: java
+before_install:
+install:
+- mvn clean install -s settings.xml
 script:
-- mvn clean install -s settings.xml 
 notifications:
   email:
     - phamtuanchip@gmail.com
