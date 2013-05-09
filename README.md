@@ -1,6 +1,8 @@
 E-STUDY READ ME
 This is an open source project to adap e learing system basic on plf frame work 
 Compatible with tomcat download from jboss gatein 3.5.3 Final
+Status 
+[![Build Status](https://travis-ci.org/phamtuanchip/estudy.png)](https://travis-ci.org/phamtuanchip/estudy)
 
 public page http://phamtuanchip.github.io/estudy
 wiki page http://wiki.vfossa.vn/mhst:ideas:mhst2013:gatein01
@@ -24,6 +26,7 @@ login page http://localhost:8080/portal by root with pass gtn
 import all application in application registry page 
 create new page and add estudy portlet to that page
 
+for more detail and prectice you can enjoin this documentation http://docs.exoplatform.com/public/index.jsp?topic=%2FPLF40%2Fsect-Reference_Guide-Tutorials-Deploying_your_first_Portlet.html
 
-[![Build Status](https://travis-ci.org/phamtuanchip/estudy.png)](https://travis-ci.org/phamtuanchip/estudy)
+
 
