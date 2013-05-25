@@ -6,8 +6,8 @@
   <portlet-skin>
     <!-- this is the package name war -->
     <!-- important for css since tomcat uses package name to get resources -->
-    <application-name>bookstore</application-name>
-    <portlet-name>BookstorePortlet</portlet-name>
+    <application-name>estudy</application-name>
+    <portlet-name>estudy</portlet-name>
     <skin-name>Default</skin-name>
     <css-path>/skin/DefaultSkin/webui/Stylesheet.css</css-path>
     <css-priority>1</css-priority>
@@ -19,6 +19,9 @@
       <script>
         <path>/javascript/estudy/estudy.js</path>
       </script>
+       <depends>
+        <module>captcha</module>
+      </depends>
       <depends>
         <module>bts_tooltip</module>
       </depends>
@@ -57,4 +60,13 @@
     
     </module>
   </portlet>
+   <module>
+    <name>captcha</name>
+    <script>
+      <path>/javascript/eXo/estudy/captcha/jquery.motionCaptcha.0.2.js</path>
+    </script>
+    <depends>
+      <module>jquery</module>
+    </depends>
+  </module>
 </gatein-resources>

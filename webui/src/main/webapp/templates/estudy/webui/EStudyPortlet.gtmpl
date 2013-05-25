@@ -2,7 +2,14 @@
 import org.estudy.ui.popup.UIPopupAction;
 import org.estudy.ui.view.UILessionList;
  
+  try {
   def rcontext = _ctx.getRequestContext() ;
+    def requireJS = rcontext.getJavascriptManager().getRequireJS();
+  requireJS.require("PORTLET/estudy/estudyportlet","ejs");
+  requireJS.addScripts('ejs.estudy.init();') ;  
+  } catch (Exception e) {
+    e.printStackTrace();
+  }
 %>
 <div id="EStudyPortlet" class="EStudyPortlet">
 <%
