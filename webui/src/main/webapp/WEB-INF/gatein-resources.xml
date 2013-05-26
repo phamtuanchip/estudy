@@ -7,7 +7,7 @@
     <!-- this is the package name war -->
     <!-- important for css since tomcat uses package name to get resources -->
     <application-name>estudy</application-name>
-    <portlet-name>estudy</portlet-name>
+    <portlet-name>e-study</portlet-name>
     <skin-name>Default</skin-name>
     <css-path>/skin/DefaultSkin/webui/Stylesheet.css</css-path>
     <css-priority>1</css-priority>
@@ -63,7 +63,7 @@
    <module>
     <name>captcha</name>
     <script>
-      <path>/javascript/eXo/estudy/captcha/jquery.motionCaptcha.0.2.js</path>
+      <path>/javascript/estudy/captcha/jquery.motionCaptcha.0.2.js</path>
     </script>
     <depends>
       <module>jquery</module>
