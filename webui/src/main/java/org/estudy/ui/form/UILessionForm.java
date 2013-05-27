@@ -19,6 +19,7 @@ package org.estudy.ui.form;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.estudy.ui.core.UICaptcha;
 import org.estudy.ui.popup.UIPopupComponent;
 import org.estudy.ui.portlet.EStudyPortlet;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
@@ -52,6 +53,7 @@ public class UILessionForm extends UIForm implements UIPopupComponent{
 	    UIFormSelectBox type =  new UIFormSelectBox("category", "category", types) ;
 	    type.setOnChange("Onchange") ;
 	    addChild(type);
+	    addChild(new UICaptcha("captcha", "captcha", null));
 	}
 
 	@Override

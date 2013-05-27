@@ -5,7 +5,7 @@ import org.estudy.ui.view.UILessionList;
   try {
   def rcontext = _ctx.getRequestContext() ;
     def requireJS = rcontext.getJavascriptManager().getRequireJS();
-  requireJS.require("PORTLET/estudy/estudyportlet","ejs");
+  requireJS.require("PORTLET/estudy/estudy","ejs");
   requireJS.addScripts('ejs.estudy.init();') ;  
   } catch (Exception e) {
     e.printStackTrace();

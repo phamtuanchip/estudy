@@ -1,6 +1,5 @@
-/*=========================== EStudyPortlet ==================================*/
+@import url("captcha.css") ;
 
-@import url("jquery.motionCaptcha.0.2.css") ;
 .EStudyPortlet {
    height:500px;
    border:solid 1px red;
