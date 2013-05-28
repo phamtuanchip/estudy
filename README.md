@@ -1,6 +1,6 @@
 E-STUDY READ ME
 This is an open source project to adap e learing system basic on plf frame work 
-Compatible with tomcat download from jboss gatein 3.5.3 Final
+Compatible with tomcat download from jboss gatein 3.5.4 Final
 Status 
 [![Build Status](https://travis-ci.org/phamtuanchip/estudy.png)](https://travis-ci.org/phamtuanchip/estudy)
 
@@ -18,7 +18,7 @@ Quick run guide
 clone repository 
 build with maven by : mvn clean install -s settings.xml
 
-download tomcat7 from there https://docs.google.com/file/d/0Bw2eZ8CfkgNBNHYwQnA4UFI4XzQ/edit?usp=sharing
+download gatein 3.5.4 final tomcat 7 bundle  from there https://docs.google.com/file/d/0Bw2eZ8CfkgNBOHZuN0hBNGhSVVE/edit?usp=sharing
 copy service/target/estudy-service.jar  to tomcat/lib 
 copy webui/target/estudy.war to tomcat/webapps
 go to tomcat/bin and run command "gatein.sh run" for unix base (mac, linux) or "gatein.bat run" for windows  
