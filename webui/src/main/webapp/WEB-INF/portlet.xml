@@ -6,12 +6,20 @@
     <description xml:lang="EN">E study system</description>
     <portlet-name>estudy</portlet-name>
     <display-name xml:lang="EN">E study</display-name>
-    <portlet-class>org.exoplatform.webui.application.portlet.PortletApplicationController</portlet-class>    
+    <portlet-class>org.estudy.ui.portlet.CaptchaController</portlet-class>    
     
     <init-param>
       <name>webui.configuration</name>
       <value>/WEB-INF/conf/portlet/EstudyPortlet/webui/configuration.xml</value>
-    </init-param>    
+    </init-param>
+    <init-param>
+      <name>width</name>
+      <value>200</value>
+    </init-param>
+    <init-param>
+      <name>height</name>
+      <value>75</value>
+    </init-param>  
 
     <expiration-cache>0</expiration-cache>
     <supports>

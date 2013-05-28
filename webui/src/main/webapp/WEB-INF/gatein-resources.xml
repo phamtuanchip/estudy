@@ -19,7 +19,6 @@
       <script>
         <path>/javascript/estudy/estudy.js</path>
       </script>
-       
       <depends>
         <module>bts_tooltip</module>
       </depends>
@@ -54,7 +53,6 @@
 	    <depends>
 	      <module>jquery</module>
 	    </depends>
-    
     </module>
   </portlet>
     

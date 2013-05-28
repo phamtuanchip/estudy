@@ -1,19 +1,4 @@
-/*
- * Copyright (C) 2003-2013 eXo Platform SAS.
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- */
+
 package org.estudy.ui.form;
 
 import java.util.ArrayList;
@@ -22,6 +7,7 @@ import java.util.List;
 import org.estudy.ui.core.UICaptcha;
 import org.estudy.ui.popup.UIPopupComponent;
 import org.estudy.ui.portlet.EStudyPortlet;
+import org.exoplatform.portal.webui.CaptchaValidator;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.config.annotation.EventConfig;
 import org.exoplatform.webui.core.lifecycle.UIFormLifecycle;
@@ -32,6 +18,7 @@ import org.exoplatform.webui.event.EventListener;
 import org.exoplatform.webui.form.UIForm;
 import org.exoplatform.webui.form.UIFormSelectBox;
 import org.exoplatform.webui.form.UIFormStringInput;
+import org.exoplatform.webui.form.validator.MandatoryValidator;
 import org.exoplatform.webui.form.validator.SpecialCharacterValidator;
 @ComponentConfig(
 		lifecycle = UIFormLifecycle.class,
@@ -53,7 +40,9 @@ public class UILessionForm extends UIForm implements UIPopupComponent{
 	    UIFormSelectBox type =  new UIFormSelectBox("category", "category", types) ;
 	    type.setOnChange("Onchange") ;
 	    addChild(type);
-	    addChild(new UICaptcha("captcha", "captcha", null));
+	    //addChild(new UICaptcha("simpleCaptcha", "simpleCaptcha", null));
+	    addUIFormInput(new UICaptcha("simpleCaptcha", "simpleCaptcha", null).addValidator(MandatoryValidator.class).addValidator(
+	                                                                                                             CaptchaValidator.class));
 	}
 
 	@Override
