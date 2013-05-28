@@ -2,9 +2,12 @@
 package org.estudy.ui.form;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.estudy.ui.core.UICaptcha;
+import org.estudy.ui.core.UIDateInput;
+import org.estudy.ui.core.UISearchInput;
 import org.estudy.ui.popup.UIPopupComponent;
 import org.estudy.ui.portlet.EStudyPortlet;
 import org.exoplatform.portal.webui.CaptchaValidator;
@@ -34,15 +37,16 @@ public class UILessionForm extends UIForm implements UIPopupComponent{
 	public UILessionForm() throws Exception {
 		addChild(new UIFormStringInput("title", "title", "").addValidator(SpecialCharacterValidator.class)) ;
 	    List<SelectItemOption<String>> types = new ArrayList<SelectItemOption<String>>() ;
-	    types.add(new SelectItemOption<String>("", "")) ;
-	    types.add(new SelectItemOption<String>("1","category1")) ;
-	    types.add(new SelectItemOption<String>("2","category2")) ;
+	    types.add(new SelectItemOption<String>("select category", "0")) ;
+	    types.add(new SelectItemOption<String>("category1","1")) ;
+	    types.add(new SelectItemOption<String>("category2","2")) ;
 	    UIFormSelectBox type =  new UIFormSelectBox("category", "category", types) ;
 	    type.setOnChange("Onchange") ;
 	    addChild(type);
 	    //addChild(new UICaptcha("simpleCaptcha", "simpleCaptcha", null));
-	    addUIFormInput(new UICaptcha("simpleCaptcha", "simpleCaptcha", null).addValidator(MandatoryValidator.class).addValidator(
-	                                                                                                             CaptchaValidator.class));
+	    addUIFormInput(new UICaptcha("simpleCaptcha", "simpleCaptcha", null).addValidator(MandatoryValidator.class).addValidator(CaptchaValidator.class));
+	    addChild(new UIDateInput("date", "date", new Date()));     
+	    addChild(new UISearchInput("search", "search", null));
 	}
 
 	@Override

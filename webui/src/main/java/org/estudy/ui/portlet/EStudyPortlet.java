@@ -8,6 +8,7 @@ import org.estudy.ui.view.UILessionList;
 import org.exoplatform.container.PortalContainer;
 import org.exoplatform.services.log.ExoLogger;
 import org.exoplatform.services.log.Log;
+import org.exoplatform.web.application.ApplicationMessage;
 import org.exoplatform.web.application.RequestContext;
 import org.exoplatform.webui.application.WebuiRequestContext;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
@@ -50,6 +51,12 @@ public class EStudyPortlet extends UIPortletApplication
 	}
 	public static DataStorage getDataService() {
 		return (DataStorage) PortalContainer.getInstance().getComponentInstanceOfType(JcrDataStorage.class);
+	}
+	
+	public static void showMessage(String message, int messageType, Object params []){
+		WebuiRequestContext context = RequestContext.getCurrentInstance() ;
+		context.getUIApplication()
+        .addMessage(new ApplicationMessage(message, params, messageType));
 	}
 
 }
