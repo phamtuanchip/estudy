@@ -34,9 +34,14 @@
       </profile>
   </profiles>
   <dependencies>
-  <dependency>
+    <dependency>
       <groupId>org.gatein.portal</groupId>
       <artifactId>exo.portal.webui.core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.estudy</groupId>
+      <artifactId>eportlet-service</artifactId>
+      <version>${project.version}</version>
     </dependency>
  </dependencies>
   <!-- defines name of package -->
