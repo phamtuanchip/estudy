@@ -10,7 +10,7 @@
     
     <init-param>
       <name>webui.configuration</name>
-      <value>/WEB-INF/conf/portlet/eportlet/webui/configuration.xml</value>
+      <value>/WEB-INF/conf/portlet/webui/configuration.xml</value>
     </init-param>
     <init-param>
       <name>width</name>
