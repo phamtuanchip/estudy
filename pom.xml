@@ -19,6 +19,7 @@
   <modules>
     <module>service</module>
     <module>webui</module>
+    <module>eportlet</module>
   </modules>
    <scm>
     <connection>scm:git:git://github.com/phamtuanchip/estudy.git</connection>

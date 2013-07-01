@@ -14,7 +14,7 @@
   <packaging>war</packaging>
   
   <name>E study ui </name>
-  <url>https://github.com/phamtuanchip/newcomer</url>
+  <url>https://github.com/phamtuanchip/eportlet</url>
   
   <profiles>
       <profile>
