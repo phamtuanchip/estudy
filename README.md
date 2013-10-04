@@ -51,7 +51,7 @@ create new page and add estudy portlet to that page
 
 Ref-guide http://docs.exoplatform.com/public/index.jsp?topic=%2FPLF40%2Fsect-Reference_Guide-Tutorials-Deploying_your_first_Portlet.html
 
-Guide for connecto to MySql DB http://community.exoplatform.com/portal/classic/forum/topic/topiccd1dbd9c0a2106c638cc7a38e3f1f362/post2f2718b60a2106c60fdbaceae8f9bf23
+Guide for connecto to MySql DB http://docs.exoplatform.com/public/topic/PLF40/PLFAdminGuide.Configuration.DatabaseConfiguration.html
 
 
 
