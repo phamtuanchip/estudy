@@ -8,7 +8,7 @@ public page: http://phamtuanchip.github.io/estudy
 
 wiki page: http://wiki.vfossa.vn/mhst:ideas:mhst2013:gatein01
 
-discussion: https://groups.google.com/forum/#!forum/gatein-estudy
+discussion: https://groups.google.com/d/forum/open-estudy
 
 project manager tool: https://github.com/phamtuanchip/estudy
 
@@ -18,9 +18,13 @@ integration build test: https://travis-ci.org/phamtuanchip/estudy
 Developing environment:
 
 -Maven 3.0.4
+
 -Java  1.6.x
+
 -Tomcat application server 7
+
 -Eclipse for j2ee
+
 -Git client tool  
 
 Quick run guide 
