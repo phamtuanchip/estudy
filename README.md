@@ -1,6 +1,6 @@
 E-STUDY READ ME
 
-This is an open source project to adap e learing system basic on plf frame work 
+This is an open source project to adap e learing system basic on GateIn portal framework gatein.org
 
 Status 
 [![Build Status](https://travis-ci.org/phamtuanchip/estudy.png)](https://travis-ci.org/phamtuanchip/estudy)
@@ -11,7 +11,7 @@ wiki page: http://wiki.vfossa.vn/mhst:ideas:mhst2013:gatein01
 
 discussion: https://groups.google.com/d/forum/open-estudy
 
-project manager tool: https://github.com/phamtuanchip/estudy
+project manager tool: http://www.hostedredmine.com/projects/estudy
 
 integration build test: https://travis-ci.org/phamtuanchip/estudy
 
