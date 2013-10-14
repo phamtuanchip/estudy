@@ -15,6 +15,8 @@ project manager tool: http://www.hostedredmine.com/projects/estudy
 
 integration build test: https://travis-ci.org/phamtuanchip/estudy
 
+social group: https://www.facebook.com/groups/open.estudy
+
 mailinglist: open-estudy@googlegroups.com
 
 Developing environment:
@@ -29,7 +31,7 @@ Developing environment:
 
 -Git client tool  
 
-Quick run guide 
+Quick run guide: 
 
 clone repository 
 
