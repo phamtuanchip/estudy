@@ -31,6 +31,12 @@ Developing environment:
 
 -Git client tool  
 
+Development guide:
+
+Specification https://github.com/phamtuanchip/estudy/tree/master/docs/spec 
+
+Documentation https://github.com/phamtuanchip/estudy/tree/master/docs
+
 Quick run guide: 
 
 clone repository 
