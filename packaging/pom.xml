@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>org.estudy</groupId>
+    <artifactId>estudy</artifactId>
+    <version>1.0-SNAPSHOT</version>   
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>estudy.packaging</artifactId>
+  <packaging>pom</packaging>
+  <name>Estudy Portal Packaging</name>
+
+  <profiles>
+    <profile>
+      <id>pkg-all</id>
+      <activation>
+        <property>
+          <name>!estudy.dev</name>
+        </property>
+      </activation>
+      <modules>
+        <module>common</module>
+        <module>tomcat</module>
+      </modules>
+    </profile>
+    <profile>
+      <id>pkg-tomcat</id>
+      <activation>
+        <property>
+          <name>estudy.dev</name>
+          <value>tomcat</value>
+        </property>
+      </activation>
+      <modules>
+        <module>common</module>
+        <module>tomcat</module>
+      </modules>
+    </profile>
+    <profile>
+      <id>pkg-tomcat7</id>
+      <activation>
+        <property>
+          <name>estudy.dev</name>
+          <value>tomcat7</value>
+        </property>
+      </activation>
+      <modules>
+        <module>common</module>
+        <module>tomcat</module>
+      </modules>
+    </profile>
+  </profiles>
+</project>
