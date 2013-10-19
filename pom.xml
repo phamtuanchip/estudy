@@ -21,6 +21,7 @@
     <module>webui</module>
     <module>tutorial/eportlet</module>
     <module>tutorial/eservice</module>
+    <module>packaging</module>
   </modules>
    <scm>
     <connection>scm:git:git://github.com/phamtuanchip/estudy.git</connection>
@@ -28,6 +29,7 @@
     <tag>HEAD</tag>
     <url>http://https://travis-ci.org/phamtuanchip/estudy</url>
   </scm>
+  
   <properties>
     <project.version>1.0-SNAPSHOT</project.version>
      <org.exoplatform.depmgt.version>6</org.exoplatform.depmgt.version>
@@ -43,6 +45,77 @@
     <!-- Platform Project Dependencies -->
     <org.exoplatform.platform-ui.version>4.0.0</org.exoplatform.platform-ui.version>
     <org.exoplatform.commons.version>4.0.0</org.exoplatform.commons.version>
+    
+    <!-- Gatein dependencies -->
+    <org.shindig.version>2.0.2.Final-gatein-4</org.shindig.version>
+    <nl.captcha.simplecaptcha.version>1.1.1.Final-gatein-3</nl.captcha.simplecaptcha.version>
+    <org.gatein.common.version>2.1.0.Final</org.gatein.common.version>
+    <org.gatein.wci.version>2.3.0.Final</org.gatein.wci.version>
+    <org.gatein.pc.version>2.4.0.Final</org.gatein.pc.version>
+    <org.gatein.sso.version>1.3.1.Final</org.gatein.sso.version>
+    <org.picketlink.idm>1.4.1.Final</org.picketlink.idm>
+    <org.gatein.wsrp.version>2.2.2.Final</org.gatein.wsrp.version>
+    <org.gatein.mop.version>1.2.0.Final</org.gatein.mop.version>
+    <org.gatein.mgmt.version>1.1.0.Final</org.gatein.mgmt.version>
+    <org.slf4j.version>1.6.1</org.slf4j.version>
+    <commons-pool.version>1.5.5</commons-pool.version>
+    <rhino.version>1.6R5</rhino.version>
+    <org.codehaus.groovy.version>1.7.6</org.codehaus.groovy.version>
+    <javax.servlet.version>2.5</javax.servlet.version>
+    <version.chromattic>1.2.0</version.chromattic>
+    <version.reflext>1.1.0</version.reflext>
+    <org.staxnav.version>0.9.6</org.staxnav.version>
+    <jcip.version>1.0</jcip.version>
+    <commons-dbcp.version>1.2.2</commons-dbcp.version>
+    <com.google.javascript.version>r1592</com.google.javascript.version>
+    <org.jboss.portletbridge.version>3.1.2.Final</org.jboss.portletbridge.version>
+
+    <!-- TODO: Move to gatein dep -->
+    <org.infinispan.version>5.1.7.Final</org.infinispan.version>
+    <org.jboss.marshalling.version>1.3.15.GA</org.jboss.marshalling.version>
+
+    <!-- TODO: replace version.apache.commons-httpclient in gatein-dep with this: -->
+    <version.org.apache.httpcomponents>4.1.2</version.org.apache.httpcomponents>
+    <version.org.apache.httpcomponents.httpcore>4.1.4</version.org.apache.httpcomponents.httpcore>
+
+    <!-- SSO deps -->
+    <version.cas.client>3.2.1</version.cas.client>
+    <version.picketlink.fed>2.1.4.Final</version.picketlink.fed>
+
+    <!--
+    Various log4j properties for unit tests, examples:
+    -Dlog4j.debug=true : show log4j bootstrap (useful for debugging resolution to configuration property file)
+    -Dlog4j.level=all : very verbose logging (slow down though)
+    -->
+    <log4j.debug>false</log4j.debug>
+    <log4j.level>info</log4j.level>
+
+    <!-- ************** -->
+    <!-- Build settings -->
+    <!-- ************** -->
+
+    <!-- maven-enforcer-plugin -->
+    <jdk.min.version>1.6</jdk.min.version>
+
+    <!-- maven-release-plugin -->
+    <useReleaseProfile>false</useReleaseProfile>
+    <version.release.plugin>2.2.1</version.release.plugin>
+    <pushChanges>false</pushChanges>
+
+    <!-- checkstyle -->
+    <version.checkstyle.plugin>2.9.1</version.checkstyle.plugin>
+    <linkXRef>false</linkXRef>
+
+    <!-- buildnumber-maven-plugin : needs 1.0 for git -->
+    <version.buildnumber.plugin>1.0</version.buildnumber.plugin>
+
+    <!-- -->
+    <surefire.exo.profiles>hsqldb</surefire.exo.profiles>
+
+    <version.plugin.gwt>2.1.0</version.plugin.gwt>
+    <version.plugin.clean>2.4.1</version.plugin.clean>
+    <version.yuicompressor-maven-plugin>0.7.1</version.yuicompressor-maven-plugin>
+    <version.plugin.japex>1.2.3</version.plugin.japex>
      
   </properties>
   <dependencyManagement>
@@ -52,6 +125,14 @@
     <!-- * Your own modules -->
     <!-- * And projects below you -->
     <dependencies>
+       <dependency>
+        <groupId>org.gatein</groupId>
+        <artifactId>gatein-dep</artifactId>
+        <version>1.2.0.Final</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      
       <!-- Import versions of external dependencies to use -->
       <dependency>
         <groupId>org.exoplatform</groupId>
@@ -67,11 +148,18 @@
         <artifactId>estudy-service</artifactId>
         <version>${project.version}</version>
       </dependency>
+      
       <dependency>
         <groupId>org.estudy</groupId>
         <artifactId>estudy-ui</artifactId>
         <version>${project.version}</version>
         <type>war</type>
+      </dependency>
+      
+      <dependency>
+        <groupId>org.estudy</groupId>
+        <artifactId>estudy.packaging.common</artifactId>
+        <version>${project.version}</version>
       </dependency>
 
       <!-- Import versions from commons project -->
@@ -90,100 +178,15 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      <!-- To be replaced by an import of GateIn Portal parent POM -->
+      
       <dependency>
         <groupId>org.gatein.portal</groupId>
-        <artifactId>exo.portal.component.common</artifactId>
+        <artifactId>exo.portal.parent</artifactId>
         <version>${org.gatein.portal.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
-      <dependency>
-        <groupId>org.gatein.portal</groupId>
-        <artifactId>exo.portal.component.identity</artifactId>
-        <version>${org.gatein.portal.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.gatein.portal</groupId>
-        <artifactId>exo.portal.component.identity</artifactId>
-        <version>${org.gatein.portal.version}</version>
-        <type>test-jar</type>
-      </dependency>
-      <dependency>
-        <groupId>org.gatein.portal</groupId>
-        <artifactId>exo.portal.component.portal</artifactId>
-        <version>${org.gatein.portal.version}</version>
-        <type>test-jar</type>
-      </dependency>
-      <dependency>
-        <groupId>org.gatein.portal</groupId>
-        <artifactId>exo.portal.component.portal</artifactId>
-        <version>${org.gatein.portal.version}</version>
-        <classifier>tests</classifier>
-      </dependency>
-      <dependency>
-        <groupId>org.gatein.portal</groupId>
-        <artifactId>exo.portal.component.portal</artifactId>
-        <version>${org.gatein.portal.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.gatein.portal</groupId>
-        <artifactId>exo.portal.component.resources</artifactId>
-        <version>${org.gatein.portal.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.gatein.portal</groupId>
-        <artifactId>exo.portal.component.test.core</artifactId>
-        <version>${org.gatein.portal.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.gatein.portal</groupId>
-        <artifactId>exo.portal.component.test.jcr</artifactId>
-        <version>${org.gatein.portal.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.gatein.portal</groupId>
-        <artifactId>exo.portal.component.web.controller</artifactId>
-        <version>${org.gatein.portal.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.gatein.portal</groupId>
-        <artifactId>exo.portal.component.web.resources</artifactId>
-        <version>${org.gatein.portal.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.gatein.portal</groupId>
-        <artifactId>exo.portal.component.web.server</artifactId>
-        <version>${org.gatein.portal.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.gatein.portal</groupId>
-        <artifactId>exo.portal.webui.core</artifactId>
-        <version>${org.gatein.portal.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.gatein.portal</groupId>
-        <artifactId>exo.portal.webui.eXo</artifactId>
-        <version>${org.gatein.portal.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.gatein.portal</groupId>
-        <artifactId>exo.portal.webui.framework</artifactId>
-        <version>${org.gatein.portal.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.gatein.portal</groupId>
-        <artifactId>exo.portal.webui.portal</artifactId>
-        <version>${org.gatein.portal.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.gatein.portal</groupId>
-        <artifactId>exo.portal.webui.portlet</artifactId>
-        <version>${org.gatein.portal.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.gatein.wci</groupId>
-        <artifactId>wci-wci</artifactId>
-        <version>${org.gatein.wci.version}</version>
-      </dependency>
+
       <!-- Import versions of jcr modules to use -->
       <dependency>
         <groupId>org.exoplatform.jcr</groupId>
@@ -215,7 +218,10 @@
         <version>${org.exoplatform.kernel.version}</version>
         <type>pom</type>
         <scope>import</scope>
-      </dependency>     
+      </dependency>
+      
+      <!-- dependencies for packaging-->
+     
     </dependencies>
   </dependencyManagement>
 
