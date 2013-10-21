@@ -42,14 +42,9 @@ Quick run guide:
 clone repository 
 
 build with maven by : mvn clean install -s settings.xml
+uisng "mvn clean install -s settings.xml -Ppkg-tomcat" to deploy tomcat binary 
 
-download gatein 3.5.4 final tomcat 7 bundle  from there https://docs.google.com/file/d/0Bw2eZ8CfkgNBOHZuN0hBNGhSVVE/edit?usp=sharing
-
-copy service/target/estudy-service.jar  to tomcat/lib 
-
-copy webui/target/estudy.war to tomcat/webapps
-
-go to tomcat/bin and run command "gatein.sh run" for unix base (mac, linux) or "gatein.bat run" for windows  
+go to target/tomcat/bin and run command "gatein.sh run" for unix base (mac, linux) or "gatein.bat run" for windows  
 
 login page http://localhost:8080/portal by root with pass gtn 
 
