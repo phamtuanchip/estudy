@@ -19,8 +19,7 @@
   <modules>
     <module>service</module>
     <module>webui</module>
-    <module>tutorial/eportlet</module>
-    <module>tutorial/eservice</module>
+    <module>tutorial</module>
     <module>packaging</module>
   </modules>
    <scm>

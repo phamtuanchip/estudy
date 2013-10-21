@@ -6,7 +6,7 @@
   
   <parent>
     <groupId>org.estudy</groupId>
-    <artifactId>estudy</artifactId>
+    <artifactId>estudy-tutorial</artifactId>
     <version>1.0-SNAPSHOT</version>   
   </parent>
   
