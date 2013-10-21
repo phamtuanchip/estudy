@@ -17,6 +17,8 @@ integration build test: https://travis-ci.org/phamtuanchip/estudy
 
 social group: https://www.facebook.com/groups/open.estudy
 
+issue report http://www.hostedredmine.com/projects/estudy/issues
+
 mailinglist: open-estudy@googlegroups.com
 
 Developing environment:
