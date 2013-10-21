@@ -1,9 +1,8 @@
 
-
 language: java
 before_install:
 install:
-- mvn clean install -s settings.xml
+- mvn clean install -s settings.xml -U
 script:
 notifications:
   email:
