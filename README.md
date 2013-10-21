@@ -42,9 +42,10 @@ Quick run guide:
 clone repository 
 
 build with maven by : mvn clean install -s settings.xml
-uisng "mvn clean install -s settings.xml -Ppkg-tomcat" to deploy tomcat binary 
 
-go to target/tomcat/bin and run command "gatein.sh run" for unix base (mac, linux) or "gatein.bat run" for windows  
+using "mvn clean install -s settings.xml -Ppkg-tomcat" to deploy tomcat binary 
+
+go to "packaging/tomcat/tomcat7/target/tomcat/bin" and run command "gatein.sh run" for unix base (mac, linux) or "gatein.bat run" for windows  
 
 login page http://localhost:8080/portal by root with pass gtn 
 
