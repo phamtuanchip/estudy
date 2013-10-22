@@ -16,22 +16,11 @@
  */
 package org.estudy.test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.jcr.ItemExistsException;
-
 import org.estudy.service.DataStorage;
 import org.estudy.service.impl.JcrDataStorage;
 import org.exoplatform.services.jcr.RepositoryService;
 import org.exoplatform.services.organization.OrganizationService;
-import org.exoplatform.services.organization.User;
 import org.exoplatform.services.security.ConversationState;
-import org.exoplatform.services.security.Identity;
-import org.exoplatform.services.security.MembershipEntry;
 
 
 /**
@@ -44,14 +33,13 @@ public class DataServiceTest extends BaseServiceTestCase {
 
   private RepositoryService repositoryService_ ;
   private DataStorage  storage_;
-  private static String   username = "root";
-  public Collection<MembershipEntry> membershipEntries = new ArrayList<MembershipEntry>();
+  private static String   USER_ROOT = "root";
   private OrganizationService organizationService_;
 
   public void setUp() throws Exception {
     super.setUp();
     repositoryService_ = getService(RepositoryService.class);
-    organizationService_ = (OrganizationService) getService(OrganizationService.class);
+    organizationService_ = getService(OrganizationService.class);
     storage_ = getService(JcrDataStorage.class);
   }
  
@@ -64,8 +52,16 @@ public class DataServiceTest extends BaseServiceTestCase {
     assertNotNull(storage_);
 
   }
+
   public void testCheckServiceAPI() throws Exception{
     storage_.getData() ;
     storage_.saveData();
   }
+
+  public void testLogin() throws Exception{
+    loginUser(USER_ROOT);
+    assertEquals(USER_ROOT, ConversationState.getCurrent().getIdentity().getUserId());
+  }
+  
+  
 }
