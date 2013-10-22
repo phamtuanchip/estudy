@@ -49,6 +49,9 @@ public class UILessionList extends UIContainer {
     @Override
     public void execute(Event<UILessionList> event) throws Exception {
       UILessionList listview = event.getSource() ;
+      EStudyPortlet portlet = listview.getAncestorOfType(EStudyPortlet.class);
+      UIContentViewer view = portlet.findFirstComponentOfType(UIContentViewer.class) ;
+      view.getChild(UITest.class).setRendered(!view.getChild(UITest.class).isRendered());
 
     }
   }

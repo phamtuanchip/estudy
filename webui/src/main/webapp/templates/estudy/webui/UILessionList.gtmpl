@@ -1,6 +1,25 @@
 
 <div id="UILessionList" class="UILessionList">
- <a href="#" onclick="<%=uicomponent.event("AddLession")%>" class="pull-right"  rel="tooltip" data-placement="bottom" title="add new lession">
-      <i>add lession</i>
- </a>
+    <ul>
+        <li class="toctree-l2">
+            <a href="#" onclick="<%=uicomponent.event("AddLession")%>" class="pull-right"  rel="tooltip" data-placement="bottom" title="add new lession">
+                <i>add lession</i>
+            </a>
+        </li>
+        <li class="toctree-l2">
+            <a href="#" onclick="<%=uicomponent.event("Test")%>" class="pull-right"  rel="tooltip" data-placement="bottom" title="add new lession">
+                <i>Join Test</i>
+            </a>
+        </li>
+    </ul>
+
+
+    <ul>
+        <li class="toctree-l2"><a class="reference internal" href="#">Computer Foundation</a></li>
+        <li class="toctree-l2"><a class="reference internal" href="#">Entrane Program With C</a></li>
+        <li class="toctree-l2"><a class="reference internal" href="#">Extensible Makup Language</a></li>
+        <li class="toctree-l2"><a class="reference internal" href="#">Java Simplify</a></li>
+        <li class="toctree-l2"><a class="reference internal" href="#">Java to Microedition</a></li>
+        <li class="toctree-l2"><a class="reference internal" href="#">Basic Android</a></li>
+    </ul>
 </div>

@@ -1,6 +1,7 @@
 <%
 import org.estudy.ui.popup.UIPopupAction;
 import org.estudy.ui.view.UILessionList;
+import org.estudy.ui.view.UIContentViewer;
  
   try {
   def rcontext = _ctx.getRequestContext() ;
@@ -13,7 +14,8 @@ import org.estudy.ui.view.UILessionList;
 %>
 <div id="EStudyPortlet" class="EStudyPortlet">
 <%
-  uicomponent.renderChild(UILessionList.class); 
-  uicomponent.renderChild(UIPopupAction.class) ;
+    uicomponent.renderChild(UILessionList.class);
+    uicomponent.renderChild(UIContentViewer.class);
+    uicomponent.renderChild(UIPopupAction.class) ;
 %>
 </div>
