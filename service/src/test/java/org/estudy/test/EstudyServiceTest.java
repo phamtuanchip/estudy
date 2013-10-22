@@ -255,6 +255,8 @@ public class EstudyServiceTest extends BaseServiceTestCase {
 
     storage_.removeSession(es.getId());
     assertEquals(0, storage_.getSessions().size());
+    storage_.removeCategory(e.getId());
+    assertEquals(0, storage_.getCategories().size());
   }
 
 }
