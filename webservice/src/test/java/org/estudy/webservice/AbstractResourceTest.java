@@ -15,20 +15,17 @@
  * along with this program; if not, see<http://www.gnu.org/licenses/>.
  */
 
-package org.exoplatform.webservice.cs.rest;
+package org.estudy.webservice;
 
-import java.io.ByteArrayInputStream;
-import java.net.URI;
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.core.MultivaluedMap;
 import org.exoplatform.container.component.RequestLifeCycle;
 import org.exoplatform.services.rest.ContainerResponseWriter;
-import org.exoplatform.services.rest.impl.ContainerRequest;
-import org.exoplatform.services.rest.impl.ContainerResponse;
-import org.exoplatform.services.rest.impl.EnvironmentContext;
-import org.exoplatform.services.rest.impl.InputHeadersMap;
-import org.exoplatform.services.rest.impl.MultivaluedMapImpl;
+import org.exoplatform.services.rest.impl.*;
 import org.exoplatform.services.rest.tools.DummyContainerResponseWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.core.MultivaluedMap;
+import java.io.ByteArrayInputStream;
+import java.net.URI;
 
 /**
  * @author <a href="mailto:andrew00x@gmail.com">Andrey Parfonov</a>

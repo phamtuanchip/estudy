@@ -1,5 +1,5 @@
 
-package org.exoplatform.webservice.cs.bean;
+package org.estudy.webservice;
 
 import java.util.Collection;
 

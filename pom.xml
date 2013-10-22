@@ -20,6 +20,7 @@
     <module>service</module>
     <module>webui</module>
     <module>tutorial</module>
+    <module>webservice</module>
     <module>packaging</module>
   </modules>
    <scm>

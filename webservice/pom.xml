@@ -44,7 +44,7 @@
     </dependency>
     <!-- This dependency is required to compile our main classes but is erroneously reported as useless by dependency:analyze -->
     <dependency>
-      <groupId>org.estudy.service</groupId>
+      <groupId>org.estudy</groupId>
       <artifactId>estudy-service</artifactId>
       <version>${project.version}</version>
       <exclusions>
