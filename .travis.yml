@@ -1,9 +1,8 @@
-
 language: java
 before_install:
 install:
 #- mvn clean install -s settings.xml -U
-mvn clean install -s settings.xml -Ppkg=tomcat -Dsevers.dir=$project.basedir/deploy/
+ - mvn clean install -s settings.xml -Ppkg=tomcat -Dsevers.dir=$project.basedir/deploy/
 script:
 notifications:
   email:
