@@ -23,6 +23,11 @@
          
     <dependency>
       <groupId>org.estudy</groupId>
+      <artifactId>estudy-webservice</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.estudy</groupId>
       <artifactId>estudy-ui</artifactId>
       <type>war</type>
     </dependency>

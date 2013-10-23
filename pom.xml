@@ -18,9 +18,9 @@
   
   <modules>
     <module>service</module>
+    <module>webservice</module>
     <module>webui</module>
     <module>tutorial</module>
-    <module>webservice</module>
     <module>packaging</module>
   </modules>
    <scm>
@@ -150,7 +150,11 @@
         <artifactId>estudy-service</artifactId>
         <version>${project.version}</version>
       </dependency>
-      
+      <dependency>
+        <groupId>org.estudy</groupId>
+        <artifactId>estudy-webservice</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
         <groupId>org.estudy</groupId>
         <artifactId>estudy-ui</artifactId>

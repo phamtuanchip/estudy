@@ -3,7 +3,10 @@
   xmlns="http://www.exoplaform.org/xml/ns/kernel_1_0.xsd">
   
   <component>
-    <type>org.estudy.service.impl.JcrDataStorage</type>
+    <type>org.estudy.learning.storage.impl.JcrDataStorage</type>
+  </component>  
+  <component>
+    <type>org.estudy.webservice.EStudyWebservice</type>
   </component>  
   <component>
     <type>org.exoplatform.services.jcr.impl.ext.action.SessionActionCatalog</type>
