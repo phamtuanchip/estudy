@@ -12,7 +12,7 @@
 /*.ipr
 /*.iws
 /temp
-bin
+# bin
 target
 *.patch
 

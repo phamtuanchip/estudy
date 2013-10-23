@@ -1,0 +1,22 @@
+<%
+
+    import org.estudy.ui.view.UITest;
+
+
+%>
+<div id="UIContentViewer" class="UIContentViewer">
+
+    <%
+        if(uicomponent.getChild(UITest.class).isRendered()){
+        uicomponent.renderChildren();
+        } else {
+
+    %>
+
+    History of computing
+
+    The Jacquard loom, on display at the Museum of Science and Industry in Manchester, England, was one of the first programmable devices.
+    Main article: History of computing hardware
+    <%}%>
+
+</div>

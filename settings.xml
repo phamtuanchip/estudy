@@ -16,6 +16,9 @@
       as the central repository (with snapshots activation). 
       The URL is never used and is overridden by the mirror entry.
       -->
+      <properties>
+        <version.apache.tomcat>7.0.34</version.apache.tomcat>
+      </properties>
       <repositories>
         <repository>
           <id>central</id>

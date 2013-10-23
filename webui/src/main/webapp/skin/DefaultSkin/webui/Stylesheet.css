@@ -1,6 +1,31 @@
 .EStudyPortlet {
-   height:500px;
-   border:solid 1px red;
+    height:500px;
+    border:solid 1px red;
 }
 
- 
+.EStudyPortlet .UILessionList {
+    height:300px;
+    width: 300px;
+    border:solid 1px green;
+    float: left;
+}
+
+
+.EStudyPortlet .UIContentViewer {
+
+    height:300px;
+    width: 100%;
+    margin-left: 300;
+    border:solid 1px blue;
+
+}
+
+
+
+.EStudyPortlet .UITest {
+
+    height:100%;
+    width: 100%;
+    border:solid 1px greenyellow;
+
+}

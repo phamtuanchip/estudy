@@ -17,6 +17,8 @@ integration build test: https://travis-ci.org/phamtuanchip/estudy
 
 social group: https://www.facebook.com/groups/open.estudy
 
+issue report http://www.hostedredmine.com/projects/estudy/issues
+
 mailinglist: open-estudy@googlegroups.com
 
 Developing environment:
@@ -33,9 +35,9 @@ Developing environment:
 
 Development guide:
 
-Specification https://github.com/phamtuanchip/estudy/tree/master/docs/spec 
+Specification https://github.com/phamtuanchip/estudy/tree/master/docs/specification 
 
-Documentation https://github.com/phamtuanchip/estudy/tree/master/docs
+Documentation https://github.com/phamtuanchip/estudy/tree/master/docs/project
 
 Quick run guide: 
 
@@ -43,13 +45,11 @@ clone repository
 
 build with maven by : mvn clean install -s settings.xml
 
-download gatein 3.5.4 final tomcat 7 bundle  from there https://docs.google.com/file/d/0Bw2eZ8CfkgNBOHZuN0hBNGhSVVE/edit?usp=sharing
+using "mvn clean install -s settings.xml -Ppkg-tomcat" to deploy tomcat binary 
 
-copy service/target/estudy-service.jar  to tomcat/lib 
-
-copy webui/target/estudy.war to tomcat/webapps
-
-go to tomcat/bin and run command "gatein.sh run" for unix base (mac, linux) or "gatein.bat run" for windows  
+Known issue with windows OS http://www.hostedredmine.com/issues/229072
+ 
+go to "packaging/tomcat/tomcat7/target/tomcat/bin" and run command "gatein.sh run" for unix base (mac, linux) or "gatein.bat run" for windows  
 
 login page http://localhost:8080/portal by root with pass gtn 
 

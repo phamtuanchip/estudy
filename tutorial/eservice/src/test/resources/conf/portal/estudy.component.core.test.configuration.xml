@@ -22,19 +22,14 @@
    xsi:schemaLocation="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd http://www.exoplatform.org/xml/ns/kernel_1_2.xsd"
    xmlns="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd">
 
-    
-  
   <component>
-    <type>org.exoplatform.services.jcr.ext.app.ThreadLocalSessionProviderService</type>
-  </component>
- 
-
-  <!-- Estudy component service register -->
-   <component>
     <key>org.estudy.service.DataStorage</key>
     <type>org.estudy.service.impl.JcrDataStorage</type>
   </component>
-  
+
+  <component>
+    <type>org.exoplatform.services.jcr.ext.app.ThreadLocalSessionProviderService</type>
+  </component>
   
    <component>
     <key>org.exoplatform.services.resources.LocaleConfigService</key>
@@ -81,20 +76,4 @@
     <type>org.exoplatform.services.jdbc.impl.DataSourceProviderImpl</type>
   </component>
   
-  
-  <external-component-plugins>
-    <target-component>org.exoplatform.services.jcr.RepositoryService</target-component>
-    <component-plugin>
-      <name>add.nodeType</name>
-      <set-method>addPlugin</set-method>
-      <type>org.exoplatform.services.jcr.impl.AddNodeTypePlugin</type>
-      <init-params>
-        <values-param>
-          <name>autoCreatedInNewRepository</name>
-          <description>Node types configuration file</description>
-          <value>jar:/conf/portal/estudy-nodetypes.xml</value>
-        </values-param>
-      </init-params>
-    </component-plugin>
-  </external-component-plugins>
 </configuration>

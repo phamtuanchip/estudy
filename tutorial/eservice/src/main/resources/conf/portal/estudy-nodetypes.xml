@@ -112,5 +112,18 @@
     </propertyDefinitions>
     
   </nodeType>
-   
+
+  <nodeType name="exo:estudyHome" isMixin="false" hasOrderableChildNodes="false" primaryItemName="">
+    <supertypes>
+      <supertype>nt:unstructured</supertype>
+    </supertypes> 
+    <childNodeDefinitions>
+      <childNodeDefinition name="*" defaultPrimaryType="exo:category" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" sameNameSiblings="false">
+        <requiredPrimaryTypes>
+          <requiredPrimaryType>exo:category</requiredPrimaryType>
+        </requiredPrimaryTypes>
+      </childNodeDefinition>
+    </childNodeDefinitions>
+  </nodeType>
+
 </nodeTypes>

@@ -18,9 +18,9 @@
   
   <modules>
     <module>service</module>
+    <module>webservice</module>
     <module>webui</module>
-    <module>tutorial/eportlet</module>
-    <module>tutorial/eservice</module>
+    <module>tutorial</module>
     <module>packaging</module>
   </modules>
    <scm>
@@ -45,7 +45,7 @@
     <!-- Platform Project Dependencies -->
     <org.exoplatform.platform-ui.version>4.0.0</org.exoplatform.platform-ui.version>
     <org.exoplatform.commons.version>4.0.0</org.exoplatform.commons.version>
-    
+    <quartz.version>2.1.6</quartz.version>
     <!-- Gatein dependencies -->
     <org.shindig.version>2.0.2.Final-gatein-4</org.shindig.version>
     <nl.captcha.simplecaptcha.version>1.1.1.Final-gatein-3</nl.captcha.simplecaptcha.version>
@@ -151,10 +151,28 @@
       
       <dependency>
         <groupId>org.estudy</groupId>
+        <artifactId>estudy-webservice</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.estudy</groupId>
         <artifactId>estudy-ui</artifactId>
         <version>${project.version}</version>
         <type>war</type>
       </dependency>
+      
+      <dependency>
+        <groupId>org.estudy</groupId>
+        <artifactId>estudy.packaging.common</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+        <dependency>
+            <groupId>org.estudy</groupId>
+            <artifactId>welcome</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
       
       <dependency>
         <groupId>org.estudy</groupId>
@@ -221,7 +239,11 @@
       </dependency>
       
       <!-- dependencies for packaging-->
-     
+      <dependency>
+        <groupId>org.quartz-scheduler</groupId>
+        <artifactId>quartz</artifactId>
+        <version>${quartz.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
