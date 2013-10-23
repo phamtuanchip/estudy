@@ -161,6 +161,13 @@
         <version>${project.version}</version>
         <type>war</type>
       </dependency>
+
+        <dependency>
+            <groupId>org.estudy</groupId>
+            <artifactId>welcome</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
       
       <dependency>
         <groupId>org.estudy</groupId>

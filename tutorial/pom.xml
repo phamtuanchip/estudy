@@ -12,5 +12,6 @@
   <modules>
     <module>eservice</module>
     <module>eportlet</module>
+    <module>welcome</module>
   </modules>
 </project>
