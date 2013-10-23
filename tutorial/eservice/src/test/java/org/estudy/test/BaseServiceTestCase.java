@@ -16,12 +16,18 @@
  */
 package org.estudy.test;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.exoplatform.component.test.AbstractKernelTest;
 import org.exoplatform.component.test.ConfigurationUnit;
 import org.exoplatform.component.test.ConfiguredBy;
 import org.exoplatform.component.test.ContainerScope;
 import org.exoplatform.services.log.ExoLogger;
 import org.exoplatform.services.log.Log;
+import org.exoplatform.services.security.ConversationState;
+import org.exoplatform.services.security.Identity;
+import org.exoplatform.services.security.MembershipEntry;
 
 
 @ConfiguredBy({
@@ -36,9 +42,8 @@ import org.exoplatform.services.log.Log;
 
 public abstract class BaseServiceTestCase extends AbstractKernelTest {
 
-  protected static Log                  log                    = ExoLogger.getLogger("org.estudy.services.test");
-
-  
+  protected static Log LOG = ExoLogger.getLogger(BaseServiceTestCase.class);
+  protected Collection<MembershipEntry> membershipEntries = new ArrayList<MembershipEntry>();
  
   
   @Override
@@ -48,19 +53,33 @@ public abstract class BaseServiceTestCase extends AbstractKernelTest {
 
   @Override
   public void tearDown() throws Exception {
-
+    //
     removeAllData();
     end();
   }
   
 
-  private void removeAllData() {
+  protected void removeAllData() {
     // TODO Auto-generated method stub
     
   }
 
   @SuppressWarnings("unchecked")
-  public <T> T getService(Class<T> clazz) {
+  protected <T> T getService(Class<T> clazz) {
     return (T) getContainer().getComponentInstanceOfType(clazz);
+  }
+  
+  protected void setMembershipEntry(String group, String membershipType, boolean isNew) {
+    MembershipEntry membershipEntry = new MembershipEntry(group, membershipType);
+    if (isNew) {
+      membershipEntries.clear();
+    }
+    membershipEntries.add(membershipEntry);
+  }
+
+  protected void loginUser(String userId) {
+    Identity identity = new Identity(userId, membershipEntries);
+    ConversationState state = new ConversationState(identity);
+    ConversationState.setCurrent(state);
   }
 }
