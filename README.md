@@ -35,9 +35,9 @@ Developing environment:
 
 Development guide:
 
-Specification https://github.com/phamtuanchip/estudy/tree/master/docs/spec 
+Specification https://github.com/phamtuanchip/estudy/tree/master/docs/specification 
 
-Documentation https://github.com/phamtuanchip/estudy/tree/master/docs
+Documentation https://github.com/phamtuanchip/estudy/tree/master/docs/project
 
 Quick run guide: 
 
@@ -47,6 +47,8 @@ build with maven by : mvn clean install -s settings.xml
 
 using "mvn clean install -s settings.xml -Ppkg-tomcat" to deploy tomcat binary 
 
+Known issue with windows OS http://www.hostedredmine.com/issues/229072
+ 
 go to "packaging/tomcat/tomcat7/target/tomcat/bin" and run command "gatein.sh run" for unix base (mac, linux) or "gatein.bat run" for windows  
 
 login page http://localhost:8080/portal by root with pass gtn 
