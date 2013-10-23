@@ -1,1 +1,1 @@
-mvn clean install -s settings.xml -Ppkg=tomcat -Dsevers.dir=$project.basedir/deploy/
+mvn clean install -s settings.xml -Ppkg=tomcat -Dsevers.dir=../../../deploy -Ddownload
