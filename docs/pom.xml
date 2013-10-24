@@ -1,0 +1,177 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>org.estudy</groupId>
+    <artifactId>estudy</artifactId>
+    <version>1.0-SNAPSHOT</version>   
+  </parent>
+  
+  <artifactId>estudy-docs</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <!--packaging>jar</packaging-->
+
+  <name>E study documentations</name>
+  <url>https://github.com/phamtuanchip/estudy</url>
+
+  <profiles>
+    <profile>
+      <id>docs</id>
+
+      <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      </properties>
+
+      <dependencies>
+      </dependencies>
+
+      <build>
+        <plugins>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>${maven.resources.plugin.version}</version>
+            <executions>
+              <!-- Copy resources to the target -->
+              <execution>
+                <id>a-copy-resources</id>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                  <resources>
+                    <resource>
+                      <directory>${project.basedir}/src/main/resources</directory>
+                    </resource>
+                  </resources>
+                  <outputDirectory>${project.build.directory}</outputDirectory>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+          <!-- Generate xml from wiki files -->
+          <plugin>
+            <groupId>org.wikbook</groupId>
+            <artifactId>wikbook.maven</artifactId>
+            <version>${org.wikbook.version}</version>
+            <executions>
+              <execution>
+                <id>b-generate-docbook</id>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>transform</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <bookId>ElearningGuide</bookId>
+              <sourceDirectory>${project.build.directory}/wikbook</sourceDirectory>
+              <sourceFileName>book.wiki</sourceFileName>
+              <destinationDirectory>${project.build.directory}/docbook-src</destinationDirectory>
+              <destinationFileName>${project.artifactId}.xml</destinationFileName>
+              <emitDoctype>true</emitDoctype>
+              <beforeBookBodyXML><![CDATA[
+              <xi:include href="bookinfo.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+			  ]]></beforeBookBodyXML>
+              <syntaxId>confluence/1.0</syntaxId>
+            </configuration>
+          </plugin>
+
+          <!-- Tranform xml to html and pdf format -->
+          <!--plugin>
+            <groupId>org.jboss.maven.plugins</groupId>
+            <artifactId>maven-jdocbook-plugin</artifactId>
+            <version>${maven.jdocbook.plugin.version}</version>
+            <extensions>true</extensions>
+            <dependencies>
+              <dependency>
+                <groupId>org.exoplatform.doc</groupId>
+                <artifactId>exo-docbook-xslt</artifactId>
+                <version>1</version>
+              </dependency>
+            </dependencies>
+            <executions>
+              <execution>
+                <id>c-jdocbook-resources</id>
+                <phase>process-resources</phase>
+                <goals>
+                  <goal>resources</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>d-generate-docs</id>
+                <goals>
+                  <goal>generate</goal>
+                </goals>
+                <phase>compile</phase>
+              </execution>
+            </executions>
+            <configuration>
+              <sourceDirectory>${project.build.directory}/docbook-src</sourceDirectory>
+              <sourceDocumentName>${project.artifactId}.xml</sourceDocumentName>
+              <imageResource>
+                <directory></directory>
+                <includes>
+                  <include></include>
+                </includes>
+              </imageResource>
+              <cssResource>
+                <directory></directory>
+                <includes>
+                  <include></include>
+                </includes>
+              </cssResource>
+              <formats>
+                <format>
+                  <formatName>html</formatName>
+                  <stylesheetResource>file:${docbook.source}/xsl/xhtml.xsl</stylesheetResource>
+                  <finalName>index.html</finalName>
+                </format>
+                <format>
+                  <formatName>pdf</formatName>
+                  <stylesheetResource>file:${docbook.source}/xsl/pdf.xsl</stylesheetResource>
+                  <finalName>${project.artifactId}-${project.version}.pdf</finalName>
+                </format>
+              </formats>
+              <options>
+                <xincludeSupported>true</xincludeSupported>
+                <xmlTransformerType>saxon</xmlTransformerType>
+                <docbookVersion>1.76.1</docbookVersion>
+              </options>
+            </configuration>
+          </plugin-->
+
+          <!-- Package -->
+          <!--plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <dependencies>
+            </dependencies>
+            <executions>
+              <execution>
+                <id>e-assemble-archives</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+                <configuration>
+                  <descriptors>
+                    <descriptor>src/main/assembly/html-zip.xml</descriptor>
+                  </descriptors>
+                  <appendAssemblyId>true</appendAssemblyId>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin-->
+
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>
