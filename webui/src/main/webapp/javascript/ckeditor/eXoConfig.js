@@ -60,7 +60,7 @@ CKEDITOR.editorConfig = function( config ){
 	config.toolbar_SuperBasicWCM = [
 		   ['Source','-','Bold','Italic','Underline'],
 		   ['-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
-		   ['-','Link','Unlink','insertPortalLink.btn','insertGadget.btn','content.btn', 'Image'],	
+		   ['-','Link','Unlink','insertPortalLink.btn','insertGadget.btn','content.btn', 'Image']
 	] ;
 
 	config.toolbar_InlineEdit = [
