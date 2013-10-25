@@ -82,6 +82,12 @@
                 <value>
                   <string>web</string>
                 </value>
+                  <value>
+                      <string>welcome</string>
+                  </value>
+                  <value>
+                      <string>estudy</string>
+                  </value>
                 <!--<value profiles="jboss">
                    <string>gatein-wsrp-integration</string>
                 </value>-->
