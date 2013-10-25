@@ -2,7 +2,7 @@ language: java
 before_install:
 install:
 #- mvn clean install -s settings.xml -U
- - mvn clean install -s settings.xml -Ppkg=tomcat -Dservers.dir=../../../deploy/ -Ddownload
+ - mvn clean install -s settings.xml -Ppkg=tomcat -Ddownload
 script:
 notifications:
   email:
