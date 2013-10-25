@@ -1,8 +1,12 @@
-<link href="estudyResources/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-<link href="estudyResources/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
-<script src="estudyResources/bootstrap/js/bootstrap.min.js"></script>
-<script src="eXoResources/javascript/jquery-1.7.1.js"></script>
+!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/estudyResources/bootstrap/css/bootstrap.min.css">
 
+<!-- Optional theme -->
+<link rel="stylesheet" href="/estudyResources/bootstrap/bootstrap-theme.min.css">
+
+<script src="/estudyResources/bootstrap/js/jquery-1.10.2.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="/estudyResources/bootstrap/js/bootstrap.min.js"></script>
 <h4>Welcome to the GateIn E-Learning System</h4>
 
 <!-- Fixed navbar -->
