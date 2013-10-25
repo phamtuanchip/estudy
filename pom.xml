@@ -22,6 +22,7 @@
     <module>webui</module>
     <module>extension</module>
     <module>tutorial</module>
+    <module>resources</module>
     <module>packaging</module>
   </modules>
    <scm>
@@ -161,6 +162,7 @@
         <version>${project.version}</version>
         <type>war</type>
       </dependency>
+
         <dependency>
             <groupId>org.estudy</groupId>
             <artifactId>estudy-extension-jar</artifactId>
@@ -177,6 +179,15 @@
         <version>${project.version}</version>
         <type>war</type>
       </dependency>
+
+
+        <dependency>
+            <groupId>org.estudy</groupId>
+            <artifactId>estudy-resources</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+
       
       <dependency>
         <groupId>org.estudy</groupId>
