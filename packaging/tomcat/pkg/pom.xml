@@ -27,6 +27,7 @@
     </dependency>
 
       <dependency>
+          <?rename welcome.war?>
           <groupId>org.estudy</groupId>
           <artifactId>welcome</artifactId>
           <type>war</type>
@@ -37,6 +38,20 @@
       <artifactId>estudy-ui</artifactId>
       <type>war</type>
     </dependency>
+    <dependency>
+          <groupId>org.estudy</groupId>
+          <artifactId>estudy-extension-jar</artifactId>
+    </dependency>
+      <dependency>
+          <groupId>org.estudy</groupId>
+          <artifactId>estudy-extension-config</artifactId>
+      </dependency>
+      <dependency>
+          <?rename estudyExtension.war?>
+          <groupId>org.estudy</groupId>
+          <artifactId>estudy-extension-war</artifactId>
+          <type>war</type>
+      </dependency>
 
     <!-- Logging -->
     <dependency>

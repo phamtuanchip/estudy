@@ -20,6 +20,7 @@
     <module>service</module>
     <module>webservice</module>
     <module>webui</module>
+    <module>extension</module>
     <module>tutorial</module>
     <module>packaging</module>
   </modules>
@@ -157,6 +158,22 @@
       <dependency>
         <groupId>org.estudy</groupId>
         <artifactId>estudy-ui</artifactId>
+        <version>${project.version}</version>
+        <type>war</type>
+      </dependency>
+        <dependency>
+            <groupId>org.estudy</groupId>
+            <artifactId>estudy-extension-jar</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.estudy</groupId>
+            <artifactId>estudy-extension-config</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+      <dependency>
+        <groupId>org.estudy</groupId>
+        <artifactId>estudy-extension-war</artifactId>
         <version>${project.version}</version>
         <type>war</type>
       </dependency>
