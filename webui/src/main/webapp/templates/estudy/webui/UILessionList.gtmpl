@@ -3,16 +3,16 @@
     <ul>
         <li class="toctree-l2">
             <a href="#" onclick="<%=uicomponent.event("AddLession")%>" class="pull-right"  rel="tooltip" data-placement="bottom" title="add new lession">
-                <i>add lession</i>
+                <i>Add Lesson</i>
             </a>
         </li>
         <li class="toctree-l2">
-            <a href="#" onclick="<%=uicomponent.event("Test")%>" class="pull-right"  rel="tooltip" data-placement="bottom" title="add new lession">
-                <i>Join Test</i>
+            <a href="#" onclick="<%=uicomponent.event("AddQuestion")%>" class="pull-right"  rel="tooltip" data-placement="bottom" title="add new Question">
+                <i>Add Question</i>
             </a>
         </li>
         <li class="toctree-l2">
-            <a href="#" onclick="<%=uicomponent.event("AddQuestion")%>" class="pull-right"  rel="tooltip" data-placement="bottom" title="add new lession">
+            <a href="#" onclick="<%=uicomponent.event("Test")%>" class="pull-right"  rel="tooltip" data-placement="bottom" title="Join Test">
                 <i>Join Test</i>
             </a>
         </li>

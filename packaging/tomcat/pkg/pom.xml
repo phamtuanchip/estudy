@@ -27,6 +27,7 @@
     </dependency>
 
       <dependency>
+          <?rename welcome.war?>
           <groupId>org.estudy</groupId>
           <artifactId>welcome</artifactId>
           <type>war</type>
@@ -46,6 +47,7 @@
       </dependency>
 
       <dependency>
+          <?rename CommonsResources.war?>
           <groupId>org.exoplatform.commons</groupId>
           <artifactId>commons-webui-resources</artifactId>
           <type>war</type>

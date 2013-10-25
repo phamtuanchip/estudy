@@ -31,7 +31,7 @@ public class UIQuestionForm extends UIForm implements UIPopupComponent {
 
   public UIQuestionForm(){
 
-    addChild(new UIFormRichtextInput("editor", "editor", ""));
+    addChild(new UIFormRichtextInput("editor", "editor", "").set);
 
   }
 
