@@ -11,6 +11,11 @@
                 <i>Join Test</i>
             </a>
         </li>
+        <li class="toctree-l2">
+            <a href="#" onclick="<%=uicomponent.event("AddQuestion")%>" class="pull-right"  rel="tooltip" data-placement="bottom" title="add new lession">
+                <i>Join Test</i>
+            </a>
+        </li>
     </ul>
 
 

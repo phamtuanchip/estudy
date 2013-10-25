@@ -38,6 +38,20 @@
       <type>war</type>
     </dependency>
 
+    <!-- exo commons components with ckeditor-->
+
+      <dependency>
+          <groupId>org.exoplatform.commons</groupId>
+          <artifactId>commons-webui-component</artifactId>
+      </dependency>
+
+      <dependency>
+          <groupId>org.exoplatform.commons</groupId>
+          <artifactId>commons-webui-resources</artifactId>
+          <type>war</type>
+      </dependency>
+
+
     <!-- Logging -->
     <dependency>
       <groupId>org.slf4j</groupId>

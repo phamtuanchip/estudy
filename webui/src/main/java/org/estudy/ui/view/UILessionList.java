@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.estudy.learning.model.ESession;
 import org.estudy.learning.storage.DataStorage;
 import org.estudy.ui.form.UILessionForm;
+import org.estudy.ui.form.UIQuestionForm;
 import org.estudy.ui.popup.UIPopupContainer;
 import org.estudy.ui.portlet.EStudyPortlet;
 import org.exoplatform.portal.webui.container.UIContainer;
@@ -18,6 +19,7 @@ import org.exoplatform.webui.event.EventListener;
                  template =  "app:/templates/estudy/webui/UILessionList.gtmpl", 
                  events = {
                      @EventConfig(listeners = UILessionList.AddLessionActionListener.class),
+                     @EventConfig(listeners = UILessionList.AddQuestionActionListener.class),
                      @EventConfig(listeners = UILessionList.TestActionListener.class)
                  }
     )
@@ -42,6 +44,17 @@ public class UILessionList extends UIContainer {
       UIPopupContainer uiPopupContainer = portlet.createUIComponent(UIPopupContainer.class, null, "formcontainer") ;
       UILessionForm uiLessionForm = uiPopupContainer.addChild(UILessionForm.class, null, null) ;
       portlet.addPopup(uiLessionForm, 600, 311);
+    }
+  }
+
+  static public class AddQuestionActionListener extends EventListener<UILessionList> {
+    @Override
+    public void execute(Event<UILessionList> event) throws Exception {
+      UILessionList listview = event.getSource() ;
+      EStudyPortlet portlet = listview.getAncestorOfType(EStudyPortlet.class);
+      UIPopupContainer uiPopupContainer = portlet.createUIComponent(UIPopupContainer.class, null, "formcontainer") ;
+      UIQuestionForm uiQuestionForm = uiPopupContainer.addChild(UIQuestionForm.class, null, null) ;
+      portlet.addPopup(uiQuestionForm, 600, 311);
     }
   }
 
