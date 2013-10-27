@@ -35,4 +35,11 @@
   <name>estudy extension page</name>
   <url>http://www.exoplatform.org</url>
   <description>This to add default page</description>
+
+  <modules>
+        <module>config</module>
+        <module>ear</module>
+        <module>jar</module>
+        <module>war</module>
+    </modules>
 </project>
