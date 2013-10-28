@@ -17,6 +17,7 @@
 package org.estudy.webservice;
 
 import org.estudy.learning.Util;
+import org.estudy.learning.model.Attachment;
 import org.estudy.learning.model.ECategory;
 import org.estudy.learning.model.EQuestion;
 import org.estudy.learning.model.ESession;
@@ -129,4 +130,9 @@ public class MockJcrDataStorage implements DataStorage {
     public void removeTesting(String uid, String id) throws Exception {
         //To change body of implemented methods use File | Settings | File Templates.
     }
+
+  @Override
+  public String uploadMedia(Attachment media) throws Exception {
+    return null;  //To change body of implemented methods use File | Settings | File Templates.
+  }
 }

@@ -16,10 +16,12 @@
  */
 package org.estudy.learning.storage.impl;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.jcr.ItemExistsException;
@@ -33,6 +35,7 @@ import javax.jcr.query.Query;
 import javax.jcr.query.QueryManager;
 
 import org.estudy.learning.Util;
+import org.estudy.learning.model.Attachment;
 import org.estudy.learning.model.ECategory;
 import org.estudy.learning.model.EQuestion;
 import org.estudy.learning.model.ESession;
@@ -41,12 +44,16 @@ import org.estudy.learning.storage.DataStorage;
 import org.exoplatform.container.ExoContainer;
 import org.exoplatform.container.ExoContainerContext;
 import org.exoplatform.services.jcr.RepositoryService;
+import org.exoplatform.services.jcr.access.AccessControlEntry;
+import org.exoplatform.services.jcr.access.PermissionType;
+import org.exoplatform.services.jcr.core.ExtendedNode;
 import org.exoplatform.services.jcr.ext.app.SessionProviderService;
 import org.exoplatform.services.jcr.ext.common.SessionProvider;
 import org.exoplatform.services.jcr.ext.hierarchy.NodeHierarchyCreator;
 import org.exoplatform.services.log.ExoLogger;
 import org.exoplatform.services.log.Log;
 import org.exoplatform.services.organization.User;
+import org.exoplatform.services.security.IdentityConstants;
 
 /**
  * Created by The eXo Platform SAS
@@ -351,6 +358,17 @@ public class JcrDataStorage implements DataStorage {
     }  
   }
 
+  private Node getEMediaHome() throws RepositoryException, Exception {
+    Node uHome = getEStorageHome();
+    try {
+      return  uHome.getNode(Util.E_STUDY_MED);
+    } catch (PathNotFoundException e) {
+      uHome.addNode(Util.E_STUDY_MED, Util.NT_UNSTRUCTURED);
+      uHome.getSession().save();
+      return uHome.getNode(Util.E_STUDY_MED);
+    }
+  }
+
 
   @Override
   public void saveCategory(ECategory category, boolean isNew) throws ItemExistsException, Exception{
@@ -613,5 +631,82 @@ public class JcrDataStorage implements DataStorage {
       throw e;
     }
     
+  }
+
+  private static List<Attachment> getAttachments(Node eventNode) throws Exception {
+    List<Attachment> attachments = new ArrayList<Attachment>();
+    if (eventNode.hasNode(Util.ATTACHMENT_NODE)) {
+      Node attachHome = eventNode.getNode(Util.ATTACHMENT_NODE);
+      NodeIterator iter = attachHome.getNodes();
+      while (iter.hasNext()) {
+        Node attchmentNode = iter.nextNode();
+        if (attchmentNode.isNodeType(Util.EXO_EVEN_TATTACHMENT)) {
+          Attachment attachment = new Attachment();
+          attachment.setId(attchmentNode.getPath());
+          if (attchmentNode.hasProperty(Util.EXO_FILE_NAME))
+            attachment.setName(attchmentNode.getProperty(Util.EXO_FILE_NAME).getString());
+          Node contentNode = attchmentNode.getNode(Util.JCR_CONTENT);
+          if (contentNode != null) {
+            if (contentNode.hasProperty(Util.JCR_LASTMODIFIED))
+              attachment.setLastModified(contentNode.getProperty(Util.JCR_LASTMODIFIED).getDate());
+            if (contentNode.hasProperty(Util.JCR_MIMETYPE))
+              attachment.setMimeType(contentNode.getProperty(Util.JCR_MIMETYPE).getString());
+            if (contentNode.hasProperty(Util.JCR_DATA)) {
+              InputStream inputStream = contentNode.getProperty(Util.JCR_DATA).getStream();
+              attachment.setSize(inputStream.available());
+              attachment.setInputStream(inputStream);
+            }
+          }
+          attachment.setWorkspace(attchmentNode.getSession().getWorkspace().getName());
+          attachments.add(attachment);
+        }
+      }
+    }
+    return attachments;
+  }
+
+  private void addAttachment(Node eventNode, Attachment attachment, boolean isNew) throws Exception {
+    Node attachHome;
+    Node attachNode;
+    // fix load image on IE6 UI
+    ExtendedNode extNode = (ExtendedNode) eventNode;
+    if (extNode.canAddMixin("exo:privilegeable"))
+      extNode.addMixin("exo:privilegeable");
+    String[] arrayPers = { PermissionType.READ, PermissionType.ADD_NODE,
+            PermissionType.SET_PROPERTY, PermissionType.REMOVE };
+    extNode.setPermission(IdentityConstants.ANY, arrayPers);
+    List<AccessControlEntry> permsList = extNode.getACL().getPermissionEntries();
+    for (AccessControlEntry accessControlEntry : permsList) {
+      extNode.setPermission(accessControlEntry.getIdentity(), arrayPers);
+    }
+    try {
+      attachHome = eventNode.getNode(Util.ATTACHMENT_NODE);
+    } catch (Exception e) {
+      attachHome = eventNode.addNode(Util.ATTACHMENT_NODE, Util.NT_UNSTRUCTURED);
+    }
+    String name = attachment.getId().substring(attachment.getId().lastIndexOf(Util.SLASH) + 1);
+    try {
+      attachNode = attachHome.getNode(name);
+    } catch (Exception e) {
+      attachNode = attachHome.addNode(name, Util.EXO_EVEN_TATTACHMENT);
+    }
+    attachNode.setProperty(Util.EXO_FILE_NAME, attachment.getName());
+    Node nodeContent = null;
+    try {
+      nodeContent = attachNode.getNode(Util.JCR_CONTENT);
+    } catch (Exception e) {
+      nodeContent = attachNode.addNode(Util.JCR_CONTENT, Util.NT_RESOURCE);
+    }
+    nodeContent.setProperty(Util.JCR_LASTMODIFIED, java.util.Calendar.getInstance()
+            .getTimeInMillis());
+    nodeContent.setProperty(Util.JCR_MIMETYPE, attachment.getMimeType());
+    nodeContent.setProperty(Util.JCR_DATA, attachment.getInputStream());
+  }
+
+  @Override
+  public String uploadMedia(Attachment media) throws Exception{
+    Node node = getEMediaHome();
+    addAttachment(node, media, true);
+    return node.getPath();  //To change body of implemented methods use File | Settings | File Templates.
   }
 }

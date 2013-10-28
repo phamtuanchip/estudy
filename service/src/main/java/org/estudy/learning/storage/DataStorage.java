@@ -23,6 +23,7 @@ import javax.jcr.ItemNotFoundException;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 
+import org.estudy.learning.model.Attachment;
 import org.estudy.learning.model.ECategory;
 import org.estudy.learning.model.EQuestion;
 import org.estudy.learning.model.ESession;
@@ -57,6 +58,8 @@ public interface DataStorage {
   public Collection<ETesting> getTestingScore(String uId, Collection<String> qIds) throws RepositoryException;
   public Collection<ETesting> getTestingScore(String uId) throws RepositoryException;
   public void removeTesting(String uid, String id) throws Exception;
+
+  public String uploadMedia(Attachment media)throws Exception;
   
   
 }

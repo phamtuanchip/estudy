@@ -216,11 +216,7 @@
                 <version>${project.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.estudy</groupId>
-                <artifactId>estudy.packaging.common</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+
 
             <!-- Import versions from commons project -->
             <dependency>

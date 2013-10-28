@@ -16,6 +16,7 @@
  */
 package org.estudy.test;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -25,6 +26,7 @@ import java.util.Map;
 import javax.jcr.ItemExistsException;
 
 import org.estudy.learning.Util;
+import org.estudy.learning.model.Attachment;
 import org.estudy.learning.model.ECategory;
 import org.estudy.learning.model.EQuestion;
 import org.estudy.learning.model.ESession;
@@ -79,6 +81,19 @@ public class EstudyServiceTest extends BaseServiceTestCase {
     assertNotNull(storage_);
 
   }
+
+  //mvn test -Dtest=EstudyServiceTest#testUploadMedia
+  public void testUploadMedia() throws Exception{
+
+    InputStream mediaInputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("leaf.png");
+
+    Attachment att = new Attachment(mediaInputStream);
+    att.setName("mediafile");
+
+
+
+  }
+
   //mvn test -Dtest=EstudyServiceTest#testEStoreHome
   public void testEStoreHome() throws Exception {
 

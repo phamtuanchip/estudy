@@ -16,6 +16,12 @@
                 <i>Join Test</i>
             </a>
         </li>
+
+        <li class="toctree-l2">
+            <a href="#" onclick="<%=uicomponent.event("AddMedia")%>" class="pull-right"  rel="tooltip" data-placement="bottom" title="Upload Media">
+                <i>upload media</i>
+            </a>
+        </li>
     </ul>
 
 

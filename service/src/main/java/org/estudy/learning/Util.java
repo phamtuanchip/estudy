@@ -239,14 +239,16 @@ public class Util {
   public static final String JCR_DATA                   = "jcr:data";
 
   public static final String JCR_SCORE                  = "jcr:score";
-  
+
   final public static String E_STUDY               = "estudy";
   final public static String E_STUDY_APP               = "estudyhome";
   final public static String E_STUDY_CAT              = "ecategory";
   final public static String E_STUDY_QUEST              = "equestion";
   final public static String E_STUDY_TEST              = "etest";
   final public static String E_STUDY_SES              = "esession";
+  final public static String E_STUDY_MED              = "emedia";
   final public static String SEMI_COLON = ";";
   final public static String COLON = ":";
+  final public static String SLASH                      = "/";
   
 }
