@@ -205,6 +205,18 @@
 
             <dependency>
                 <groupId>org.estudy</groupId>
+                <artifactId>estudy-juzu-web</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>org.estudy</groupId>
+                <artifactId>estudy-juzu-services</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.estudy</groupId>
                 <artifactId>estudy.packaging.common</artifactId>
                 <version>${project.version}</version>
             </dependency>

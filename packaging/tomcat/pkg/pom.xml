@@ -76,7 +76,24 @@
           <artifactId>commons-juzu</artifactId>
       </dependency>
 
-    <!-- Logging -->
+      <dependency>
+          <groupId>org.juzu</groupId>
+          <artifactId>juzu-core</artifactId>
+      </dependency>
+      <dependency>
+        <groupId>org.juzu</groupId>
+        <artifactId>juzu-bom-core</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>org.juzu</groupId>
+          <artifactId>juzu-plugins-less</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>org.juzu</groupId>
+          <artifactId>juzu-plugins-portlet</artifactId>
+      </dependency>
+
+      <!-- Logging -->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
