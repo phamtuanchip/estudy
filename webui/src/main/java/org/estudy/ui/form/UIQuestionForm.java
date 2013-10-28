@@ -48,7 +48,7 @@ public class UIQuestionForm extends UIForm implements UIPopupComponent {
 
   @Override
   public String[] getActions() {
-    return new String[]{"Search","Cancel"} ;
+    return new String[]{"Save","Cancel"} ;
   }
 
   static  public class SaveActionListener extends EventListener<UIQuestionForm> {
