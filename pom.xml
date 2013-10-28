@@ -23,6 +23,7 @@
         <module>extension</module>
         <module>tutorial</module>
         <module>resources</module>
+        <module>juzuapp</module>
         <module>packaging</module>
     </modules>
     <scm>
@@ -216,6 +217,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.exoplatform.commons</groupId>
+                <artifactId>commons-juzu</artifactId>
+                <version>${org.exoplatform.commons.version}</version>
+            </dependency>
             <!-- Import versions from platform-ui project -->
             <dependency>
                 <groupId>org.exoplatform.platform-ui</groupId>
@@ -223,6 +229,12 @@
                 <version>${org.exoplatform.platform-ui.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.exoplatform.platform-ui</groupId>
+                <artifactId>platform-ui-web-eXoResources</artifactId>
+                <version>${org.exoplatform.platform-ui.version}</version>
+                <type>war</type>
             </dependency>
 
             <dependency>

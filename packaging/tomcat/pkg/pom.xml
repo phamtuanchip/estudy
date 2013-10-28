@@ -59,6 +59,23 @@
           <type>war</type>
       </dependency>
 
+      <dependency>
+          <groupId>org.estudy</groupId>
+          <artifactId>estudy-juzu-services</artifactId>
+      </dependency>
+
+      <dependency>
+          <groupId>org.estudy</groupId>
+          <artifactId>estudy-juzu-wep</artifactId>
+          <type>war</type>
+      </dependency>
+
+    <!-- juzu dependency -->
+      <dependency>
+          <groupId>org.exoplatform.commons</groupId>
+          <artifactId>commons-juzu</artifactId>
+      </dependency>
+
     <!-- Logging -->
     <dependency>
       <groupId>org.slf4j</groupId>
