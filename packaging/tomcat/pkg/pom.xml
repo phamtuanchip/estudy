@@ -93,7 +93,24 @@
           <artifactId>juzu-plugins-portlet</artifactId>
       </dependency>
 
-      <!-- Logging -->
+
+    <!-- exo commons components with ckeditor-->
+
+      <dependency>
+          <groupId>org.exoplatform.commons</groupId>
+          <artifactId>commons-webui-component</artifactId>
+      </dependency>
+
+      <dependency>
+          <?rename CommonsResources.war?>
+          <groupId>org.exoplatform.commons</groupId>
+          <artifactId>commons-webui-resources</artifactId>
+          <type>war</type>
+      </dependency>
+
+
+    <!-- Logging -->
+
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
