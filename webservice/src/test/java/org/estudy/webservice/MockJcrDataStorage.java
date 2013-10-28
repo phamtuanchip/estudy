@@ -135,4 +135,9 @@ public class MockJcrDataStorage implements DataStorage {
   public String uploadMedia(Attachment media) throws Exception {
     return null;  //To change body of implemented methods use File | Settings | File Templates.
   }
+
+  @Override
+  public Collection<Attachment> getMedias() throws Exception {
+    return null;  //To change body of implemented methods use File | Settings | File Templates.
+  }
 }

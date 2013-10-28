@@ -681,14 +681,16 @@ public class JcrDataStorage implements DataStorage {
     }
     try {
       attachHome = eventNode.getNode(Util.ATTACHMENT_NODE);
-    } catch (Exception e) {
+    } catch (PathNotFoundException e) {
       attachHome = eventNode.addNode(Util.ATTACHMENT_NODE, Util.NT_UNSTRUCTURED);
+      eventNode.save();
     }
     String name = attachment.getId().substring(attachment.getId().lastIndexOf(Util.SLASH) + 1);
     try {
       attachNode = attachHome.getNode(name);
-    } catch (Exception e) {
+    } catch (PathNotFoundException e) {
       attachNode = attachHome.addNode(name, Util.EXO_ATTACHMENT);
+      attachHome.save();
     }
     attachNode.setProperty(Util.EXO_FILE_NAME, attachment.getName());
     Node nodeContent = null;
@@ -696,6 +698,7 @@ public class JcrDataStorage implements DataStorage {
       nodeContent = attachNode.getNode(Util.JCR_CONTENT);
     } catch (Exception e) {
       nodeContent = attachNode.addNode(Util.JCR_CONTENT, Util.NT_RESOURCE);
+      attachNode.save();
     }
     nodeContent.setProperty(Util.JCR_LASTMODIFIED, java.util.Calendar.getInstance()
             .getTimeInMillis());

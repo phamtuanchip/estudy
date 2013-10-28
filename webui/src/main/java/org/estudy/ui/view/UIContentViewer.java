@@ -1,5 +1,6 @@
 package org.estudy.ui.view;
 
+import org.estudy.learning.model.Attachment;
 import org.estudy.learning.model.ESession;
 import org.estudy.learning.storage.DataStorage;
 import org.estudy.ui.form.UILessionForm;
@@ -30,16 +31,22 @@ import java.util.Collection;
 
 public class UIContentViewer extends UIContainer {
   Collection<ESession> list;
-
+  Collection<Attachment> mediaList ;
   public UIContentViewer() throws Exception {
     addChild(UITest.class, null, null).setRendered(false) ;
+    refresh();
+  }
+
+  public void refresh(){
     DataStorage service = EStudyPortlet.getDataService();
     try {
       list = service.getSessions();
+      mediaList.addAll(service.getMedias());
     } catch (Exception e) {
       e.printStackTrace();
     }
   }
+
 
   static public class AddLessionActionListener extends EventListener<UIContentViewer> {
     @Override

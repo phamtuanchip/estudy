@@ -1,6 +1,8 @@
 <%
 
     import org.estudy.ui.view.UITest;
+    import org.estudy.learning.model.Attachment;
+
     try {
     def rcontext = _ctx.getRequestContext() ;
     def requireJS = rcontext.getJavascriptManager().getRequireJS();
@@ -17,6 +19,19 @@
         if(uicomponent.getChild(UITest.class).isRendered()){
         uicomponent.renderChildren();
         } else {
+
+             for(Attachment att : uicomponent.mediaList)  {
+    %>
+    <ul>
+        <li class="toctree-l2">
+            <a href="#" onclick="<%=uicomponent.event("download")%>" class="pull-right"  rel="tooltip" data-placement="bottom" title="$att.name">
+                <i>$att.name</i>
+            </a>
+        </li>
+    </ul>
+
+    <%
+             }
 
     %>
 
