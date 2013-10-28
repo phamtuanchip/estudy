@@ -103,7 +103,7 @@
     </dependency>
   </dependencies>
  <build>
-    <finalName>estudy-juzu-wep</finalName><!-- The war name -->
+    <finalName>estudy-juzu-web</finalName><!-- The war name -->
     <plugins>
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>

@@ -50,4 +50,54 @@
     </portlet-application>
   </page>
 
+    <page>
+        <name>juzu</name>
+        <title>juzu Page</title>
+        <access-permissions>Everyone</access-permissions>
+        <edit-permission>*:/platform/administrators</edit-permission>
+        <portlet-application>
+            <portlet>
+                <application-ref>estudy-juzu-web</application-ref>
+                <portlet-ref>ExampleJuzuPortlet</portlet-ref>
+                <preferences>
+                    <preference>
+                        <name>url</name>
+                        <value>http://jboss.org/gatein</value>
+                        <read-only>false</read-only>
+                    </preference>
+                </preferences>
+            </portlet>
+            <title>juzu app</title>
+            <access-permissions>Everyone</access-permissions>
+            <show-info-bar>false</show-info-bar>
+            <show-application-state>false</show-application-state>
+            <show-application-mode>false</show-application-mode>
+        </portlet-application>
+    </page>
+
+    <page>
+        <name>learning</name>
+        <title>learning Page</title>
+        <access-permissions>Everyone</access-permissions>
+        <edit-permission>*:/platform/administrators</edit-permission>
+        <portlet-application>
+            <portlet>
+                <application-ref>estudy</application-ref>
+                <portlet-ref>estudy</portlet-ref>
+                <preferences>
+                    <preference>
+                        <name>url</name>
+                        <value>http://jboss.org/gatein</value>
+                        <read-only>false</read-only>
+                    </preference>
+                </preferences>
+            </portlet>
+            <title>Learning Page portlet</title>
+            <access-permissions>Everyone</access-permissions>
+            <show-info-bar>false</show-info-bar>
+            <show-application-state>false</show-application-state>
+            <show-application-mode>false</show-application-mode>
+        </portlet-application>
+    </page>
+
 </page-set>

@@ -32,6 +32,17 @@
       <label>#{portal.classic.samplePage}</label>
       <page-reference>portal::classic::welcomePage</page-reference>
     </node>
+
+        <node>
+            <name>juzuPage</name>
+            <label>#{portal.classic.juzuPage}</label>
+            <page-reference>portal::classic::juzu</page-reference>
+        </node>
+      <node>
+          <name>learningPage</name>
+          <label>#{portal.classic.learningPage}</label>
+          <page-reference>portal::classic::learning</page-reference>
+      </node>
     <node>
       <name>groupnavigation</name>
       <label>#{portal.classic.groupnavigation}</label>
