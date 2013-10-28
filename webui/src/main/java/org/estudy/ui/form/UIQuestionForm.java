@@ -10,6 +10,7 @@ import org.exoplatform.webui.event.EventListener;
 import org.exoplatform.webui.form.UIForm;
 import org.exoplatform.webui.form.UIFormRichtextInput;
 
+
 /**
  * Created with IntelliJ IDEA.
  * User: tuanp
@@ -30,9 +31,7 @@ public class UIQuestionForm extends UIForm implements UIPopupComponent {
 
 
   public UIQuestionForm(){
-
-    addChild(new UIFormRichtextInput("editor", "editor", "").set);
-
+    addChild(new UIFormRichtextInput("editor", "editor", ""));
   }
 
   @Override

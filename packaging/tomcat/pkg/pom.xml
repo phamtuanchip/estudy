@@ -33,11 +33,66 @@
           <type>war</type>
       </dependency>
 
+      <dependency>
+          <groupId>org.estudy</groupId>
+          <artifactId>estudy-resources</artifactId>
+          <type>war</type>
+      </dependency>
+
     <dependency>
       <groupId>org.estudy</groupId>
       <artifactId>estudy-ui</artifactId>
       <type>war</type>
     </dependency>
+    <dependency>
+          <groupId>org.estudy</groupId>
+          <artifactId>estudy-extension-jar</artifactId>
+    </dependency>
+      <dependency>
+          <groupId>org.estudy</groupId>
+          <artifactId>estudy-extension-config</artifactId>
+      </dependency>
+      <dependency>
+          <?rename estudyExtension.war?>
+          <groupId>org.estudy</groupId>
+          <artifactId>estudy-extension-war</artifactId>
+          <type>war</type>
+      </dependency>
+
+      <dependency>
+          <groupId>org.estudy</groupId>
+          <artifactId>estudy-juzu-services</artifactId>
+      </dependency>
+
+      <dependency>
+          <groupId>org.estudy</groupId>
+          <artifactId>estudy-juzu-web</artifactId>
+          <type>war</type>
+      </dependency>
+
+    <!-- juzu dependency -->
+      <dependency>
+          <groupId>org.exoplatform.commons</groupId>
+          <artifactId>commons-juzu</artifactId>
+      </dependency>
+
+      <dependency>
+          <groupId>org.juzu</groupId>
+          <artifactId>juzu-core</artifactId>
+      </dependency>
+      <dependency>
+        <groupId>org.juzu</groupId>
+        <artifactId>juzu-bom-core</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>org.juzu</groupId>
+          <artifactId>juzu-plugins-less</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>org.juzu</groupId>
+          <artifactId>juzu-plugins-portlet</artifactId>
+      </dependency>
+
 
     <!-- exo commons components with ckeditor-->
 
@@ -55,6 +110,7 @@
 
 
     <!-- Logging -->
+
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>

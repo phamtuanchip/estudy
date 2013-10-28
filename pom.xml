@@ -1,314 +1,372 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
+<project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>maven-parent-pom</artifactId>
-    <groupId>org.exoplatform</groupId>
-    <version>10</version>
-    <relativePath />
-  </parent>
-  <groupId>org.estudy</groupId>
-  <artifactId>estudy</artifactId>
-  <version>1.0-SNAPSHOT</version>   
-  <packaging>pom</packaging>
-  
-  <name>E Study</name>
-  
-  <modules>
-    <module>service</module>
-    <module>webservice</module>
-    <module>webui</module>
-    <module>tutorial</module>
-    <module>packaging</module>
-  </modules>
-   <scm>
-    <connection>scm:git:git://github.com/phamtuanchip/estudy.git</connection>
-    <developerConnection>scm:git:git@github.com:phamtuanchip/estudy.git</developerConnection>
-    <tag>HEAD</tag>
-    <url>http://https://travis-ci.org/phamtuanchip/estudy</url>
-  </scm>
-  
-  <properties>
-    <project.version>1.0-SNAPSHOT</project.version>
-     <org.exoplatform.depmgt.version>6</org.exoplatform.depmgt.version>
-    <!-- JCR Project Dependencies -->
-     <org.exoplatform.kernel.version>2.4.1-GA</org.exoplatform.kernel.version>
-    <org.exoplatform.core.version>2.5.1-CP01</org.exoplatform.core.version>
-    <org.exoplatform.ws.version>2.3.1-GA</org.exoplatform.ws.version>
-    <org.exoplatform.jcr.version>1.15.1-CP01</org.exoplatform.jcr.version>
-    <!-- GateIn Project Dependencies -->
-    <org.gatein.wci.version>2.3.0.Final</org.gatein.wci.version>
-    <org.gatein.portal.version>3.5.4.Final</org.gatein.portal.version>
 
-    <!-- Platform Project Dependencies -->
-    <org.exoplatform.platform-ui.version>4.0.0</org.exoplatform.platform-ui.version>
-    <org.exoplatform.commons.version>4.1.0-SNAPSHOT</org.exoplatform.commons.version>
-    <quartz.version>2.1.6</quartz.version>
-    <!-- Gatein dependencies -->
-    <org.shindig.version>2.0.2.Final-gatein-4</org.shindig.version>
-    <nl.captcha.simplecaptcha.version>1.1.1.Final-gatein-3</nl.captcha.simplecaptcha.version>
-    <org.gatein.common.version>2.1.0.Final</org.gatein.common.version>
-    <org.gatein.wci.version>2.3.0.Final</org.gatein.wci.version>
-    <org.gatein.pc.version>2.4.0.Final</org.gatein.pc.version>
-    <org.gatein.sso.version>1.3.1.Final</org.gatein.sso.version>
-    <org.picketlink.idm>1.4.1.Final</org.picketlink.idm>
-    <org.gatein.wsrp.version>2.2.2.Final</org.gatein.wsrp.version>
-    <org.gatein.mop.version>1.2.0.Final</org.gatein.mop.version>
-    <org.gatein.mgmt.version>1.1.0.Final</org.gatein.mgmt.version>
-    <org.slf4j.version>1.6.1</org.slf4j.version>
-    <commons-pool.version>1.5.5</commons-pool.version>
-    <rhino.version>1.6R5</rhino.version>
-    <org.codehaus.groovy.version>1.7.6</org.codehaus.groovy.version>
-    <javax.servlet.version>2.5</javax.servlet.version>
-    <version.chromattic>1.2.0</version.chromattic>
-    <version.reflext>1.1.0</version.reflext>
-    <org.staxnav.version>0.9.6</org.staxnav.version>
-    <jcip.version>1.0</jcip.version>
-    <commons-dbcp.version>1.2.2</commons-dbcp.version>
-    <com.google.javascript.version>r1592</com.google.javascript.version>
-    <org.jboss.portletbridge.version>3.1.2.Final</org.jboss.portletbridge.version>
-
-    <!-- TODO: Move to gatein dep -->
-    <org.infinispan.version>5.1.7.Final</org.infinispan.version>
-    <org.jboss.marshalling.version>1.3.15.GA</org.jboss.marshalling.version>
-
-    <!-- TODO: replace version.apache.commons-httpclient in gatein-dep with this: -->
-    <version.org.apache.httpcomponents>4.1.2</version.org.apache.httpcomponents>
-    <version.org.apache.httpcomponents.httpcore>4.1.4</version.org.apache.httpcomponents.httpcore>
-
-    <!-- SSO deps -->
-    <version.cas.client>3.2.1</version.cas.client>
-    <version.picketlink.fed>2.1.4.Final</version.picketlink.fed>
-
-    <!--
-    Various log4j properties for unit tests, examples:
-    -Dlog4j.debug=true : show log4j bootstrap (useful for debugging resolution to configuration property file)
-    -Dlog4j.level=all : very verbose logging (slow down though)
-    -->
-    <log4j.debug>false</log4j.debug>
-    <log4j.level>info</log4j.level>
-
-    <!-- ************** -->
-    <!-- Build settings -->
-    <!-- ************** -->
-
-    <!-- maven-enforcer-plugin -->
-    <jdk.min.version>1.6</jdk.min.version>
-
-    <!-- maven-release-plugin -->
-    <useReleaseProfile>false</useReleaseProfile>
-    <version.release.plugin>2.2.1</version.release.plugin>
-    <pushChanges>false</pushChanges>
-
-    <!-- checkstyle -->
-    <version.checkstyle.plugin>2.9.1</version.checkstyle.plugin>
-    <linkXRef>false</linkXRef>
-
-    <!-- buildnumber-maven-plugin : needs 1.0 for git -->
-    <version.buildnumber.plugin>1.0</version.buildnumber.plugin>
-
-    <!-- -->
-    <surefire.exo.profiles>hsqldb</surefire.exo.profiles>
-
-    <version.plugin.gwt>2.1.0</version.plugin.gwt>
-    <version.plugin.clean>2.4.1</version.plugin.clean>
-    <version.yuicompressor-maven-plugin>0.7.1</version.yuicompressor-maven-plugin>
-    <version.plugin.japex>1.2.3</version.plugin.japex>
-     
-  </properties>
-  <dependencyManagement>
-    <!-- ### NEVER CHANGE THIS ORDER OF DEPMGT ### -->
-    <!-- * From top level to bottom projects -->
-    <!-- * maven-depmgt-pom must be the first -->
-    <!-- * Your own modules -->
-    <!-- * And projects below you -->
-    <dependencies>
-       <dependency>
-        <groupId>org.gatein</groupId>
-        <artifactId>gatein-dep</artifactId>
-        <version>1.2.0.Final</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      
-      <!-- Import versions of external dependencies to use -->
-      <dependency>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>maven-parent-pom</artifactId>
         <groupId>org.exoplatform</groupId>
-        <artifactId>maven-depmgt-pom</artifactId>
-        <version>${org.exoplatform.depmgt.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      
-      <!-- Our own project modules -->
-      <dependency>
-        <groupId>org.estudy</groupId>
-        <artifactId>estudy-service</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      
-      <dependency>
-        <groupId>org.estudy</groupId>
-        <artifactId>estudy-webservice</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.estudy</groupId>
-        <artifactId>estudy-ui</artifactId>
-        <version>${project.version}</version>
-        <type>war</type>
-      </dependency>
-      
-      <dependency>
-        <groupId>org.estudy</groupId>
-        <artifactId>estudy.packaging.common</artifactId>
-        <version>${project.version}</version>
-      </dependency>
+        <version>10</version>
+        <relativePath/>
+    </parent>
+    <groupId>org.estudy</groupId>
+    <artifactId>estudy</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-        <dependency>
-            <groupId>org.estudy</groupId>
-            <artifactId>welcome</artifactId>
-            <version>${project.version}</version>
-            <type>war</type>
-        </dependency>
-      
-      <dependency>
-        <groupId>org.estudy</groupId>
-        <artifactId>estudy.packaging.common</artifactId>
-        <version>${project.version}</version>
-      </dependency>
+    <name>E Study</name>
 
-      <!-- Import versions from commons project -->
-      <dependency>
-        <groupId>org.exoplatform.commons</groupId>
-        <artifactId>commons</artifactId>
-        <version>${org.exoplatform.commons.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <!-- Import versions from platform-ui project -->
-      <dependency>
-        <groupId>org.exoplatform.platform-ui</groupId>
-        <artifactId>platform-ui</artifactId>
-        <version>${org.exoplatform.platform-ui.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      
-      <dependency>
-        <groupId>org.gatein.portal</groupId>
-        <artifactId>exo.portal.parent</artifactId>
-        <version>${org.gatein.portal.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
+    <modules>
+        <module>service</module>
+        <module>webservice</module>
+        <module>webui</module>
+        <module>extension</module>
+        <module>tutorial</module>
+        <module>resources</module>
+        <module>juzuapp</module>
+        <module>packaging</module>
+    </modules>
+    <scm>
+        <connection>scm:git:git://github.com/phamtuanchip/estudy.git</connection>
+        <developerConnection>scm:git:git@github.com:phamtuanchip/estudy.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>http://https://travis-ci.org/phamtuanchip/estudy</url>
+    </scm>
 
-      <!-- Import versions of jcr modules to use -->
-      <dependency>
-        <groupId>org.exoplatform.jcr</groupId>
-        <artifactId>jcr-parent</artifactId>
-        <version>${org.exoplatform.jcr.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <!-- Import versions of ws modules to use -->
-      <dependency>
-        <groupId>org.exoplatform.ws</groupId>
-        <artifactId>ws-parent</artifactId>
-        <version>${org.exoplatform.ws.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <!-- Import versions of core modules to use -->
-      <dependency>
-        <groupId>org.exoplatform.core</groupId>
-        <artifactId>core-parent</artifactId>
-        <version>${org.exoplatform.core.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <!-- Import versions of kernel modules to use -->
-      <dependency>
-        <groupId>org.exoplatform.kernel</groupId>
-        <artifactId>kernel-parent</artifactId>
-        <version>${org.exoplatform.kernel.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      
-      <!-- dependencies for packaging-->
-      <dependency>
-        <groupId>org.quartz-scheduler</groupId>
-        <artifactId>quartz</artifactId>
-        <version>${quartz.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+    <properties>
+        <project.version>1.0-SNAPSHOT</project.version>
+        <org.exoplatform.depmgt.version>6</org.exoplatform.depmgt.version>
+        <!-- JCR Project Dependencies -->
+        <org.exoplatform.kernel.version>2.4.1-GA</org.exoplatform.kernel.version>
+        <org.exoplatform.core.version>2.5.1-CP01</org.exoplatform.core.version>
+        <org.exoplatform.ws.version>2.3.1-GA</org.exoplatform.ws.version>
+        <org.exoplatform.jcr.version>1.15.1-CP01</org.exoplatform.jcr.version>
+        <!-- GateIn Project Dependencies -->
+        <org.gatein.wci.version>2.3.0.Final</org.gatein.wci.version>
+        <org.gatein.portal.version>3.5.4.Final</org.gatein.portal.version>
 
-<build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <configuration>
-            <systemPropertyVariables>
-              <org.apache.commons.logging.Log>org.apache.commons.logging.impl.SimpleLog</org.apache.commons.logging.Log>
-              <org.apache.commons.logging.simplelog.defaultlog>info</org.apache.commons.logging.simplelog.defaultlog>
-              <org.apache.commons.logging.simplelog.log.org.exoplatform>debug</org.apache.commons.logging.simplelog.log.org.exoplatform>
-              <org.apache.commons.logging.simplelog.log.net.hibernate>warn</org.apache.commons.logging.simplelog.log.net.hibernate>
-              <java.naming.factory.initial>org.exoplatform.services.naming.SimpleContextFactory</java.naming.factory.initial>
-              <exo.profiles>hsqldb</exo.profiles>
-            </systemPropertyVariables>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-war-plugin</artifactId>
-          <configuration>
-            <!-- Don't include libraries into Web Archives -->
-            <packagingExcludes>WEB-INF/lib/*.jar,**/less/**</packagingExcludes>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>  
-  <profiles>
-    <!-- Specific behavior while releasing -->
-    <profile>
-      <id>exo-release</id>
-      <properties>
-        <!-- Compress CSS generated by LESS (Setting to push into maven-pom-parent ?) -->
-        <lesscss.compress>true</lesscss.compress>
-      </properties>
-    </profile>
-    <profile>
-      <id>project-repositories</id>
-      <activation>
-        <property>
-          <name>!skip-project-repositories</name>
-        </property>
-      </activation>
-      <repositories>
-        <repository>
-          <snapshots>
-            <enabled>true</enabled>
-          </snapshots>
-          <id>repository.exoplatform.org</id>
-          <url>https://repository.exoplatform.org/public</url>
-        </repository>
-      </repositories>
-      <pluginRepositories>
-        <pluginRepository>
-          <snapshots>
-            <enabled>true</enabled>
-          </snapshots>
-          <id>repository.exoplatform.org</id>
-          <url>https://repository.exoplatform.org/public</url>
-        </pluginRepository>
-      </pluginRepositories>
-    </profile>
-  </profiles>
+        <!-- Platform Project Dependencies -->
+        <org.exoplatform.platform-ui.version>4.0.0</org.exoplatform.platform-ui.version>
+        <org.exoplatform.commons.version>4.1.0-SNAPSHOT</org.exoplatform.commons.version>
+        <quartz.version>2.1.6</quartz.version>
+        <!-- Gatein dependencies -->
+        <org.shindig.version>2.0.2.Final-gatein-4</org.shindig.version>
+        <nl.captcha.simplecaptcha.version>1.1.1.Final-gatein-3</nl.captcha.simplecaptcha.version>
+        <org.gatein.common.version>2.1.0.Final</org.gatein.common.version>
+        <org.gatein.wci.version>2.3.0.Final</org.gatein.wci.version>
+        <org.gatein.pc.version>2.4.0.Final</org.gatein.pc.version>
+        <org.gatein.sso.version>1.3.1.Final</org.gatein.sso.version>
+        <org.picketlink.idm>1.4.1.Final</org.picketlink.idm>
+        <org.gatein.wsrp.version>2.2.2.Final</org.gatein.wsrp.version>
+        <org.gatein.mop.version>1.2.0.Final</org.gatein.mop.version>
+        <org.gatein.mgmt.version>1.1.0.Final</org.gatein.mgmt.version>
+        <org.slf4j.version>1.6.1</org.slf4j.version>
+        <commons-pool.version>1.5.5</commons-pool.version>
+        <rhino.version>1.6R5</rhino.version>
+        <org.codehaus.groovy.version>1.7.6</org.codehaus.groovy.version>
+        <javax.servlet.version>2.5</javax.servlet.version>
+        <version.chromattic>1.2.0</version.chromattic>
+        <version.reflext>1.1.0</version.reflext>
+        <org.staxnav.version>0.9.6</org.staxnav.version>
+        <jcip.version>1.0</jcip.version>
+        <commons-dbcp.version>1.2.2</commons-dbcp.version>
+        <com.google.javascript.version>r1592</com.google.javascript.version>
+        <org.jboss.portletbridge.version>3.1.2.Final</org.jboss.portletbridge.version>
+
+        <!-- TODO: Move to gatein dep -->
+        <org.infinispan.version>5.1.7.Final</org.infinispan.version>
+        <org.jboss.marshalling.version>1.3.15.GA</org.jboss.marshalling.version>
+
+        <!-- TODO: replace version.apache.commons-httpclient in gatein-dep with this: -->
+        <version.org.apache.httpcomponents>4.1.2</version.org.apache.httpcomponents>
+        <version.org.apache.httpcomponents.httpcore>4.1.4</version.org.apache.httpcomponents.httpcore>
+
+        <!-- SSO deps -->
+        <version.cas.client>3.2.1</version.cas.client>
+        <version.picketlink.fed>2.1.4.Final</version.picketlink.fed>
+
+        <!--
+        Various log4j properties for unit tests, examples:
+        -Dlog4j.debug=true : show log4j bootstrap (useful for debugging resolution to configuration property file)
+        -Dlog4j.level=all : very verbose logging (slow down though)
+        -->
+        <log4j.debug>false</log4j.debug>
+        <log4j.level>info</log4j.level>
+
+        <!-- ************** -->
+        <!-- Build settings -->
+        <!-- ************** -->
+
+        <!-- maven-enforcer-plugin -->
+        <jdk.min.version>1.6</jdk.min.version>
+
+        <!-- maven-release-plugin -->
+        <useReleaseProfile>false</useReleaseProfile>
+        <version.release.plugin>2.2.1</version.release.plugin>
+        <pushChanges>false</pushChanges>
+
+        <!-- checkstyle -->
+        <version.checkstyle.plugin>2.9.1</version.checkstyle.plugin>
+        <linkXRef>false</linkXRef>
+
+        <!-- buildnumber-maven-plugin : needs 1.0 for git -->
+        <version.buildnumber.plugin>1.0</version.buildnumber.plugin>
+
+        <!-- -->
+        <surefire.exo.profiles>hsqldb</surefire.exo.profiles>
+
+        <version.plugin.gwt>2.1.0</version.plugin.gwt>
+        <version.plugin.clean>2.4.1</version.plugin.clean>
+        <version.yuicompressor-maven-plugin>0.7.1</version.yuicompressor-maven-plugin>
+        <version.plugin.japex>1.2.3</version.plugin.japex>
+
+    </properties>
+    <dependencyManagement>
+        <!-- ### NEVER CHANGE THIS ORDER OF DEPMGT ### -->
+        <!-- * From top level to bottom projects -->
+        <!-- * maven-depmgt-pom must be the first -->
+        <!-- * Your own modules -->
+        <!-- * And projects below you -->
+        <dependencies>
+            <dependency>
+                <groupId>org.gatein</groupId>
+                <artifactId>gatein-dep</artifactId>
+                <version>1.2.0.Final</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Import versions of external dependencies to use -->
+            <dependency>
+                <groupId>org.exoplatform</groupId>
+                <artifactId>maven-depmgt-pom</artifactId>
+                <version>${org.exoplatform.depmgt.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Our own project modules -->
+            <dependency>
+                <groupId>org.estudy</groupId>
+                <artifactId>estudy-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.estudy</groupId>
+                <artifactId>estudy-webservice</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.estudy</groupId>
+                <artifactId>estudy-ui</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.estudy</groupId>
+                <artifactId>estudy-extension-jar</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.estudy</groupId>
+                <artifactId>estudy-extension-config</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.estudy</groupId>
+                <artifactId>estudy-extension-war</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.estudy</groupId>
+                <artifactId>estudy-resources</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.estudy</groupId>
+                <artifactId>estudy.packaging.common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.estudy</groupId>
+                <artifactId>welcome</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.estudy</groupId>
+                <artifactId>estudy-juzu-web</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>org.estudy</groupId>
+                <artifactId>estudy-juzu-services</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.estudy</groupId>
+                <artifactId>estudy.packaging.common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- Import versions from commons project -->
+            <dependency>
+                <groupId>org.exoplatform.commons</groupId>
+                <artifactId>commons</artifactId>
+                <version>${org.exoplatform.commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.exoplatform.commons</groupId>
+                <artifactId>commons-juzu</artifactId>
+                <version>${org.exoplatform.commons.version}</version>
+            </dependency>
+            <!-- Import versions from platform-ui project -->
+            <dependency>
+                <groupId>org.exoplatform.platform-ui</groupId>
+                <artifactId>platform-ui</artifactId>
+                <version>${org.exoplatform.platform-ui.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.exoplatform.platform-ui</groupId>
+                <artifactId>platform-ui-web-eXoResources</artifactId>
+                <version>${org.exoplatform.platform-ui.version}</version>
+                <type>war</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.gatein.portal</groupId>
+                <artifactId>exo.portal.parent</artifactId>
+                <version>${org.gatein.portal.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Import versions of jcr modules to use -->
+            <dependency>
+                <groupId>org.exoplatform.jcr</groupId>
+                <artifactId>jcr-parent</artifactId>
+                <version>${org.exoplatform.jcr.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Import versions of ws modules to use -->
+            <dependency>
+                <groupId>org.exoplatform.ws</groupId>
+                <artifactId>ws-parent</artifactId>
+                <version>${org.exoplatform.ws.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Import versions of core modules to use -->
+            <dependency>
+                <groupId>org.exoplatform.core</groupId>
+                <artifactId>core-parent</artifactId>
+                <version>${org.exoplatform.core.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Import versions of kernel modules to use -->
+            <dependency>
+                <groupId>org.exoplatform.kernel</groupId>
+                <artifactId>kernel-parent</artifactId>
+                <version>${org.exoplatform.kernel.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- dependencies for packaging-->
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz</artifactId>
+                <version>${quartz.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <systemPropertyVariables>
+                            <org.apache.commons.logging.Log>org.apache.commons.logging.impl.SimpleLog
+                            </org.apache.commons.logging.Log>
+                            <org.apache.commons.logging.simplelog.defaultlog>info
+                            </org.apache.commons.logging.simplelog.defaultlog>
+                            <org.apache.commons.logging.simplelog.log.org.exoplatform>debug
+                            </org.apache.commons.logging.simplelog.log.org.exoplatform>
+                            <org.apache.commons.logging.simplelog.log.net.hibernate>warn
+                            </org.apache.commons.logging.simplelog.log.net.hibernate>
+                            <java.naming.factory.initial>org.exoplatform.services.naming.SimpleContextFactory
+                            </java.naming.factory.initial>
+                            <exo.profiles>hsqldb</exo.profiles>
+                        </systemPropertyVariables>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <configuration>
+                        <!-- Don't include libraries into Web Archives -->
+                        <packagingExcludes>WEB-INF/lib/*.jar,**/less/**</packagingExcludes>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+    <profiles>
+        <!-- Specific behavior while releasing -->
+        <profile>
+            <id>exo-release</id>
+            <properties>
+                <!-- Compress CSS generated by LESS (Setting to push into maven-pom-parent ?) -->
+                <lesscss.compress>true</lesscss.compress>
+            </properties>
+        </profile>
+        <profile>
+            <id>project-repositories</id>
+            <activation>
+                <property>
+                    <name>!skip-project-repositories</name>
+                </property>
+            </activation>
+            <repositories>
+                <repository>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                    <id>repository.exoplatform.org</id>
+                    <url>https://repository.exoplatform.org/public</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                    <id>repository.exoplatform.org</id>
+                    <url>https://repository.exoplatform.org/public</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
 </project>
