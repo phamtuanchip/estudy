@@ -640,7 +640,7 @@ public class JcrDataStorage implements DataStorage {
       NodeIterator iter = attachHome.getNodes();
       while (iter.hasNext()) {
         Node attchmentNode = iter.nextNode();
-        if (attchmentNode.isNodeType(Util.EXO_EVEN_TATTACHMENT)) {
+        if (attchmentNode.isNodeType(Util.EXO_ATTACHMENT)) {
           Attachment attachment = new Attachment();
           attachment.setId(attchmentNode.getPath());
           if (attchmentNode.hasProperty(Util.EXO_FILE_NAME))
@@ -665,7 +665,7 @@ public class JcrDataStorage implements DataStorage {
     return attachments;
   }
 
-  private void addAttachment(Node eventNode, Attachment attachment, boolean isNew) throws Exception {
+  private String addAttachment(Node eventNode, Attachment attachment, boolean isNew) throws Exception {
     Node attachHome;
     Node attachNode;
     // fix load image on IE6 UI
@@ -688,7 +688,7 @@ public class JcrDataStorage implements DataStorage {
     try {
       attachNode = attachHome.getNode(name);
     } catch (Exception e) {
-      attachNode = attachHome.addNode(name, Util.EXO_EVEN_TATTACHMENT);
+      attachNode = attachHome.addNode(name, Util.EXO_ATTACHMENT);
     }
     attachNode.setProperty(Util.EXO_FILE_NAME, attachment.getName());
     Node nodeContent = null;
@@ -701,12 +701,20 @@ public class JcrDataStorage implements DataStorage {
             .getTimeInMillis());
     nodeContent.setProperty(Util.JCR_MIMETYPE, attachment.getMimeType());
     nodeContent.setProperty(Util.JCR_DATA, attachment.getInputStream());
+    if(attachHome.isNew()) attachHome.getSession().save();
+    else attachHome.save();
+    return attachNode.getPath();
   }
 
   @Override
   public String uploadMedia(Attachment media) throws Exception{
     Node node = getEMediaHome();
-    addAttachment(node, media, true);
-    return node.getPath();  //To change body of implemented methods use File | Settings | File Templates.
+    return addAttachment(node, media, true);
+  }
+
+  @Override
+  public Collection<Attachment> getMedias() throws Exception {
+    Node node = getEMediaHome();
+    return getAttachments(node);
   }
 }

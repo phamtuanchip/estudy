@@ -60,6 +60,7 @@ public interface DataStorage {
   public void removeTesting(String uid, String id) throws Exception;
 
   public String uploadMedia(Attachment media)throws Exception;
-  
+
+  public Collection<Attachment> getMedias() throws Exception;
   
 }

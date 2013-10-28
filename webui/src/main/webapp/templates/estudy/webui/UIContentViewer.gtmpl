@@ -1,7 +1,14 @@
 <%
 
     import org.estudy.ui.view.UITest;
-
+    try {
+    def rcontext = _ctx.getRequestContext() ;
+    def requireJS = rcontext.getJavascriptManager().getRequireJS();
+    requireJS.require("PORTLET/estudy-resources/estudyResources","erjs");
+    requireJS.addScripts('erjs.estudyResources.init();') ;
+    } catch (Exception e) {
+    e.printStackTrace();
+    }
 
 %>
 <div id="UIContentViewer" class="UIContentViewer">

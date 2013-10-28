@@ -6,6 +6,7 @@ import org.estudy.ui.core.Loader;
 import org.estudy.ui.popup.UIPopupComponent;
 import org.estudy.ui.portlet.EStudyPortlet;
 import org.exoplatform.upload.UploadResource;
+import org.exoplatform.web.application.AbstractApplicationMessage;
 import org.exoplatform.web.application.ApplicationMessage;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.config.annotation.EventConfig;
@@ -35,7 +36,7 @@ import org.exoplatform.webui.form.input.UIUploadInput;
 public class UIMediaUpload extends UIForm implements UIPopupComponent {
 
   public UIMediaUpload(){
-    addChild(new UIUploadInput("upload", "upload"));
+    addChild(new UIUploadInput("upload", "upload", Loader.DEFAULT_MAX_UPLOAD_FIELD, Loader.getLimitUploadSize()));
   }
   @Override
   public void activate() throws Exception {
@@ -57,14 +58,35 @@ public class UIMediaUpload extends UIForm implements UIPopupComponent {
     public void execute(Event<UIMediaUpload> event) throws Exception {
       UIMediaUpload uiForm = event.getSource() ;
       UIUploadInput input = uiForm.getUIInput("upload");
-      UploadResource[] resource = input.getUploadResources();
-      if(resource == null) {
+      UploadResource[] uploadResource = input.getUploadResources();
+      if(uploadResource == null) {
         event.getRequestContext().getUIApplication().addMessage(new ApplicationMessage("UIMediaUpload.msg.file-name-error", null));
         return;
       }
       DataStorage dataStorage = Loader.loadDataService() ;
-      Attachment att = new Attachment();
-      String mediaUrl =  dataStorage.uploadMedia(att) ;
+      long size = 0;
+      for(UploadResource upl : uploadResource) {
+        if(upl != null) {
+          long fileSize = ((long)upl.getUploadedSize()) ;
+          size = size + fileSize ;
+          if(size >= 10*1024*1024) {
+            event.getRequestContext()
+                    .getUIApplication()
+                    .addMessage(new ApplicationMessage("UIMediaUpload.msg.total-attachts-size-over10M",
+                            null,
+                            AbstractApplicationMessage.WARNING));
+            return ;
+          }
+          Attachment attachfile = new Attachment() ;
+          attachfile.setName(upl.getFileName()) ;
+          attachfile.setInputStream(input.getUploadDataAsStream(upl.getUploadId())) ;
+          attachfile.setMimeType(upl.getMimeType()) ;
+          attachfile.setSize(fileSize);
+          attachfile.setResourceId(upl.getUploadId());
+          String mediaUrl =  dataStorage.uploadMedia(attachfile) ;
+        }
+      }
+
     }
   }
   static  public class OnchangeActionListener extends EventListener<UIMediaUpload> {

@@ -105,7 +105,7 @@ public class Util {
 
   public static final String EXO_SHARED_CALENDAR_COLORS = "exo:sharedCalendarsColors";
 
-  public static final String EXO_EVEN_TATTACHMENT       = "exo:eventAttachment";
+  public static final String EXO_ATTACHMENT = "exo:attachment";
 
   public static final String EXO_FILE_NAME              = "exo:fileName";
 

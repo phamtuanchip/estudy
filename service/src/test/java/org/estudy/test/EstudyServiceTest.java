@@ -90,6 +90,20 @@ public class EstudyServiceTest extends BaseServiceTestCase {
     Attachment att = new Attachment(mediaInputStream);
     att.setName("mediafile");
 
+    String url = storage_.uploadMedia(att) ;
+
+    assertNotNull(url);
+
+    ArrayList<Attachment> uploaded = new ArrayList<Attachment>(storage_.getMedias());
+
+    assertNotNull(uploaded);
+
+    assertEquals(1, uploaded.size());
+
+    Attachment attu = uploaded.get(0);
+    assertEquals(att.getName(), attu.getName());
+    assertEquals(url, attu.getDataPath());
+    assertNotNull(attu.getInputStream());
 
 
   }
