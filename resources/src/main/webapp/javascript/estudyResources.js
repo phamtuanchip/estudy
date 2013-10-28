@@ -1,4 +1,4 @@
-(function($,player){
+(function($,flowplayer){
     var _module = {};
     function estudyResources(){
 
@@ -10,4 +10,4 @@
     return _module;
 
 
-})($,player);
+})($,flowplayer);

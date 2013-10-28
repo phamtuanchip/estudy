@@ -12,7 +12,7 @@
             <module>jquery</module>
         </depends>
         <depends>
-            <module>player</module>
+            <module>flowplayer</module>
         </depends>
     </module>
     <module>
