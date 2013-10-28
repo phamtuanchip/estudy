@@ -89,7 +89,7 @@ public class EstudyServiceTest extends BaseServiceTestCase {
 
     Attachment att = new Attachment(mediaInputStream);
     att.setName("mediafile");
-
+    att.setMimeType("image/png");
     String url = storage_.uploadMedia(att) ;
 
     assertNotNull(url);
