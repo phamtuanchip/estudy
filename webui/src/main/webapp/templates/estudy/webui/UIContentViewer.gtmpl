@@ -4,7 +4,7 @@
     try {
     def rcontext = _ctx.getRequestContext() ;
     def requireJS = rcontext.getJavascriptManager().getRequireJS();
-    requireJS.require("PORTLET/estudy-resources/estudyResources","erjs");
+    requireJS.require("SHARED/estudyResources","erjs");
     requireJS.addScripts('erjs.estudyResources.init();') ;
     } catch (Exception e) {
     e.printStackTrace();

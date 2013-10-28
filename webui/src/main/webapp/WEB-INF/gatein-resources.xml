@@ -22,6 +22,10 @@
       <depends>
         <module>bts_tooltip</module>
       </depends>
+        <depends>
+            <module>estudyResources</module>
+            <as>er</as>
+        </depends>
 	    <depends>
 	      <module>common</module>
 	    </depends>
