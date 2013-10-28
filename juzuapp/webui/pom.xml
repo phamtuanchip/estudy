@@ -4,17 +4,17 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.estudy</groupId>
-        <artifactId>estudy</artifactId>
+        <artifactId>estudy-juzu</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>estudy-juzu-wep</artifactId>
+    <artifactId>estudy-juzu-web</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>E study juzu web app</name>
     <url>https://github.com/phamtuanchip/estudy</url>
-    <description>eXo E-Learning Webservice</description>
+    <description>eXo E-Learning web app</description>
 
   <dependencies>
     <dependency>
@@ -219,6 +219,7 @@
           <dependency>
             <groupId>org.exoplatform.commons</groupId>
             <artifactId>commons-juzu</artifactId>
+            <version>${org.exoplatform.commons.version}</version>
           </dependency>
         </dependencies>
         <configuration>
