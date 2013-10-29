@@ -5,7 +5,7 @@
     xmlns="http://www.gatein.org/xml/ns/gatein_resources_1_3">
 
   <portlet-skin>
-    <application-name>example-juzu-portlet</application-name>
+    <application-name>estudy-juzu-web</application-name>
     <portlet-name>ExampleJuzuPortlet</portlet-name>
     <skin-name>Default</skin-name>
     <css-path>/skin/css/example.css</css-path>

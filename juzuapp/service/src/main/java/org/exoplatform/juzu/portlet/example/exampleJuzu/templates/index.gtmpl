@@ -32,6 +32,6 @@
 	platform/component/common/src/main/resources/conf/portal/configuration.xml ==> for registry org.exoplatform.platform.common.module.ModuleRegistry
 	platform/extension/config/src/main/resources/conf/platform/configuration.xml ==> for add dependencies org.exoplatform.container.definition.PortalContainerConfig
  -->
-<link id="css_examplePortlet" rel="stylesheet" type="text/css" href="/example-juzu-portlet/skin/css/example.css" />
+<link id="css_examplePortlet" rel="stylesheet" type="text/css" href="/estudy-juzu-web/skin/css/example.css" />
 <script type="text/javascript" charset="utf-8" data-requirecontext="_" data-requiremodule="SHARED/juzu-ajax" src="/portal/scripts/4.0.1/SHARED/juzu-ajax.js"></script>
-<script type="text/javascript" charset="utf-8" src="/example-juzu-portlet/js/example/require_exampleJuzu.js"></script>
+<script type="text/javascript" charset="utf-8" src="/estudy-juzu-web/js/example/require_exampleJuzu.js"></script>
