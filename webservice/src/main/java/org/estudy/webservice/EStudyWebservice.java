@@ -1,6 +1,7 @@
 
 package org.estudy.webservice;
 
+import org.estudy.learning.model.EQuestion;
 import org.exoplatform.common.http.HTTPStatus;
 import org.exoplatform.container.ExoContainerContext;
 import org.exoplatform.services.log.ExoLogger;
@@ -15,6 +16,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.CacheControl;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 @Path("/estudy/api")
 public class EStudyWebservice implements ResourceContainer{
@@ -71,6 +74,28 @@ public class EStudyWebservice implements ResourceContainer{
 
 
     return Response.ok(data, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+  }
+
+
+  @GET
+  //@RolesAllowed("users")
+  @Path("/questions/{datatype}")
+  public Response getQuestions() throws Exception {
+    //JSONData data = new JSONData();
+    EQuestion question = new EQuestion();
+    question.setPoint(10);
+    question.setTitle("what is HTML5");
+    String list[] = {"It is the new version of HTML"} ;
+    question.setCorrect(Arrays.asList(list));
+    String lists[] = {"It is the new version of HTML", "It is the new way of HTML"} ;
+    question.setAnswers(Arrays.asList(lists));
+    question.setAnswered("It is the new version of HTML");
+    CacheControl cacheControl = new CacheControl();
+    cacheControl.setNoCache(true);
+    cacheControl.setNoStore(true);
+
+
+    return Response.ok(question, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
   }
 
 

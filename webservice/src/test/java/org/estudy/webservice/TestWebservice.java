@@ -17,6 +17,7 @@
 
 package org.estudy.webservice;
 
+import org.estudy.learning.model.EQuestion;
 import org.estudy.learning.model.ETesting;
 import org.estudy.learning.storage.DataStorage;
 import org.exoplatform.common.http.HTTPStatus;
@@ -30,8 +31,23 @@ import org.exoplatform.services.security.MembershipEntry;
 
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.RuntimeDelegate;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by The eXo Platform SARL Author : Volodymyr Krasnikov
@@ -66,8 +82,50 @@ public class TestWebservice extends AbstractResourceTest {
   }
 
 
+  public void testGetQuestions() throws Exception {
 
-  public void testcheckPermission() throws Exception {
+
+    try {
+      EQuestion question = new EQuestion();
+      question.setPoint(10);
+      question.setTitle("what is HTML5");
+      String list[] = {"It is the new version of HTML"} ;
+      question.setCorrect(Arrays.asList(list));
+      String lists[] = {"It is the new version of HTML", "It is the new way of HTML"} ;
+      question.setAnswers(Arrays.asList(lists));
+      question.setAnswered("It is the new version of HTML");
+
+
+      String extURI = "/estudy/api/questions/data.json" ;//+ username + "/" + test.getId() + "/0";
+
+
+      ByteArrayContainerResponseWriter writer = new ByteArrayContainerResponseWriter();
+
+      ContainerResponse response = service("GET", extURI, baseURI, h, null, writer);
+      assertNotNull(response);
+      assertEquals(HTTPStatus.OK, response.getStatus());
+
+      response = service("GET",extURI, baseURI, h, null, writer);
+      assertNotNull(response);
+      assertEquals(HTTPStatus.OK, response.getStatus());
+
+      String jsonString = buildResponse(extURI);
+      JSONObject jsonObject = new JSONObject(jsonString);
+      assertNotNull(jsonObject);
+      assertEquals(jsonObject.getString("title"), question.getTitle());
+
+
+    }  catch (Exception e) {
+      //e.printStackTrace();
+
+    }
+
+
+  }
+
+
+
+  public void testCheckPermission() throws Exception {
 
 
       //assert false ;
@@ -106,6 +164,49 @@ public class TestWebservice extends AbstractResourceTest {
       membershipEntries.clear();
     }
     membershipEntries.add(membershipEntry);
+  }
+
+
+  public static String buildResponse(String url) {
+    StringBuilder builder = new StringBuilder();
+    HttpClient client = new DefaultHttpClient();
+    HttpGet httpGet = new HttpGet(url);
+    String message ;
+    httpGet.setHeader("Authorization", "Basic " + "root:gtn");
+    try {
+      HttpResponse response = client.execute(httpGet);
+      StatusLine statusLine = response.getStatusLine();
+      int statusCode = statusLine.getStatusCode();
+      switch (statusCode) {
+        case 404:
+          //Log.e(Home.class.toString(), "Service not found: " + statusCode);
+          message = "Service not found: " + statusCode;
+          break;
+        case 401:
+          // Log.e(Home.class.toString(), "Need to login: " + statusCode);
+          message = "Need to login: " + statusCode;
+          break;
+        case 200:
+          HttpEntity entity = response.getEntity();
+          InputStream content = entity.getContent();
+          BufferedReader reader = new BufferedReader(new InputStreamReader(content));
+          String line;
+          while ((line = reader.readLine()) != null) {
+            builder.append(line);
+          }
+          break;
+        default:
+          //Log.e(Home.class.toString(), "Error : " + statusCode);
+          message = "Error: " + statusCode;
+          break;
+      }
+
+    } catch (ClientProtocolException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return builder.toString();
   }
 
 
