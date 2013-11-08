@@ -1,5 +1,6 @@
 package org.estudy.ui.form;
 
+import org.estudy.ui.core.UIFormRichtextInput;
 import org.estudy.ui.popup.UIPopupComponent;
 import org.estudy.ui.portlet.EStudyPortlet;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
@@ -8,7 +9,6 @@ import org.exoplatform.webui.core.lifecycle.UIFormLifecycle;
 import org.exoplatform.webui.event.Event;
 import org.exoplatform.webui.event.EventListener;
 import org.exoplatform.webui.form.UIForm;
-import org.exoplatform.webui.form.UIFormRichtextInput;
 
 
 /**

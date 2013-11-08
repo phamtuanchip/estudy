@@ -48,7 +48,7 @@
 
         <!-- Platform Project Dependencies -->
         <org.exoplatform.platform-ui.version>4.0.0</org.exoplatform.platform-ui.version>
-        <org.exoplatform.commons.version>4.1.0-SNAPSHOT</org.exoplatform.commons.version>
+        <org.exoplatform.commons.version>4.0.0</org.exoplatform.commons.version>
         <quartz.version>2.1.6</quartz.version>
         <!-- Gatein dependencies -->
         <org.shindig.version>2.0.2.Final-gatein-4</org.shindig.version>
