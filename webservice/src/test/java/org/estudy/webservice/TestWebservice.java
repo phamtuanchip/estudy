@@ -81,6 +81,47 @@ public class TestWebservice extends AbstractResourceTest {
     
   }
 
+  public void testGetLessons() throws Exception {
+
+
+    try {
+      EQuestion question = new EQuestion();
+      question.setPoint(10);
+      question.setTitle("what is HTML5");
+      String list[] = {"It is the new version of HTML"} ;
+      question.setCorrect(Arrays.asList(list));
+      String lists[] = {"It is the new version of HTML", "It is the new way of HTML"} ;
+      question.setAnswers(Arrays.asList(lists));
+      question.setAnswered("It is the new version of HTML");
+
+
+      String extURI = "/estudy/api/lessons/data.json" ;//+ username + "/" + test.getId() + "/0";
+
+
+      ByteArrayContainerResponseWriter writer = new ByteArrayContainerResponseWriter();
+
+      ContainerResponse response = service("GET", extURI, baseURI, h, null, writer);
+      assertNotNull(response);
+      assertEquals(HTTPStatus.OK, response.getStatus());
+
+      response = service("GET",extURI, baseURI, h, null, writer);
+      assertNotNull(response);
+      assertEquals(HTTPStatus.OK, response.getStatus());
+
+      String jsonString = buildResponse(extURI);
+      JSONObject jsonObject = new JSONObject(jsonString);
+      assertNotNull(jsonObject);
+      System.out.print(jsonObject.toString());
+      //assertEquals(jsonObject.getString("title"), question.getTitle());
+
+
+    }  catch (Exception e) {
+      e.printStackTrace();
+
+    }
+
+
+  }
 
   public void testGetQuestions() throws Exception {
 

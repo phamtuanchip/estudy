@@ -1,7 +1,9 @@
 
 package org.estudy.webservice;
 
+import org.estudy.learning.model.ECategory;
 import org.estudy.learning.model.EQuestion;
+import org.estudy.learning.model.ESession;
 import org.exoplatform.common.http.HTTPStatus;
 import org.exoplatform.container.ExoContainerContext;
 import org.exoplatform.services.log.ExoLogger;
@@ -48,18 +50,7 @@ public class EStudyWebservice implements ResourceContainer{
   public EStudyWebservice() {}
 
 
-  /**
-   * Checks permission of the currently logged-in user on any test by the given test Id.
-   * The input parameters will be in the URL of the test.
-   * @param username The given user's Id, or the currently logged-in user.
-   * @param testid The given test Id on which the permission is checked.
-   * @param type The test type: _private_, _public_ or _shared_.
-   * @return The JSON data value will be returned.
-   * @throws Exception
-   * 
-   * @anchor EStudyApplication.checkPermission
-   * @LevelAPI Experimental
-   */
+
   @GET
   @RolesAllowed("users")
   @Path("/checkPermission/{username}/{testid}/{type}/")
@@ -98,5 +89,40 @@ public class EStudyWebservice implements ResourceContainer{
     return Response.ok(question, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
   }
 
+  @GET
+  //@RolesAllowed("users")
+  @Path("/lessons/{datatype}")
+  public Response getLessons() throws Exception {
+    //JSONData data = new JSONData();
+    ECategory category = new ECategory();
+    category.setName("web, internet");
+
+    EQuestion question = new EQuestion();
+    question.setPoint(10);
+    question.setTitle("what is HTML5");
+    String list[] = {"It is the new version of HTML"} ;
+    question.setCorrect(Arrays.asList(list));
+    String lists[] = {"It is the new version of HTML", "It is the new way of HTML"} ;
+    question.setAnswers(Arrays.asList(lists));
+    question.setAnswered("It is the new version of HTML");
+
+    ESession lesson = new ESession();
+    lesson.setCat(category.getId());
+    lesson.setQuest(question.getTitle());
+    lesson.setTitle("How to start with html");
+    lesson.setDec("<h1>hello html </h1>");
+
+    JSONData data = new JSONData();
+    ArrayList<ESession> lessons = new ArrayList<ESession>();
+    lessons.add(lesson);
+    data.setList(lessons);
+
+    CacheControl cacheControl = new CacheControl();
+    cacheControl.setNoCache(true);
+    cacheControl.setNoStore(true);
+
+
+    return Response.ok(data, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+  }
 
 }
