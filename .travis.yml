@@ -1,8 +1,9 @@
 language: java
 before_install:
 install:
-- mvn clean install -s settings.xml -Ppkg-tomcat -Ddownload
+#- mvn clean install -s settings.xml -Ppkg-tomcat -Ddownload
 script:
+- ./mvn-pkg.sh
 notifications:
   email:
     - open-estudy@googlegroups.com
