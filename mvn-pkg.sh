@@ -1,1 +1,2 @@
-mvn clean install -s settings.xml -Ppkg-tomcat -Ddownload
+cd packaging
+mvn install -s ../settings.xml -Ppkg-tomcat -Ddownload
