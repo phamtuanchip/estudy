@@ -25,7 +25,6 @@
         <module>tutorial</module>
         <module>resources</module>
         <module>juzuapp</module>
-        <module>packaging</module>
     </modules>
     <scm>
         <connection>scm:git:git://github.com/phamtuanchip/estudy.git</connection>
