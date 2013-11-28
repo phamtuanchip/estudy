@@ -18,6 +18,7 @@
       -->
       <properties>
         <version.apache.tomcat>7.0.34</version.apache.tomcat>
+        <servers.dir>${user.home}/.m2</servers.dir>
       </properties>
       <repositories>
         <repository>
