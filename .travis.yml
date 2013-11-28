@@ -1,11 +1,10 @@
 language: java
 before_install:
 install:
-#- mvn clean install -s settings.xml -U
-# - mvn clean install -s settings.xml -Ppkg=tomcat -Dservers.dir=/clean-pkg -Ddownload -U
-- ./mvn-pkg.sh
+- mvn clean install -s settings.xml -Ppkg-tomcat -Ddownload
 script:
 notifications:
   email:
-    - phamtuanchip@gmail.com
+    - open-estudy@googlegroups.com
+    - open.estudy@groups.facebook.com
   
