@@ -9,6 +9,8 @@ import org.exoplatform.webui.core.lifecycle.UIFormLifecycle;
 import org.exoplatform.webui.event.Event;
 import org.exoplatform.webui.event.EventListener;
 import org.exoplatform.webui.form.UIForm;
+import org.exoplatform.webui.form.UIFormInputSet;
+import org.exoplatform.webui.form.UIFormStringInput;
 
 
 /**
@@ -31,7 +33,11 @@ public class UIQuestionForm extends UIForm implements UIPopupComponent {
 
 
   public UIQuestionForm(){
-    addChild(new UIFormRichtextInput("editor", "editor", ""));
+    addChild(new UIFormStringInput("question", "question", null));
+    addChild(new UIFormRichtextInput("content", "content", ""));
+    UIFormInputSet answerSet =  new UIFormInputSet("answers");
+    //answerSet.addChild(new UIFormStringInput());
+    addChild(answerSet);
   }
 
   @Override
