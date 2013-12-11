@@ -281,7 +281,7 @@ public class JcrDataStorage implements DataStorage {
       //log.info("No user session provider was available, trying to use a system session provider");
       provider = sessionProviderService_.getSystemSessionProvider(null);
     }
-    return SessionProvider.createSystemProvider();
+    return provider;
   }
 
   private String valuesToString (Value[] values, String regex) throws Exception{

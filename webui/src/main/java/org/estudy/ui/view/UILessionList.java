@@ -56,7 +56,7 @@ public class UILessionList extends UIContainer {
       EStudyPortlet portlet = listview.getAncestorOfType(EStudyPortlet.class);
       UIPopupContainer uiPopupContainer = portlet.createUIComponent(UIPopupContainer.class, null, "formcontainer") ;
       UIQuestionForm uiQuestionForm = uiPopupContainer.addChild(UIQuestionForm.class, null, null) ;
-      portlet.addPopup(uiQuestionForm, 600, 311);
+      portlet.addPopup(uiQuestionForm, 800, 600);
     }
   }
 

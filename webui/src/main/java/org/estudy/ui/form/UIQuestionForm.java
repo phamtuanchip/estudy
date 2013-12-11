@@ -10,6 +10,7 @@ import org.exoplatform.webui.event.Event;
 import org.exoplatform.webui.event.EventListener;
 import org.exoplatform.webui.form.UIForm;
 import org.exoplatform.webui.form.UIFormInputSet;
+import org.exoplatform.webui.form.UIFormMultiValueInputSet;
 import org.exoplatform.webui.form.UIFormStringInput;
 
 
@@ -35,14 +36,15 @@ public class UIQuestionForm extends UIForm implements UIPopupComponent {
   public UIQuestionForm(){
     addChild(new UIFormStringInput("question", "question", null));
     addChild(new UIFormRichtextInput("content", "content", ""));
-    UIFormInputSet answerSet =  new UIFormInputSet("answers");
+    UIFormMultiValueInputSet answerSet =  new UIFormMultiValueInputSet("answers", "answers");
+    answerSet.setType(UIFormStringInput.class);
     //answerSet.addChild(new UIFormStringInput());
     addChild(answerSet);
   }
 
   @Override
   public void activate() throws Exception {
-    // TODO Auto-generated method stub
+    // TODO Auto-generated method stubans
 
   }
 
