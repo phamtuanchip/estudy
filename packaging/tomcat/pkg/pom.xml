@@ -34,12 +34,14 @@
       </dependency>
 
       <dependency>
+          <?rename estudyResources.war?>
           <groupId>org.estudy</groupId>
           <artifactId>estudy-resources</artifactId>
           <type>war</type>
       </dependency>
 
     <dependency>
+      <?rename estudy.war?>
       <groupId>org.estudy</groupId>
       <artifactId>estudy-ui</artifactId>
       <type>war</type>
@@ -65,6 +67,7 @@
       </dependency>
 
       <dependency>
+          <?rename estudy-juzu-web.war?>
           <groupId>org.estudy</groupId>
           <artifactId>estudy-juzu-web</artifactId>
           <type>war</type>
