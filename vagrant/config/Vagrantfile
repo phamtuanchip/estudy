@@ -57,7 +57,7 @@ config.vm.hostname = "estudy"
   # information on available options.
 config.vm.provider :virtualbox do |virtualbox|
         # allocate 1024 mb RAM
-        virtualbox.customize ["modifyvm", :id, "--memory", "2048"] 
+        virtualbox.customize ["modifyvm", :id, "--memory", "1024"] 
         # allocate max 50% CPU
         
       end
