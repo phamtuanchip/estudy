@@ -5,7 +5,7 @@
 
 #wget www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html/jdk-7u45-linux-x64.tar.gz
 #  wget 
-sudo apt-get -y update
+#sudo apt-get -y update
 
   # install java
 	sudo apt-get -y install openjdk-7-jre-headless 
