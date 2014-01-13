@@ -122,8 +122,11 @@
         <version.plugin.japex>1.2.3</version.plugin.japex>
         <!-- Build docs dependencies -->
         <maven.resources.plugin.version>2.4.3</maven.resources.plugin.version>
-        <org.wikbook.version>0.9.41</org.wikbook.version>
-        <maven.jdocbook.plugin.version>2.1.1</maven.jdocbook.plugin.version>
+        <org.wikbook.version>0.9.45</org.wikbook.version>
+        <maven.jdocbook.plugin.version>2.3.5</maven.jdocbook.plugin.version>
+        <docbook-xsl.version>1.72.0</docbook-xsl.version>
+        <saxon.version>1.77.1</saxon.version>
+        <jbossorg-docbook.version>1.1.1</jbossorg-docbook.version>
 
     </properties>
     <dependencyManagement>
@@ -193,7 +196,12 @@
                 <version>${project.version}</version>
                 <type>war</type>
             </dependency>
-
+            <dependency>
+                <groupId>org.docbook</groupId>
+                <artifactId>docbook-xsl</artifactId>
+                <version>${docbook-xsl.version}</version>
+                <type>jar</type>
+            </dependency>
 
             <dependency>
                 <groupId>org.estudy</groupId>
@@ -332,6 +340,22 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+      <plugins>
+        <!-- Build docs -->
+        <plugin>
+          <groupId>org.jboss.maven.plugins</groupId>
+          <artifactId>maven-jdocbook-plugin</artifactId>
+          <version>${version.jdocbook.plugin}</version>
+          <extensions>true</extensions>
+          <dependencies>
+            <dependency>
+              <groupId>org.jboss</groupId>
+              <artifactId>jbossorg-docbook-xslt</artifactId>
+              <version>${jbossorg-docbook.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+      </plugins>
     </build>
     <profiles>
         <!-- Specific behavior while releasing -->
