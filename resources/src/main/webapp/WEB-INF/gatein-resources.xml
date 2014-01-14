@@ -18,7 +18,7 @@
     <module>
         <name>flowplayer</name>
         <script>
-            <path>/javascript/eXo/wcm/flowplayer/flowplayer-3.2.6.min.js</path>
+            <path>/javascript/flowplayer/flowplayer-3.2.6.min.js</path>
         </script>
     </module>
 </gatein-resources>
