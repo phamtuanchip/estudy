@@ -5,7 +5,7 @@
   <mirrors>
     <mirror>
       <id>exo-mirror</id>
-      <url>https://repository.exoplatform.org/public/</url>
+      <url>http://repository.exoplatform.org/public/</url>
       <mirrorOf>external:*</mirrorOf>
     </mirror>
   </mirrors>
