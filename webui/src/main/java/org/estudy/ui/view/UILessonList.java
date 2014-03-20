@@ -5,7 +5,7 @@ import java.util.Collection;
 
 import org.estudy.learning.model.ESession;
 import org.estudy.learning.storage.DataStorage;
-import org.estudy.ui.form.UILessionForm;
+import org.estudy.ui.form.UILessonForm;
 import org.estudy.ui.form.UIMediaUpload;
 import org.estudy.ui.form.UIQuestionForm;
 import org.estudy.ui.popup.UIPopupContainer;
@@ -19,17 +19,17 @@ import org.exoplatform.webui.event.EventListener;
 @ComponentConfig(
                  template =  "app:/templates/estudy/webui/UILessionList.gtmpl", 
                  events = {
-                     @EventConfig(listeners = UILessionList.AddLessionActionListener.class),
-                     @EventConfig(listeners = UILessionList.AddQuestionActionListener.class),
-                     @EventConfig(listeners = UILessionList.AddMediaActionListener.class),
-                     @EventConfig(listeners = UILessionList.TestActionListener.class)
+                     @EventConfig(listeners = UILessonList.AddLessonActionListener.class),
+                     @EventConfig(listeners = UILessonList.AddQuestionActionListener.class),
+                     @EventConfig(listeners = UILessonList.AddMediaActionListener.class),
+                     @EventConfig(listeners = UILessonList.TestActionListener.class)
                  }
     )
 
-public class UILessionList extends UIContainer {
+public class UILessonList extends UIContainer {
   Collection<ESession> list;
 
-  public UILessionList() {
+  public UILessonList() {
     DataStorage service = EStudyPortlet.getDataService();
     try {
       list = service.getSessions();
@@ -38,21 +38,21 @@ public class UILessionList extends UIContainer {
     }
   }
 
-  static public class AddLessionActionListener extends EventListener<UILessionList> {
+  static public class AddLessonActionListener extends EventListener<UILessonList> {
     @Override
-    public void execute(Event<UILessionList> event) throws Exception {
-      UILessionList listview = event.getSource() ;
+    public void execute(Event<UILessonList> event) throws Exception {
+      UILessonList listview = event.getSource() ;
       EStudyPortlet portlet = listview.getAncestorOfType(EStudyPortlet.class);
       UIPopupContainer uiPopupContainer = portlet.createUIComponent(UIPopupContainer.class, null, "formcontainer") ;
-      UILessionForm uiLessionForm = uiPopupContainer.addChild(UILessionForm.class, null, null) ;
+      UILessonForm uiLessionForm = uiPopupContainer.addChild(UILessonForm.class, null, null) ;
       portlet.addPopup(uiLessionForm, 600, 311);
     }
   }
 
-  static public class AddQuestionActionListener extends EventListener<UILessionList> {
+  static public class AddQuestionActionListener extends EventListener<UILessonList> {
     @Override
-    public void execute(Event<UILessionList> event) throws Exception {
-      UILessionList listview = event.getSource() ;
+    public void execute(Event<UILessonList> event) throws Exception {
+      UILessonList listview = event.getSource() ;
       EStudyPortlet portlet = listview.getAncestorOfType(EStudyPortlet.class);
       UIPopupContainer uiPopupContainer = portlet.createUIComponent(UIPopupContainer.class, null, "formcontainer") ;
       UIQuestionForm uiQuestionForm = uiPopupContainer.addChild(UIQuestionForm.class, null, null) ;
@@ -60,10 +60,10 @@ public class UILessionList extends UIContainer {
     }
   }
 
-  static public class AddMediaActionListener extends EventListener<UILessionList> {
+  static public class AddMediaActionListener extends EventListener<UILessonList> {
     @Override
-    public void execute(Event<UILessionList> event) throws Exception {
-      UILessionList listview = event.getSource() ;
+    public void execute(Event<UILessonList> event) throws Exception {
+      UILessonList listview = event.getSource() ;
       EStudyPortlet portlet = listview.getAncestorOfType(EStudyPortlet.class);
       UIPopupContainer uiPopupContainer = portlet.createUIComponent(UIPopupContainer.class, null, "formcontainer") ;
       UIMediaUpload uiQuestionForm = uiPopupContainer.addChild(UIMediaUpload.class, null, null) ;
@@ -71,10 +71,10 @@ public class UILessionList extends UIContainer {
     }
   }
 
-  static public class TestActionListener extends EventListener<UILessionList> {
+  static public class TestActionListener extends EventListener<UILessonList> {
     @Override
-    public void execute(Event<UILessionList> event) throws Exception {
-      UILessionList listview = event.getSource() ;
+    public void execute(Event<UILessonList> event) throws Exception {
+      UILessonList listview = event.getSource() ;
       EStudyPortlet portlet = listview.getAncestorOfType(EStudyPortlet.class);
       UIContentViewer view = portlet.findFirstComponentOfType(UIContentViewer.class) ;
       view.getChild(UITest.class).setRendered(!view.getChild(UITest.class).isRendered());

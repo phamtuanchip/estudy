@@ -5,7 +5,7 @@ import org.estudy.learning.storage.DataStorage;
 import org.estudy.learning.storage.impl.JcrDataStorage;
 import org.estudy.ui.popup.UIPopupAction;
 import org.estudy.ui.view.UIContentViewer;
-import org.estudy.ui.view.UILessionList;
+import org.estudy.ui.view.UILessonList;
 import org.exoplatform.container.PortalContainer;
 import org.exoplatform.services.log.ExoLogger;
 import org.exoplatform.services.log.Log;
@@ -29,7 +29,7 @@ public class EStudyPortlet extends UIPortletApplication
 
 	public EStudyPortlet() throws Exception 
 	{
-		addChild(UILessionList.class, null, null) ;
+		addChild(UILessonList.class, null, null) ;
         addChild(UIContentViewer.class, null, null) ;
 		UIPopupAction uiPopup =  addChild(UIPopupAction.class, null, null) ;
 		uiPopup.setId("UIEPopupAction") ;

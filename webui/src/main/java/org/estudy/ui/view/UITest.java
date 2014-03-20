@@ -21,9 +21,9 @@ import java.util.Collection;
 @ComponentConfig(
         template =  "app:/templates/estudy/webui/UITest.gtmpl",
         events = {
-                @EventConfig(listeners = UITest.FinishLessionActionListener.class),
-                @EventConfig(listeners = UITest.NextLessionActionListener.class),
-                @EventConfig(listeners = UITest.PreviousLessionActionListener.class)
+                @EventConfig(listeners = UITest.FinishLessonActionListener.class),
+                @EventConfig(listeners = UITest.NextLessonActionListener.class),
+                @EventConfig(listeners = UITest.PreviousLessonActionListener.class)
 
         }
 )
@@ -39,7 +39,7 @@ public class UITest extends UIContainer {
     }
   }
 
-  static public class FinishLessionActionListener extends EventListener<UITest> {
+  static public class FinishLessonActionListener extends EventListener<UITest> {
     @Override
     public void execute(Event<UITest> event) throws Exception {
       UITest testview = event.getSource() ;
@@ -50,7 +50,7 @@ public class UITest extends UIContainer {
     }
   }
 
-  static public class NextLessionActionListener extends EventListener<UITest> {
+  static public class NextLessonActionListener extends EventListener<UITest> {
     @Override
     public void execute(Event<UITest> event) throws Exception {
       UITest testview = event.getSource() ;
@@ -61,7 +61,7 @@ public class UITest extends UIContainer {
     }
   }
 
-  static public class PreviousLessionActionListener extends EventListener<UITest> {
+  static public class PreviousLessonActionListener extends EventListener<UITest> {
     @Override
     public void execute(Event<UITest> event) throws Exception {
       UITest testview = event.getSource() ;

@@ -3,7 +3,7 @@ package org.estudy.ui.view;
 import org.estudy.learning.model.Attachment;
 import org.estudy.learning.model.ESession;
 import org.estudy.learning.storage.DataStorage;
-import org.estudy.ui.form.UILessionForm;
+import org.estudy.ui.form.UILessonForm;
 import org.estudy.ui.popup.UIPopupContainer;
 import org.estudy.ui.portlet.EStudyPortlet;
 import org.exoplatform.portal.webui.container.UIContainer;
@@ -24,7 +24,7 @@ import java.util.Collection;
 @ComponentConfig(
         template =  "app:/templates/estudy/webui/UIContentViewer.gtmpl",
         events = {
-                @EventConfig(listeners = UIContentViewer.AddLessionActionListener.class)
+                @EventConfig(listeners = UIContentViewer.AddLessonActionListener.class)
 
         }
 )
@@ -48,7 +48,7 @@ public class UIContentViewer extends UIContainer {
   }
 
 
-  static public class AddLessionActionListener extends EventListener<UIContentViewer> {
+  static public class AddLessonActionListener extends EventListener<UIContentViewer> {
     @Override
     public void execute(Event<UIContentViewer> event) throws Exception {
       UIContentViewer view = event.getSource() ;
