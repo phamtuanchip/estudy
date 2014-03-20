@@ -30,10 +30,10 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>estudy-extension-ear</artifactId>
   <packaging>ear</packaging>
-  <name>GateIn Portal Sample Extension Ear</name>
+  <name>Estudy Extension Configuration</name>
   <url>http://www.exoplatform.org</url>
   <description>GateIn Sample Extension Ear</description>
-
+  <!-- 
   <dependencies>
     <dependency>
       <groupId>org.gatein.portal</groupId>
@@ -58,6 +58,7 @@
       <type>war</type>
     </dependency>
   </dependencies>
+   -->
   <build>
     <finalName>${project.artifactId}</finalName>
     <plugins>

@@ -29,8 +29,8 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>estudy-extension-config</artifactId>
-  <name>GateIn Portal Sample Extension Configuration</name>
+  <name>Estudy Extension Configuration</name>
   <packaging>jar</packaging>
   <url>http://www.exoplatform.org</url>
-  <description>GateIn Sample Extension Configuration</description>
+  <description>Estudy Extension Configuration</description>
 </project>

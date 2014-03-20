@@ -11,13 +11,10 @@ import javax.ws.rs.core.Response;
  * To change this template use File | Settings | File Templates.
  */
 public interface WebService {
-    public Response checkPermission(@PathParam("username")
-                                    String username, @PathParam("testid")
-                                    String calendarId, @PathParam("type")
-                                    String type) throws Exception;
+	
+    public Response checkPermission(@PathParam("username") String username, @PathParam("testid") String calendarId, @PathParam("type") String type) throws Exception;
 
-    public Response getQuestions() throws Exception ;
+    public Response getQuestions() throws Exception;
 
-    public Response getAnswer(PathParam("questionid")
-    String questionid )throws Exception;
+    public Response getAnswer(@PathParam("questionid") String questionid )throws Exception;
 }

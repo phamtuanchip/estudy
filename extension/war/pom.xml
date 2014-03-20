@@ -30,9 +30,9 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>estudy-extension-war</artifactId>
   <packaging>war</packaging>
-  <name>GateIn Portal Sample Extension War</name>
+  <name>Estudy Extension War</name>
   <url>http://www.exoplatform.org</url>
-  <description>GateIn Sample Extension War</description>
+  <description>Estudy Extension War</description>
 
   <build>
     <finalName>estudyExtension</finalName>

@@ -29,10 +29,10 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>estudy-extension-jar</artifactId>
-  <name>GateIn Portal Sample Extension Java Classes</name>
+  <name>Estudy Extension Java Classes</name>
   <packaging>jar</packaging>
   <url>http://www.exoplatform.org</url>
-  <description>GateIn Sample Extension Java Classes</description>
+  <description>Estudy Extension Java Classes</description>
 
   <dependencies>
     <dependency>
