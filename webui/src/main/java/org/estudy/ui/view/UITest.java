@@ -23,7 +23,7 @@ import java.util.Collection;
         events = {
                 @EventConfig(listeners = UITest.FinishLessonActionListener.class),
                 @EventConfig(listeners = UITest.NextLessonActionListener.class),
-                @EventConfig(listeners = UITest.PreviousLessonActionListener.class)
+                @EventConfig(listeners = UITest.PreviousLessionActionListener.class)
 
         }
 )
@@ -61,7 +61,7 @@ public class UITest extends UIContainer {
     }
   }
 
-  static public class PreviousLessonActionListener extends EventListener<UITest> {
+  static public class PreviousLessionActionListener extends EventListener<UITest> {
     @Override
     public void execute(Event<UITest> event) throws Exception {
       UITest testview = event.getSource() ;
