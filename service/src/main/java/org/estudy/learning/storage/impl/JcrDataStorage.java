@@ -65,7 +65,7 @@ public class JcrDataStorage implements DataStorage {
   private NodeHierarchyCreator nodeHierarchyCreator_;
   private RepositoryService repoService_;
   private SessionProviderService sessionProviderService_;
-  private static final Log       log                 = ExoLogger.getLogger("org.estudy.learning.storage.JcrDataStorage");
+  private static final Log       log                 = ExoLogger.getLogger("JcrDataStorage.class");
   public JcrDataStorage(NodeHierarchyCreator nodeHierarchyCreator, RepositoryService repoService){
     nodeHierarchyCreator_ = nodeHierarchyCreator;
     repoService_ = repoService;
@@ -75,7 +75,7 @@ public class JcrDataStorage implements DataStorage {
 
   public Node getEStorageHome() throws RepositoryException, Exception {
     SessionProvider sProvider = createSessionProvider();
-    Node publicApp = nodeHierarchyCreator_.getPublicApplicationNode(sProvider); 
+    Node publicApp = sProvider.getSession(repoService_.getCurrentRepository().getConfiguration().getDefaultWorkspaceName(), repoService_.getCurrentRepository()).getRootNode(); 
     try {
       return publicApp.getNode(Util.E_STUDY_APP);
     } catch (PathNotFoundException e) {

@@ -17,7 +17,7 @@ import org.exoplatform.webui.event.Event;
 import org.exoplatform.webui.event.EventListener;
 
 @ComponentConfig(
-                 template =  "app:/templates/estudy/webui/UILessionList.gtmpl", 
+                 template =  "app:/templates/estudy/webui/UILessonList.gtmpl", 
                  events = {
                      @EventConfig(listeners = UILessonList.AddLessonActionListener.class),
                      @EventConfig(listeners = UILessonList.AddQuestionActionListener.class),
