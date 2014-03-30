@@ -1,5 +1,5 @@
 
-<div id="UILessionList" class="UILessionList">
+<div id="UILessonList" class="UILessonList">
     <ul>
         <li class="toctree-l2">
             <a href="#" onclick="<%=uicomponent.event("AddLession")%>" class="pull-right"  rel="tooltip" data-placement="bottom" title="add new lession">
