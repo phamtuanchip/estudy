@@ -7,5 +7,5 @@ script:
 - ./mvn-pkg.sh
 notifications:
   email:
-    - phamtuanchip@gmail.com
+    - gatein.elearning@gmail.com
   
