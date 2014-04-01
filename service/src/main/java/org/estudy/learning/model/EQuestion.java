@@ -1,12 +1,17 @@
 package org.estudy.learning.model;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
 
 import org.estudy.learning.Util;
 import org.exoplatform.services.jcr.util.IdGenerator;
 
-public class EQuestion {
+public class EQuestion implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 788575679364439614L;
 	public final static String PREF = "equest";
 	public final static String NT_NAME = "exo:question";
 	public final static String P_TITLE = "exo:title";

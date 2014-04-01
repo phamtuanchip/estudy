@@ -35,10 +35,13 @@ import org.exoplatform.services.rest.impl.ResourceBinder;
  * @version $Id: $
  */
 @ConfiguredBy({
-  @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/exo.portal.component.portal-configuration.xml"),
-  @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/exo.portal.component.test.jcr-configuration.xml"),
-  @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/exo.portal.component.identity-configuration.xml"),
-  @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/exo.estudy.test.portal-configuration.xml"),
+	@ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/exo.portal.component.portal-configuration.xml"),
+	  @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/exo.portal.component.test.jcr-configuration.xml"),
+	  @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/exo.portal.component.identity-configuration.xml"),
+	  @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/portal/test-portal-configuration.xml"),
+	  @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/portal/estudy.component.core.test.configuration.xml"),
+	  @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/portal/estudy.test.jcr-configuration.xml"),
+	  @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/portal/estudy.test.portal-configuration.xml"),
   @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/exo.estudy.webservice.test-configuration.xml")
 })
 public abstract class BaseTest extends AbstractKernelTest {

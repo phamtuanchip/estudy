@@ -17,20 +17,6 @@
 
 package org.estudy.webservice;
 
-import org.estudy.learning.model.EQuestion;
-import org.estudy.learning.model.ETesting;
-import org.estudy.learning.storage.DataStorage;
-import org.exoplatform.common.http.HTTPStatus;
-import org.exoplatform.services.rest.impl.ContainerResponse;
-import org.exoplatform.services.rest.impl.MultivaluedMapImpl;
-import org.exoplatform.services.rest.impl.RuntimeDelegateImpl;
-import org.exoplatform.services.rest.tools.ByteArrayContainerResponseWriter;
-import org.exoplatform.services.security.ConversationState;
-import org.exoplatform.services.security.Identity;
-import org.exoplatform.services.security.MembershipEntry;
-
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.ext.RuntimeDelegate;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,6 +25,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.ext.RuntimeDelegate;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
@@ -46,7 +35,23 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONException;
+import org.estudy.learning.model.ECategory;
+import org.estudy.learning.model.EQuestion;
+import org.estudy.learning.model.ESession;
+import org.estudy.learning.model.ETesting;
+import org.estudy.learning.storage.DataStorage;
+import org.estudy.learning.storage.impl.JcrDataStorage;
+import org.exoplatform.common.http.HTTPMethods;
+import org.exoplatform.common.http.HTTPStatus;
+import org.exoplatform.services.rest.impl.ContainerResponse;
+import org.exoplatform.services.rest.impl.MultivaluedMapImpl;
+import org.exoplatform.services.rest.impl.RuntimeDelegateImpl;
+import org.exoplatform.services.rest.tools.ByteArrayContainerResponseWriter;
+import org.exoplatform.services.security.ConversationState;
+import org.exoplatform.services.security.Identity;
+import org.exoplatform.services.security.MembershipEntry;
+import org.exoplatform.ws.frameworks.json.impl.JsonGeneratorImpl;
+import org.exoplatform.ws.frameworks.json.value.JsonValue;
 import org.json.JSONObject;
 
 /**
@@ -70,14 +75,26 @@ public class TestWebservice extends AbstractResourceTest {
     RuntimeDelegate.setInstance(new RuntimeDelegateImpl());
     super.setUp();
       webservice = (EStudyWebservice) container.getComponentInstanceOfType(EStudyWebservice.class);
-      dataService = (DataStorage) container.getComponentInstanceOfType(MockJcrDataStorage.class);
+      dataService = (DataStorage) container.getComponentInstanceOfType(JcrDataStorage.class);
     binder.addResource(webservice, null);
-    login() ;
+    login(username) ;
     h.putSingle("username", username);
   }
 
   public void tearDown() throws Exception {
     super.tearDown();
+    for (ECategory cal : dataService.getCategories()) {
+    	dataService.removeCategory(cal.getId());
+	}
+    for (EQuestion cal : dataService.getQuestions()) {
+    dataService.removeQuestion(cal.getId());
+    }
+    for (ESession cal : dataService.getSessions()) {
+    dataService.removeSession(cal.getId());
+    }
+//    for (ETesting cal : dataService.getT()) {
+//    dataService.removeTesting(username, cal.getId());
+//    }
     
   }
 
@@ -93,7 +110,16 @@ public class TestWebservice extends AbstractResourceTest {
       String lists[] = {"It is the new version of HTML", "It is the new way of HTML"} ;
       question.setAnswers(Arrays.asList(lists));
       question.setAnswered("It is the new version of HTML");
-
+      dataService.saveQuestion(question, true);
+      ECategory category = new ECategory();
+      category.setName("web, internet");
+      ESession lesson = new ESession();
+      lesson.setCat(category.getId());
+      lesson.setQuest(question.getTitle());
+      lesson.setTitle("How to start with html");
+      lesson.setDec("<h1>hello html </h1>");
+      
+      dataService.saveSession(lesson, true);
 
       String extURI = "/estudy/api/lessons/data.json" ;//+ username + "/" + test.getId() + "/0";
 
@@ -107,13 +133,10 @@ public class TestWebservice extends AbstractResourceTest {
       response = service("GET",extURI, baseURI, h, null, writer);
       assertNotNull(response);
       assertEquals(HTTPStatus.OK, response.getStatus());
-
-      String jsonString = buildResponse(extURI);
-      JSONObject jsonObject = new JSONObject(jsonString);
-      assertNotNull(jsonObject);
-      System.out.print(jsonObject.toString());
-      //assertEquals(jsonObject.getString("title"), question.getTitle());
-
+      Collection<ESession> results = (Collection<ESession>)response.getEntity();
+      assertNotNull(results);
+      
+      assertEquals(lesson.getTitle(), results.iterator().next().getTitle());
 
     }  catch (Exception e) {
       e.printStackTrace();
@@ -135,8 +158,8 @@ public class TestWebservice extends AbstractResourceTest {
       String lists[] = {"It is the new version of HTML", "It is the new way of HTML"} ;
       question.setAnswers(Arrays.asList(lists));
       question.setAnswered("It is the new version of HTML");
-
-
+      dataService.saveQuestion(question, true);
+      
       String extURI = "/estudy/api/questions/data.json" ;//+ username + "/" + test.getId() + "/0";
 
 
@@ -153,7 +176,11 @@ public class TestWebservice extends AbstractResourceTest {
       String jsonString = buildResponse(extURI);
       JSONObject jsonObject = new JSONObject(jsonString);
       assertNotNull(jsonObject);
-      assertEquals(jsonObject.getString("title"), question.getTitle());
+      
+      Collection<EQuestion> results = (Collection<EQuestion>)response.getEntity();
+      assertNotNull(results);
+      
+      assertEquals(jsonObject.getString("title"), results.iterator().next().getTitle());
 
 
     }  catch (Exception e) {
@@ -163,9 +190,156 @@ public class TestWebservice extends AbstractResourceTest {
 
 
   }
+  
+  public void testGetQuestionById() throws Exception {
 
 
+	    try {
+	      EQuestion question = new EQuestion();
+	      question.setPoint(10);
+	      question.setTitle("what is HTML5");
+	      String list[] = {"It is the new version of HTML"} ;
+	      question.setCorrect(Arrays.asList(list));
+	      String lists[] = {"It is the new version of HTML", "It is the new way of HTML"} ;
+	      question.setAnswers(Arrays.asList(lists));
+	      question.setAnswered("It is the new version of HTML");
+	      dataService.saveQuestion(question, true);
+	      
+	      String extURI = "/estudy/api/questions/"+question.getId()+"/data.json" ;//+ username + "/" + test.getId() + "/0";
 
+
+	      ByteArrayContainerResponseWriter writer = new ByteArrayContainerResponseWriter();
+
+	      ContainerResponse response = service("GET", extURI, baseURI, h, null, writer);
+	      assertNotNull(response);
+	      assertEquals(HTTPStatus.OK, response.getStatus());
+
+	      response = service("GET",extURI, baseURI, h, null, writer);
+	      assertNotNull(response);
+	      assertEquals(HTTPStatus.OK, response.getStatus());
+
+	       
+	      
+	      EQuestion results = (EQuestion)response.getEntity();
+	      assertNotNull(results);
+	      
+	      assertEquals(question.getTitle(), results.getTitle());
+
+
+	    }  catch (Exception e) {
+	      //e.printStackTrace();
+
+	    }
+
+
+	  }
+  
+  public void testCreateQuestion() throws Exception {
+
+
+	    try {
+	      EQuestion question = new EQuestion();
+	      question.setPoint(10);
+	      question.setTitle("what is HTML5");
+	      String list[] = {"It is the new version of HTML"} ;
+	      question.setCorrect(Arrays.asList(list));
+	      String lists[] = {"It is the new version of HTML", "It is the new way of HTML"} ;
+	      question.setAnswers(Arrays.asList(lists));
+	      question.setAnswered("It is the new version of HTML");
+	      //dataService.saveQuestion(question, true);
+	      
+	      String extURI = "/estudy/api/questions/data.json" ;//+ username + "/" + test.getId() + "/0";
+	      
+	      JsonGeneratorImpl generatorImpl = new JsonGeneratorImpl();
+	      JsonValue json = generatorImpl.createJsonObject(question);
+	      byte[] data = json.toString().getBytes("UTF-8");
+	      
+	      h.putSingle("content-type", "application/json");
+	      h.putSingle("content-length", "" + data.length);
+
+	      ByteArrayContainerResponseWriter writer = new ByteArrayContainerResponseWriter();
+
+	      ContainerResponse response = service(HTTPMethods.POST, extURI, baseURI, h, data, writer);
+	      assertNotNull(response);
+	      assertEquals(HTTPStatus.CREATED, response.getStatus());
+	      EQuestion results = (EQuestion)response.getEntity();
+	      assertNotNull(results);
+	    }  catch (Exception e) {
+	      //e.printStackTrace();
+
+	    }
+
+
+	  }
+
+
+  public void testupdateQuestion() throws Exception {
+
+
+	    try {
+	      EQuestion question = new EQuestion();
+	      question.setPoint(10);
+	      question.setTitle("what is HTML5");
+	      String list[] = {"It is the new version of HTML"} ;
+	      question.setCorrect(Arrays.asList(list));
+	      String lists[] = {"It is the new version of HTML", "It is the new way of HTML"} ;
+	      question.setAnswers(Arrays.asList(lists));
+	      question.setAnswered("It is the new version of HTML");
+	      dataService.saveQuestion(question, true);
+	      
+	      String extURI = "/estudy/api/questions/"+question.getId()+"/data.json" ;//+ username + "/" + test.getId() + "/0";
+	      
+	      JsonGeneratorImpl generatorImpl = new JsonGeneratorImpl();
+	      JsonValue json = generatorImpl.createJsonObject(question);
+	      byte[] data = json.toString().getBytes("UTF-8");
+	      
+	      h.putSingle("content-type", "application/json");
+	      h.putSingle("content-length", "" + data.length);
+
+	      ByteArrayContainerResponseWriter writer = new ByteArrayContainerResponseWriter();
+
+	      ContainerResponse response = service(HTTPMethods.PUT, extURI, baseURI, h, data, writer);
+	      assertNotNull(response);
+	      assertEquals(HTTPStatus.OK, response.getStatus());
+	      Collection<EQuestion> results = (Collection<EQuestion>)response.getEntity();
+	      assertNotNull(results);
+	    }  catch (Exception e) {
+	      //e.printStackTrace();
+
+	    }
+
+
+	  }
+  public void testDeleteQuestion() throws Exception {
+
+
+	    try {
+	      EQuestion question = new EQuestion();
+	      question.setPoint(10);
+	      question.setTitle("what is HTML5");
+	      String list[] = {"It is the new version of HTML"} ;
+	      question.setCorrect(Arrays.asList(list));
+	      String lists[] = {"It is the new version of HTML", "It is the new way of HTML"} ;
+	      question.setAnswers(Arrays.asList(lists));
+	      question.setAnswered("It is the new version of HTML");
+	      dataService.saveQuestion(question, true);
+	      
+	      String extURI = "/estudy/api/questions/"+question.getId()+"/data.json" ;//+ username + "/" + test.getId() + "/0";
+	      
+
+	      ByteArrayContainerResponseWriter writer = new ByteArrayContainerResponseWriter();
+
+	      ContainerResponse response = service(HTTPMethods.DELETE, extURI, baseURI, h, null, writer);
+	      assertNotNull(response);
+	      assertEquals(HTTPStatus.OK, response.getStatus());
+	      
+	    }  catch (Exception e) {
+	      //e.printStackTrace();
+
+	    }
+
+
+	  }
   public void testCheckPermission() throws Exception {
 
 
@@ -175,23 +349,26 @@ public class TestWebservice extends AbstractResourceTest {
       test.setNote("this is final test");
 
 
-    String extURI = "/estudy/api/checkPermission/" + username + "/" + test.getId() + "/0";
+    String extURI = "/estudy/api/checkPermission/";
 
+    JsonGeneratorImpl generatorImpl = new JsonGeneratorImpl();
+    JsonValue json = generatorImpl.createJsonObject(ConversationState.getCurrent().getIdentity().getUserId());
+    byte[] data = json.toString().getBytes("UTF-8");
+    
+    h.putSingle("content-type", "application/json");
+    h.putSingle("content-length", "" + data.length);
 
     ByteArrayContainerResponseWriter writer = new ByteArrayContainerResponseWriter();
 
-    ContainerResponse response = service("GET", extURI, baseURI, h, null, writer);
+    ContainerResponse response = service(HTTPMethods.POST, extURI, baseURI, h, data, writer);
     assertNotNull(response);
-    assertEquals(HTTPStatus.OK, response.getStatus());
-
-    response = service("GET",extURI, baseURI, h, null, writer);
-    assertNotNull(response);
-    assertEquals(HTTPStatus.OK, response.getStatus());
+    assertEquals(HTTPStatus.ACCEPTED, response.getStatus());
+ 
     
   }
 
   
-  private void login() {
+  private void login(String username) {
     
     setMembershipEntry("/platform/users", "member", true);
     Identity identity = new Identity(username, membershipEntries);

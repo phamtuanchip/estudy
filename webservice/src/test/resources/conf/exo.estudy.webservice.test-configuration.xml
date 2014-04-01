@@ -14,7 +14,7 @@
   <!-- custominze service to test -->
   <component>
     <key>org.estudy.learning.storage.DataStorage</key>
-    <type>org.estudy.webservice.MockJcrDataStorage</type>
+    <type>org.estudy.learning.storage.impl.JcrDataStorage</type>
   </component>
   <component>
     <type>org.estudy.webservice.EStudyWebservice</type>

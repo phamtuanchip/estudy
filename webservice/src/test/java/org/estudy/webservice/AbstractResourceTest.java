@@ -40,6 +40,9 @@ public abstract class AbstractResourceTest extends BaseTest {
                                    MultivaluedMap<String, String> headers,
                                    byte[] data,
                                    ContainerResponseWriter writer) throws Exception {
+	  try {
+		
+	
   RequestLifeCycle.begin(container);
     if (headers == null)
       headers = new MultivaluedMapImpl();
@@ -64,6 +67,10 @@ public abstract class AbstractResourceTest extends BaseTest {
     requestHandler.handleRequest(request, response);
     RequestLifeCycle.end();
     return response;
+	  } catch (Exception e) {
+		  e.printStackTrace();
+		return null;
+	}
   }
 
   public ContainerResponse service(String method,

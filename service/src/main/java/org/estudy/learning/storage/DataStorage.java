@@ -49,7 +49,7 @@ public interface DataStorage {
   public ESession getSession(String id) throws ItemNotFoundException;
   public void removeSession(String id) throws Exception;
   
-  public void saveQuestion(EQuestion qestion, boolean isNew) throws ItemExistsException, Exception;
+  public EQuestion saveQuestion(EQuestion question, boolean isNew) throws ItemExistsException, Exception;
   public Collection<EQuestion> getQuestions() throws Exception;
   public EQuestion getQuestion(String id) throws ItemNotFoundException;
   public void removeQuestion(String id) throws Exception;

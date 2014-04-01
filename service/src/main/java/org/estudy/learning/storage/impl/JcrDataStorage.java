@@ -499,7 +499,7 @@ public class JcrDataStorage implements DataStorage {
   }
 
   @Override
-  public void saveQuestion(EQuestion qestion, boolean isNew) throws ItemExistsException,
+  public EQuestion saveQuestion(EQuestion qestion, boolean isNew) throws ItemExistsException,
   Exception {
     Node qHome = getEQestionHome();
     Node ques ;
@@ -516,6 +516,7 @@ public class JcrDataStorage implements DataStorage {
       ques = setQuestionProp(qestion, qHome.getNode(qestion.getId()));
       ques.save();
     } 
+    return getQuestionProp(ques);
 
   }
 
