@@ -1,6 +1,7 @@
 package org.estudy.learning.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -22,10 +23,10 @@ public class EQuestion implements Serializable {
 
 	private String id;
 	private String title;
-	private Collection<String> answered;
+	private ArrayList<String> answered;
 	private long point;
-	private Collection<String> answers;
-	private Collection<String> correct;
+	private ArrayList<String> answers;
+	private ArrayList<String> correct;
 
 	public EQuestion(){
 		setId(PREF + IdGenerator.generate());
@@ -52,16 +53,16 @@ public class EQuestion implements Serializable {
 		this.id = id;
 	}
 
-	public Collection<String> getAnswers() {
+	public ArrayList<String> getAnswers() {
 		return answers;
 	}
 
-	public void setAnswers(Collection<String> answers) {
+	public void setAnswers(ArrayList<String> answers) {
 		this.answers = answers;
 	}
 	
 	public void setAnswers(String answers) {
-		this.answers = Arrays.asList(answers.split(Util.SEMI_COLON));
+		this.answers = new ArrayList<String>(Arrays.asList(answers.split(Util.SEMI_COLON)));
 	}
 
 	public long getPoint() {
@@ -72,25 +73,25 @@ public class EQuestion implements Serializable {
 		this.point = point;
 	}
 
-	public Collection<String> getAnswered() {
+	public ArrayList<String> getAnswered() {
 		return answered;
 	}
 	public void setAnswered(String answered) {
-		this.answered = Arrays.asList(answered.split(Util.SEMI_COLON));
+		this.answered = new ArrayList<String>(Arrays.asList(answered.split(Util.SEMI_COLON)));
 	}
-	public void setAnswered(Collection<String> answered) {
+	public void setAnswered(ArrayList<String> answered) {
 		this.answered = answered;
 	}
 
-	public Collection<String> getCorrect() {
+	public ArrayList<String> getCorrect() {
 		return correct;
 	}
 
-	public void setCorrect(Collection<String> correct) {
+	public void setCorrect(ArrayList<String> correct) {
 		this.correct = correct;
 	}
 	
 	public void setCorrect(String correct) {
-		this.correct = Arrays.asList(correct.split(Util.SEMI_COLON));
+		this.correct = new ArrayList<String>(Arrays.asList(correct.split(Util.SEMI_COLON)));
 	}
 }

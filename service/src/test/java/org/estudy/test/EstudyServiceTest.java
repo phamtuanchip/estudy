@@ -150,8 +150,8 @@ public class EstudyServiceTest extends BaseServiceTestCase {
     long point = 2 ;
     EQuestion eq = new EQuestion();
     eq.setTitle(title);
-    eq.setAnswers(Arrays.asList(answers));
-    eq.setCorrect(Arrays.asList(correct));
+    eq.setAnswers(new ArrayList(Arrays.asList(answers)));
+    eq.setCorrect(new ArrayList(Arrays.asList(correct)));
     eq.setPoint(point);
     storage_.saveQuestion(eq, true);
 
@@ -187,8 +187,8 @@ public class EstudyServiceTest extends BaseServiceTestCase {
     long point = 2 ;
     EQuestion eq = new EQuestion();
     eq.setTitle(title);
-    eq.setAnswers(Arrays.asList(answers));
-    eq.setCorrect(Arrays.asList(correct));
+    eq.setAnswers(new ArrayList(Arrays.asList(answers)));
+    eq.setCorrect(new ArrayList(Arrays.asList(correct)));
     eq.setPoint(point);
     storage_.saveQuestion(eq, true);
 
@@ -204,8 +204,8 @@ public class EstudyServiceTest extends BaseServiceTestCase {
 
     EQuestion eq2 = new EQuestion();
     eq2.setTitle(title2);
-    eq2.setAnswers(Arrays.asList(answers2));
-    eq2.setCorrect(Arrays.asList(correct2));
+    eq2.setAnswers(new ArrayList(Arrays.asList(answers2)));
+    eq2.setCorrect(new ArrayList(Arrays.asList(correct2)));
     eq2.setPoint(point2);
 
     storage_.saveQuestion(eq2, true);

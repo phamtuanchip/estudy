@@ -106,9 +106,9 @@ public class TestWebservice extends AbstractResourceTest {
       question.setPoint(10);
       question.setTitle("what is HTML5");
       String list[] = {"It is the new version of HTML"} ;
-      question.setCorrect(Arrays.asList(list));
+      question.setCorrect(new ArrayList(Arrays.asList(list)));
       String lists[] = {"It is the new version of HTML", "It is the new way of HTML"} ;
-      question.setAnswers(Arrays.asList(lists));
+      question.setAnswers(new ArrayList(Arrays.asList(lists)));
       question.setAnswered("It is the new version of HTML");
       dataService.saveQuestion(question, true);
       ECategory category = new ECategory();
@@ -154,9 +154,9 @@ public class TestWebservice extends AbstractResourceTest {
       question.setPoint(10);
       question.setTitle("what is HTML5");
       String list[] = {"It is the new version of HTML"} ;
-      question.setCorrect(Arrays.asList(list));
+      question.setCorrect(new ArrayList(Arrays.asList(list)));
       String lists[] = {"It is the new version of HTML", "It is the new way of HTML"} ;
-      question.setAnswers(Arrays.asList(lists));
+      question.setAnswers(new ArrayList(Arrays.asList(lists)));
       question.setAnswered("It is the new version of HTML");
       dataService.saveQuestion(question, true);
       
@@ -199,9 +199,9 @@ public class TestWebservice extends AbstractResourceTest {
 	      question.setPoint(10);
 	      question.setTitle("what is HTML5");
 	      String list[] = {"It is the new version of HTML"} ;
-	      question.setCorrect(Arrays.asList(list));
+	      question.setCorrect(new ArrayList(Arrays.asList(list)));
 	      String lists[] = {"It is the new version of HTML", "It is the new way of HTML"} ;
-	      question.setAnswers(Arrays.asList(lists));
+	      question.setAnswers(new ArrayList(Arrays.asList(lists)));
 	      question.setAnswered("It is the new version of HTML");
 	      dataService.saveQuestion(question, true);
 	      
@@ -242,9 +242,9 @@ public class TestWebservice extends AbstractResourceTest {
 	      question.setPoint(10);
 	      question.setTitle("what is HTML5");
 	      String list[] = {"It is the new version of HTML"} ;
-	      question.setCorrect(Arrays.asList(list));
+	      question.setCorrect(new ArrayList(Arrays.asList(list)));
 	      String lists[] = {"It is the new version of HTML", "It is the new way of HTML"} ;
-	      question.setAnswers(Arrays.asList(lists));
+	      question.setAnswers(new ArrayList(Arrays.asList(lists)));
 	      question.setAnswered("It is the new version of HTML");
 	      //dataService.saveQuestion(question, true);
 	      
@@ -281,9 +281,9 @@ public class TestWebservice extends AbstractResourceTest {
 	      question.setPoint(10);
 	      question.setTitle("what is HTML5");
 	      String list[] = {"It is the new version of HTML"} ;
-	      question.setCorrect(Arrays.asList(list));
+	      question.setCorrect(new ArrayList(Arrays.asList(list)));
 	      String lists[] = {"It is the new version of HTML", "It is the new way of HTML"} ;
-	      question.setAnswers(Arrays.asList(lists));
+	      question.setAnswers(new ArrayList(Arrays.asList(lists)));
 	      question.setAnswered("It is the new version of HTML");
 	      dataService.saveQuestion(question, true);
 	      
@@ -318,9 +318,9 @@ public class TestWebservice extends AbstractResourceTest {
 	      question.setPoint(10);
 	      question.setTitle("what is HTML5");
 	      String list[] = {"It is the new version of HTML"} ;
-	      question.setCorrect(Arrays.asList(list));
+	      question.setCorrect(new ArrayList(Arrays.asList(list)));
 	      String lists[] = {"It is the new version of HTML", "It is the new way of HTML"} ;
-	      question.setAnswers(Arrays.asList(lists));
+	      question.setAnswers(new ArrayList(Arrays.asList(lists)));
 	      question.setAnswered("It is the new version of HTML");
 	      dataService.saveQuestion(question, true);
 	      
