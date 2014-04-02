@@ -5,6 +5,8 @@ This is an open source project to adap e learing system basic on GateIn portal f
 Status 
 [![Build Status](https://travis-ci.org/phamtuanchip/estudy.png)](https://travis-ci.org/phamtuanchip/estudy)
 
+CLOUD IDE Codenvy factory [![alt](https://codenvy.com/factory/resources/factory-white.png)](https://codenvy.com/factory?id=ww4vsimkpqcc3df2)
+
 public page: http://phamtuanchip.github.io/estudy
 
 wiki page: http://wiki.vfossa.vn/mhst:ideas:mhst2013:gatein01
