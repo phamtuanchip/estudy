@@ -1,9 +1,15 @@
 package org.estudy.learning.model;
 
+import java.io.Serializable;
+
 import org.exoplatform.services.jcr.util.IdGenerator;
 
 
-public class ECategory {
+public class ECategory implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7187747216395398874L;
 	public final static String PREF = "ecat";
 	public final static String NT_NAME = "exo:category";
 	public final static String P_NAME = "exo:categoryname";

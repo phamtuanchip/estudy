@@ -90,10 +90,38 @@ public class EStudyWebservice implements ResourceContainer{
 	//@RolesAllowed("users")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/categories/{id}/{datatype}")
-	public Response getCategory(@PathParam("id") String id) throws Exception {
+	public Response getCategoryById(@PathParam("id") String id) throws Exception {
 		ECategory question = dataService.getCategory(id);
 		return Response.ok(question, MediaType.APPLICATION_JSON).cacheControl(cc).build();
 	}
+	
+	@PUT
+	@RolesAllowed("users")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/categories/{id}/{datatype}")
+	public Response updateCategory(@PathParam("id")String id, ECategory c) throws Exception {
+		System.out.println("Rest========"+c.getId());
+		ECategory question = dataService.saveCategory(c, false);
+		return Response.ok(question, MediaType.APPLICATION_JSON).cacheControl(cc).build();
+	}
+	@DELETE
+	@RolesAllowed("users")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/categories/{id}/{datatype}")
+	public Response deleteCategory(@PathParam("id")String id) throws Exception {
+		dataService.removeCategory(id);
+		return Response.status(HTTPStatus.OK).cacheControl(cc).build();
+	}
+	
+	@POST
+	//@RolesAllowed("users")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/categories/{datatype}")
+	public Response createCategory(ECategory c) throws Exception {
+		ECategory question = dataService.saveCategory(c, true);
+		return Response.ok(question, MediaType.APPLICATION_JSON).cacheControl(cc).build();
+	}
+
 
 	@GET
 	//@RolesAllowed("users")

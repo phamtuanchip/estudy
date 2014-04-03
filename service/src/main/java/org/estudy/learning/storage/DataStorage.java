@@ -39,7 +39,7 @@ import org.exoplatform.services.organization.User;
 public interface DataStorage {
   public Node getEStorageHome() throws RepositoryException, Exception;
   
-  public void saveCategory(ECategory category, boolean isNew) throws ItemExistsException, Exception;
+  public ECategory saveCategory(ECategory category, boolean isNew) throws ItemExistsException, Exception;
   public Collection<ECategory> getCategories() throws Exception;
   public ECategory getCategory(String i) throws ItemNotFoundException;
   public void removeCategory(String id) throws Exception;

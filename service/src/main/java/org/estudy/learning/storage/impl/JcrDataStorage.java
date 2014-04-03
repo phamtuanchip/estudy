@@ -371,9 +371,9 @@ public class JcrDataStorage implements DataStorage {
 
 
   @Override
-  public void saveCategory(ECategory category, boolean isNew) throws ItemExistsException, Exception{
+  public ECategory saveCategory(ECategory category, boolean isNew) throws ItemExistsException, Exception{
     Node catHome = getECategoryHome();
-    Node cat;
+    Node cat = null;
     if(isNew){
       if(isExists(ECategory.NT_NAME, ECategory.P_NAME, category.getName())) throw new ItemExistsException();
       try {
@@ -386,10 +386,14 @@ public class JcrDataStorage implements DataStorage {
         throw e;
       }
     } else {
+    	try {
       cat = setCategoryProp(category, catHome.getNode(category.getId()));
       cat.save();
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
     }
-
+    return getCategoryProp(cat);
   }
 
   @Override
