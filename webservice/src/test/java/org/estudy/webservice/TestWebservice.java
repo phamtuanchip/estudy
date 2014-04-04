@@ -159,14 +159,13 @@ public class TestWebservice extends AbstractResourceTest {
 	}
 	public void testUpdateCategory() throws Exception {
 		ECategory e = new ECategory("Test category");
+		dataService.saveCategory(e, true);
 		JsonGeneratorImpl generatorImpl = new JsonGeneratorImpl();
 		JsonValue json = generatorImpl.createJsonObject(e);
 		byte[] data = json.toString().getBytes("UTF-8");
-		System.out.println("Test*****************"+e.getId());
 		h.putSingle("content-type", "application/json");
 		h.putSingle("content-length", "" + data.length);
-		System.out.println("Test>>>>>>>>>>>>>>>>>"+data);
-		
+
 		ByteArrayContainerResponseWriter writer = new ByteArrayContainerResponseWriter();
 		String extURI = "/estudy/api/categories/"+e.getId()+"/data.json";
 		ContainerResponse response = service(HTTPMethods.PUT, extURI, baseURI, h, data, writer);
@@ -181,9 +180,10 @@ public class TestWebservice extends AbstractResourceTest {
 	}
 	public void testDeleteCategory() throws Exception {
 		ECategory e = new ECategory("Test category");
+		dataService.saveCategory(e, true);
 		ByteArrayContainerResponseWriter writer = new ByteArrayContainerResponseWriter();
 		String extURI = "/estudy/api/categories/"+e.getId()+"/data.json";
-		ContainerResponse response = service(HTTPMethods.PUT, extURI, baseURI, h, null, writer);
+		ContainerResponse response = service(HTTPMethods.DELETE, extURI, baseURI, h, null, writer);
 		assertNotNull(response);
 		assertEquals(HTTPStatus.OK, response.getStatus());
 

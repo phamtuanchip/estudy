@@ -100,7 +100,6 @@ public class EStudyWebservice implements ResourceContainer{
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/categories/{id}/{datatype}")
 	public Response updateCategory(@PathParam("id")String id, ECategory c) throws Exception {
-		System.out.println("Rest========"+c.getId());
 		ECategory question = dataService.saveCategory(c, false);
 		return Response.ok(question, MediaType.APPLICATION_JSON).cacheControl(cc).build();
 	}
@@ -109,6 +108,7 @@ public class EStudyWebservice implements ResourceContainer{
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/categories/{id}/{datatype}")
 	public Response deleteCategory(@PathParam("id")String id) throws Exception {
+		System.out.println("Rest========"+id);
 		dataService.removeCategory(id);
 		return Response.status(HTTPStatus.OK).cacheControl(cc).build();
 	}
@@ -142,7 +142,7 @@ public class EStudyWebservice implements ResourceContainer{
 	}
 
 	@POST
-	//@RolesAllowed("users")
+	@RolesAllowed("users")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/questions/{datatype}")
 	public Response createQuestion(EQuestion q) throws Exception {
@@ -158,7 +158,7 @@ public class EStudyWebservice implements ResourceContainer{
 		return Response.ok(question, MediaType.APPLICATION_JSON).cacheControl(cc).build();
 	}
 	@DELETE
-	//@RolesAllowed("users")
+	@RolesAllowed("users")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/questions/{id}/{datatype}")
 	public Response deleteQuestion(@PathParam("id") String id) throws Exception {
