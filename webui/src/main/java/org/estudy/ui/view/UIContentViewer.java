@@ -12,6 +12,7 @@ import org.exoplatform.webui.config.annotation.EventConfig;
 import org.exoplatform.webui.event.Event;
 import org.exoplatform.webui.event.EventListener;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -31,7 +32,7 @@ import java.util.Collection;
 
 public class UIContentViewer extends UIContainer {
   Collection<ESession> list;
-  Collection<Attachment> mediaList ;
+  Collection<Attachment> mediaList = new ArrayList<Attachment>() ;
   public UIContentViewer() throws Exception {
     addChild(UITest.class, null, null).setRendered(false) ;
     refresh();

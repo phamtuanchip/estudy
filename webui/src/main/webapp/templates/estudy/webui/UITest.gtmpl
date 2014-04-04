@@ -2,6 +2,10 @@
 <div id="UITest" class="UITest">
 
 
-    welcome to test online
+   <span class="badge">1</span>
+  <ul class="pager">
+  <li><a href="#">Previous</a></li>
+  <li><a href="#">Next</a></li>
+</ul>
 
 </div>

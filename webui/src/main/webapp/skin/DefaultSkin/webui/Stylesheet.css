@@ -1,22 +1,40 @@
+@import "bootstrap-3.1.1.min.css";
+@import "bootstrap-theme-3.1.1.min.css";
+
+
+
 .EStudyPortlet {
-    height:500px;
-    border:solid 1px red;
+  padding-right:10px;
+  padding-bottom: 10px
+    
+}
+.EStudyPortlet .container {
+	width:inherit;
 }
 
+.EStudyPortlet .row {
+	padding: 0;
+    display: flex;
+}
+.EStudyPortlet .border-radius {
+    border: 1px solid #dddddd;
+    #overflow: hidden;
+    background: white;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    margin: 15px 0 0 15px;
+    padding: 5px 0 15px;
+}
+ 
 .EStudyPortlet .UILessonList {
-    height:300px;
-    width: 300px;
-    border:solid 1px green;
-    float: left;
+     
 }
 
 
 .EStudyPortlet .UIContentViewer {
-
-    height:300px;
-    width: 100%;
-    margin-left: 300;
-    border:solid 1px blue;
+ 
+     
 
 }
 
@@ -24,8 +42,6 @@
 
 .EStudyPortlet .UITest {
 
-    height:100%;
-    width: 100%;
-    border:solid 1px greenyellow;
+    
 
 }

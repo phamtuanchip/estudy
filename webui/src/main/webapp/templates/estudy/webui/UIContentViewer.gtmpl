@@ -6,8 +6,8 @@
     try {
     def rcontext = _ctx.getRequestContext() ;
     def requireJS = rcontext.getJavascriptManager().getRequireJS();
-    requireJS.require("SHARED/estudyResources","erjs");
-    requireJS.addScripts('erjs.estudyResources.init();') ;
+    //requireJS.require("SHARED/estudyResources","erjs");
+    //requireJS.addScripts('erjs.estudyResources.init();') ;
     } catch (Exception e) {
     e.printStackTrace();
     }
@@ -35,10 +35,24 @@
 
     %>
 
-    History of computing
-
-    The Jacquard loom, on display at the Museum of Science and Industry in Manchester, England, was one of the first programmable devices.
-    Main article: History of computing hardware
+ 
+   
+<div class="container">
+<div class="alert alert-block">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <h4>Warning!</h4>
+  Best check yo self, you're not...
+</div>
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 border-radius">
+ 
+</div>
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 border-radius">
+ </div>
+ <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 border-radius">
+ </div>
+ </div>
+</div> 
     <%}%>
 
 </div>

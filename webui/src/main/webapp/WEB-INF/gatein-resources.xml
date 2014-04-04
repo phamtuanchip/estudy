@@ -57,7 +57,15 @@
 	    <depends>
 	      <module>jquery</module>
 	    </depends>
+	    <depends>
+	      <module>bootstrap-min</module>
+	    </depends>
     </module>
   </portlet>
-    
+    <module>
+    <name>bootstrap-min</name>
+    <script>
+      <path>javascript/estudy/bootstrap.min.js</path>
+    </script>
+  </module>
 </gatein-resources>

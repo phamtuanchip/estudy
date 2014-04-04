@@ -1,29 +1,43 @@
 
 <div id="UILessonList" class="UILessonList">
-    <ul>
+<div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Management</h3>
+            </div>
+            <div class="panel-body">
+               <ul>
         <li class="toctree-l2">
-            <a href="#" onclick="<%=uicomponent.event("AddLession")%>" class="pull-right"  rel="tooltip" data-placement="bottom" title="add new lession">
+            <a href="#" onclick="<%=uicomponent.event("AddLession")%>"    rel="tooltip" data-placement="bottom" title="add new lession">
                 <i>Add Lesson</i>
             </a>
         </li>
         <li class="toctree-l2">
-            <a href="#" onclick="<%=uicomponent.event("AddQuestion")%>" class="pull-right"  rel="tooltip" data-placement="bottom" title="add new Question">
+            <a href="#" onclick="<%=uicomponent.event("AddQuestion")%>"  rel="tooltip" data-placement="bottom" title="add new Question">
                 <i>Add Question</i>
             </a>
         </li>
         <li class="toctree-l2">
-            <a href="#" onclick="<%=uicomponent.event("Test")%>" class="pull-right"  rel="tooltip" data-placement="bottom" title="Join Test">
+            <a href="#" onclick="<%=uicomponent.event("Test")%>"   rel="tooltip" data-placement="bottom" title="Join Test">
                 <i>Join Test</i>
             </a>
         </li>
 
         <li class="toctree-l2">
-            <a href="#" onclick="<%=uicomponent.event("AddMedia")%>" class="pull-right"  rel="tooltip" data-placement="bottom" title="Upload Media">
+            <a href="#" onclick="<%=uicomponent.event("AddMedia")%>" rel="tooltip" data-placement="bottom" title="Upload Media">
                 <i>upload media</i>
             </a>
         </li>
     </ul>
 
+    </div>
+</div>
+
+ <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Start to learn</h3>
+            </div>
+            <div class="panel-body">
+               
 
     <ul>
         <li class="toctree-l2"><a class="reference internal" href="#">Computer Foundation</a></li>
@@ -33,4 +47,6 @@
         <li class="toctree-l2"><a class="reference internal" href="#">Java to Microedition</a></li>
         <li class="toctree-l2"><a class="reference internal" href="#">Basic Android</a></li>
     </ul>
+	</div>
+	</div>
 </div>

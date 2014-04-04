@@ -108,7 +108,6 @@ public class EStudyWebservice implements ResourceContainer{
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/categories/{id}/{datatype}")
 	public Response deleteCategory(@PathParam("id")String id) throws Exception {
-		System.out.println("Rest========"+id);
 		dataService.removeCategory(id);
 		return Response.status(HTTPStatus.OK).cacheControl(cc).build();
 	}
