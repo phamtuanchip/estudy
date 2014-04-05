@@ -62,6 +62,22 @@ public class EstudyServiceTest extends BaseServiceTestCase {
     organizationService_ = (OrganizationService) getService(OrganizationService.class);
     storage_ = getService(JcrDataStorage.class);
   }
+  @Override
+  public void tearDown() throws Exception {
+	  super.tearDown();
+		for (ECategory cal : storage_.getCategories()) {
+			storage_.removeCategory(cal.getId());
+		}
+		for (EQuestion cal : storage_.getQuestions()) {
+			storage_.removeQuestion(cal.getId());
+		}
+		for (ESession cal : storage_.getSessions()) {
+			storage_.removeSession(cal.getId());
+		}
+		for(Attachment att : storage_.getMedias()) {
+			storage_.removeMedia(att.getId());
+		}
+  }
 
   private void loginUser(String userId) {
     Identity identity = new Identity(userId, membershipEntries);
@@ -81,6 +97,33 @@ public class EstudyServiceTest extends BaseServiceTestCase {
     assertNotNull(storage_);
 
   }
+  
+//mvn test -Dtest=EstudyServiceTest#testUploadMedia
+  public void testGetMedia() throws Exception{
+
+    InputStream mediaInputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("leaf.png");
+
+    Attachment att = new Attachment(mediaInputStream);
+    att.setName("mediafile");
+    att.setMimeType("image/png");
+    String url = storage_.uploadMedia(att) ;
+
+    assertNotNull(url);
+
+    ArrayList<Attachment> uploaded = new ArrayList<Attachment>(storage_.getMedias());
+
+    assertNotNull(uploaded);
+
+    assertEquals(1, uploaded.size());
+
+    Attachment attu = storage_.getMediaById(att.getId());
+    assertEquals(att.getName(), attu.getName());
+    assertEquals(url, attu.getDataPath());
+    assertNotNull(attu.getInputStream());
+
+
+  }
+
 
   //mvn test -Dtest=EstudyServiceTest#testUploadMedia
   public void testUploadMedia() throws Exception{

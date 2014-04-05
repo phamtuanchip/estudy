@@ -63,4 +63,7 @@ public interface DataStorage {
 
   public Collection<Attachment> getMedias() throws Exception;
   
+  public Attachment getMediaById(String id) throws Exception;
+  public void removeMedia(String id) throws Exception;
+  
 }

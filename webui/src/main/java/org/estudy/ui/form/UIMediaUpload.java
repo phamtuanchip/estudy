@@ -6,6 +6,8 @@ import org.estudy.ui.core.Loader;
 import org.estudy.ui.popup.UIPopupComponent;
 import org.estudy.ui.portlet.EStudyPortlet;
 import org.estudy.ui.view.UIContentViewer;
+import org.estudy.ui.view.UIResourceViewer;
+import org.estudy.ui.view.UITest;
 import org.exoplatform.upload.UploadResource;
 import org.exoplatform.web.application.AbstractApplicationMessage;
 import org.exoplatform.web.application.ApplicationMessage;
@@ -87,6 +89,7 @@ public class UIMediaUpload extends UIForm implements UIPopupComponent {
           String mediaUrl =  dataStorage.uploadMedia(attachfile) ;
           EStudyPortlet portlet = uiForm.getAncestorOfType(EStudyPortlet.class) ;
           UIContentViewer view = (UIContentViewer) portlet.findFirstComponentOfType(UIContentViewer.class);
+          view.setRenderedChild(UIResourceViewer.class);
           view.refresh();
           portlet.closePopup();
         }

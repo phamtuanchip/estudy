@@ -896,7 +896,10 @@
       <groupId>eu.medsea.mimeutil</groupId>
       <artifactId>mime-util</artifactId>
     </dependency>
-
+	<dependency>
+      <groupId>org.imgscalr</groupId>
+      <artifactId>imgscalr-lib</artifactId>
+    </dependency>
     <!-- War files -->
     <dependency>
       <?rename portal.war?>

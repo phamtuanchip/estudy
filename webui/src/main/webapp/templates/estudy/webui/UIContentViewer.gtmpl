@@ -1,6 +1,7 @@
 <%
 
     import org.estudy.ui.view.UITest;
+	import org.estudy.ui.view.UIResourceViewer;
     import org.estudy.learning.model.Attachment;
 
     try {
@@ -16,43 +17,13 @@
 <div id="UIContentViewer" class="UIContentViewer">
 
     <%
+    	 
         if(uicomponent.getChild(UITest.class).isRendered()){
-        uicomponent.renderChildren();
-        } else {
-
-             for(Attachment att : uicomponent.mediaList)  {
-    %>
-    <ul>
-        <li class="toctree-l2">
-            <a href="#" onclick="<%=uicomponent.event("download")%>" class="pull-right"  rel="tooltip" data-placement="bottom" title="$att.name">
-                <i>$att.name</i>
-            </a>
-        </li>
-    </ul>
-
-    <%
-             }
-
-    %>
-
+        uicomponent.renderChild(UITest.class);
+        }  
+    	if(uicomponent.getChild(UIResourceViewer.class).isRendered()){
+        uicomponent.renderChild(UIResourceViewer.class);
+        }  
+     %>
  
-   
-<div class="container">
-<div class="alert alert-block">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <h4>Warning!</h4>
-  Best check yo self, you're not...
-</div>
-<div class="row">
-<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 border-radius">
- 
-</div>
-<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 border-radius">
- </div>
- <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 border-radius">
- </div>
- </div>
-</div> 
-    <%}%>
-
 </div>

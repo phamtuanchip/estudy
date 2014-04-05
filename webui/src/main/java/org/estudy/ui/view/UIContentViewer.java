@@ -35,6 +35,7 @@ public class UIContentViewer extends UIContainer {
   Collection<Attachment> mediaList = new ArrayList<Attachment>() ;
   public UIContentViewer() throws Exception {
     addChild(UITest.class, null, null).setRendered(false) ;
+    addChild(UIResourceViewer.class, null, null).setRendered(false) ;
     refresh();
   }
 

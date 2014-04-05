@@ -22,7 +22,8 @@ import org.exoplatform.webui.event.EventListener;
                      @EventConfig(listeners = UILessonList.AddLessonActionListener.class),
                      @EventConfig(listeners = UILessonList.AddQuestionActionListener.class),
                      @EventConfig(listeners = UILessonList.AddMediaActionListener.class),
-                     @EventConfig(listeners = UILessonList.TestActionListener.class)
+                     @EventConfig(listeners = UILessonList.TestActionListener.class),
+                     @EventConfig(listeners = UILessonList.ResourceActionListener.class)
                  }
     )
 
@@ -45,7 +46,7 @@ public class UILessonList extends UIContainer {
       EStudyPortlet portlet = listview.getAncestorOfType(EStudyPortlet.class);
       UIPopupContainer uiPopupContainer = portlet.createUIComponent(UIPopupContainer.class, null, "formcontainer") ;
       UILessonForm uiLessionForm = uiPopupContainer.addChild(UILessonForm.class, null, null) ;
-      portlet.addPopup(uiLessionForm, 600, 311);
+      portlet.addPopup(uiLessionForm, 800, 600);
     }
   }
 
@@ -56,7 +57,7 @@ public class UILessonList extends UIContainer {
       EStudyPortlet portlet = listview.getAncestorOfType(EStudyPortlet.class);
       UIPopupContainer uiPopupContainer = portlet.createUIComponent(UIPopupContainer.class, null, "formcontainer") ;
       UIQuestionForm uiQuestionForm = uiPopupContainer.addChild(UIQuestionForm.class, null, null) ;
-      portlet.addPopup(uiQuestionForm, 600, 311);
+      portlet.addPopup(uiQuestionForm, 800, 600);
     }
   }
 
@@ -67,7 +68,7 @@ public class UILessonList extends UIContainer {
       EStudyPortlet portlet = listview.getAncestorOfType(EStudyPortlet.class);
       UIPopupContainer uiPopupContainer = portlet.createUIComponent(UIPopupContainer.class, null, "formcontainer") ;
       UIMediaUpload uiQuestionForm = uiPopupContainer.addChild(UIMediaUpload.class, null, null) ;
-      portlet.addPopup(uiQuestionForm, 600, 311);
+      portlet.addPopup(uiQuestionForm, 600, 300);
     }
   }
 
@@ -77,8 +78,17 @@ public class UILessonList extends UIContainer {
       UILessonList listview = event.getSource() ;
       EStudyPortlet portlet = listview.getAncestorOfType(EStudyPortlet.class);
       UIContentViewer view = portlet.findFirstComponentOfType(UIContentViewer.class) ;
-      view.getChild(UITest.class).setRendered(!view.getChild(UITest.class).isRendered());
-
+      view.setRenderedChild(UITest.class);
     }
   }
+  
+  static public class ResourceActionListener extends EventListener<UILessonList> {
+	    @Override
+	    public void execute(Event<UILessonList> event) throws Exception {
+	      UILessonList listview = event.getSource() ;
+	      EStudyPortlet portlet = listview.getAncestorOfType(EStudyPortlet.class);
+	      UIContentViewer view = portlet.findFirstComponentOfType(UIContentViewer.class) ;
+	      view.setRenderedChild(UIResourceViewer.class);
+	    }
+	  }
 }

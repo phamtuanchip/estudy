@@ -7,7 +7,7 @@
             <div class="panel-body">
                <ul>
         <li class="toctree-l2">
-            <a href="#" onclick="<%=uicomponent.event("AddLession")%>"    rel="tooltip" data-placement="bottom" title="add new lession">
+            <a href="#" onclick="<%=uicomponent.event("AddLesson")%>"    rel="tooltip" data-placement="bottom" title="add new lession">
                 <i>Add Lesson</i>
             </a>
         </li>
@@ -25,6 +25,11 @@
         <li class="toctree-l2">
             <a href="#" onclick="<%=uicomponent.event("AddMedia")%>" rel="tooltip" data-placement="bottom" title="Upload Media">
                 <i>upload media</i>
+            </a>
+        </li>
+        <li class="toctree-l2">
+            <a href="#" onclick="<%=uicomponent.event("Resource")%>" rel="tooltip" data-placement="bottom" title="Upload Media">
+                <i>Resource center</i>
             </a>
         </li>
     </ul>

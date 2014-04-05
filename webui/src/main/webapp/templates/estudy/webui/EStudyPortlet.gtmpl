@@ -4,10 +4,10 @@ import org.estudy.ui.view.UILessonList;
 import org.estudy.ui.view.UIContentViewer;
  
   try {
-  def rcontext = _ctx.getRequestContext() ;
-  def requireJS = rcontext.getJavascriptManager().getRequireJS();
-  requireJS.require("PORTLET/estudy/estudy","ejs");
-  requireJS.require("SHARED/bootstrap-min","bt-min");
+	  def rcontext = _ctx.getRequestContext() ;
+	  def requireJS = rcontext.getJavascriptManager().getRequireJS();
+	  requireJS.require("PORTLET/estudy/estudy","ejs");
+	  requireJS.require("SHARED/bootstrap","bootstrap");
   
   requireJS.addScripts('ejs.estudy.init();') ;  
   } catch (Exception e) {
