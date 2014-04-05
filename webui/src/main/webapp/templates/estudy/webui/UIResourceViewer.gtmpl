@@ -50,6 +50,8 @@
 		  
 
 		<%
+		} else if(att.getMimeType().contains("audio")) {
+			  _ctx.include("app:/templates/estudy/webui/VideoAudioViewer.gtmpl"); 
 		}
 	%>
 	<a id="$att.resourceId" href="<%=att.getDataPath()%>" onclick="<%=uicomponent.event("Download")%>"  rel="tooltip" data-placement="bottom" title="$att.name">
