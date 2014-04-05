@@ -26,7 +26,16 @@
     margin: 15px 0 0 15px;
     padding: 5px 0 15px;
 }
- 
+ .EStudyPortlet .border-no-radius {
+    
+    
+    background: white;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    margin: 10px 0 0 15px;
+    padding: 5px 0 15px;
+}
 .EStudyPortlet .UILessonList {
      
 }

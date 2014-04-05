@@ -1,40 +1,30 @@
 
 <div id="UILessonList" class="UILessonList">
-<div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Management</h3>
-            </div>
-            <div class="panel-body">
-               <ul>
-        <li class="toctree-l2">
-            <a href="#" onclick="<%=uicomponent.event("AddLesson")%>"    rel="tooltip" data-placement="bottom" title="add new lession">
-                <i>Add Lesson</i>
-            </a>
-        </li>
-        <li class="toctree-l2">
-            <a href="#" onclick="<%=uicomponent.event("AddQuestion")%>"  rel="tooltip" data-placement="bottom" title="add new Question">
-                <i>Add Question</i>
-            </a>
-        </li>
-        <li class="toctree-l2">
-            <a href="#" onclick="<%=uicomponent.event("Test")%>"   rel="tooltip" data-placement="bottom" title="Join Test">
-                <i>Join Test</i>
-            </a>
-        </li>
-
-        <li class="toctree-l2">
-            <a href="#" onclick="<%=uicomponent.event("AddMedia")%>" rel="tooltip" data-placement="bottom" title="Upload Media">
-                <i>upload media</i>
-            </a>
-        </li>
-        <li class="toctree-l2">
-            <a href="#" onclick="<%=uicomponent.event("Resource")%>" rel="tooltip" data-placement="bottom" title="Upload Media">
+<div class="list-group">
+              <a href="#" class="list-group-item active">
+    Management
+	</a>
+            <a class="list-group-item" href="#" onclick="<%=uicomponent.event("Resource")%>" rel="tooltip" data-placement="bottom" title="Upload Media">
                 <i>Resource center</i>
             </a>
-        </li>
-    </ul>
-
-    </div>
+			 <a class="list-group-item" href="#" onclick="<%=uicomponent.event("Test")%>"   rel="tooltip" data-placement="bottom" title="Join Test">
+                <i>Join Test</i>
+            </a>  
+             
+            <a class="list-group-item" href="#" onclick="<%=uicomponent.event("AddLesson")%>"    rel="tooltip" data-placement="bottom" title="add new lession">
+                <i>Add Lesson</i>
+            </a>
+         
+            <a class="list-group-item" href="#" onclick="<%=uicomponent.event("AddQuestion")%>"  rel="tooltip" data-placement="bottom" title="add new Question">
+                <i>Add Question</i>
+            </a>
+         
+            <a class="list-group-item" href="#" onclick="<%=uicomponent.event("AddMedia")%>" rel="tooltip" data-placement="bottom" title="Upload Media">
+                <i>Upload media</i>
+            </a>
+         
+          
+   
 </div>
 
  <div class="panel panel-primary">
