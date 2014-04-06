@@ -35,10 +35,15 @@
 
      
 	<%
-		if(att.getMimeType().contains("image")){
 		def id = att.getId().substring(att.getId().lastIndexOf(Util.SLASH) + 1);
-		def url = "/rest/estudy/api/media/" + id +"?type=thumbnail&w=100&h=100";
-		def urlfull = "/rest/estudy/api/media/" + id +"?type=full";
+		if(att.getMimeType().contains("image")){
+		
+		def url = uicomponent.getResourceUrl(att, "thumbnail", 100, 100);
+		//"/rest/estudy/api/media/" + id +"?type=thumbnail&w=100&h=100";
+		def urlfull = uicomponent.getResourceUrl(att, "full", 0, 0);
+		uicomponent.selectedFullUrl_ = urlfull;
+		
+		//"/rest/estudy/api/media/" + id +"?type=full";
 		%>
 		<!-- http://localhost:8080/rest/private/jcr/repository/portal-system/estudyhome/emedia/attachment 
 		 
@@ -51,6 +56,8 @@
 
 		<%
 		} else if(att.getMimeType().contains("audio")) {
+			def webdavurl = uicomponent.getWebDavUrl(att);
+			uicomponent.selectedWebdavUrl_ = webdavurl;
 			  _ctx.include("app:/templates/estudy/webui/VideoAudioViewer.gtmpl"); 
 		}
 	%>

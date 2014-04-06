@@ -4,17 +4,12 @@
   import java.util.List;
   import java.util.Calendar;
    
-
-  UIComponent uiParent = uicomponent.getParent();
  
-  def link = "";
+ 
+ 
   StringBuffer urlBuf = new StringBuffer();
-  String userName = ConversationState.getCurrent().getIdentity().getUserId();
-  def id ;
-    link = "/rest/estudy/api/media/" + id;
+  	def link = uicomponent.selectedWebdavUrl_;
     urlBuf.append("\n {url: '").append(link).append("'");
-     
-     
     urlBuf.append("},");
     
  
