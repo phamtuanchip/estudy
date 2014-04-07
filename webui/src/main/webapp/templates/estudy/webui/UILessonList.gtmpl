@@ -1,4 +1,6 @@
-
+<%
+import org.estudy.learning.model.ESession;
+%>
 <div id="UILessonList" class="UILessonList">
 <div class="list-group">
               <a href="#" class="list-group-item active">
@@ -35,12 +37,12 @@
                
 
     <ul>
-        <li class="toctree-l2"><a class="reference internal" href="#">Computer Foundation</a></li>
-        <li class="toctree-l2"><a class="reference internal" href="#">Entrane Program With C</a></li>
-        <li class="toctree-l2"><a class="reference internal" href="#">Extensible Makup Language</a></li>
-        <li class="toctree-l2"><a class="reference internal" href="#">Java Simplify</a></li>
-        <li class="toctree-l2"><a class="reference internal" href="#">Java to Microedition</a></li>
-        <li class="toctree-l2"><a class="reference internal" href="#">Basic Android</a></li>
+    <% 
+    	for (ESession e : uicomponent.getList()) {
+    %>
+        <li class="toctree-l2"><a class="reference internal" href="#">$e.title</a></li>
+       
+    <% } %>
     </ul>
 	</div>
 	</div>

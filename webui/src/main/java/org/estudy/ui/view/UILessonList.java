@@ -28,7 +28,7 @@ import org.exoplatform.webui.event.EventListener;
     )
 
 public class UILessonList extends UIContainer {
-  Collection<ESession> list;
+  private Collection<ESession> list;
 
   public UILessonList() {
     DataStorage service = EStudyPortlet.getDataService();
@@ -39,7 +39,15 @@ public class UILessonList extends UIContainer {
     }
   }
 
-  static public class AddLessonActionListener extends EventListener<UILessonList> {
+  public Collection<ESession> getList() throws Exception {
+	return  EStudyPortlet.getDataService().getSessions();
+}
+
+public void setList(Collection<ESession> list) {
+	this.list = list;
+}
+
+static public class AddLessonActionListener extends EventListener<UILessonList> {
     @Override
     public void execute(Event<UILessonList> event) throws Exception {
       UILessonList listview = event.getSource() ;

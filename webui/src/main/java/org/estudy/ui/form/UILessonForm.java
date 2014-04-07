@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.estudy.learning.model.ESession;
 import org.estudy.ui.core.UICaptcha;
 import org.estudy.ui.core.UIDateInput;
+import org.estudy.ui.core.UIFormRichtextInput;
 import org.estudy.ui.core.UISearchInput;
 import org.estudy.ui.popup.UIPopupComponent;
 import org.estudy.ui.portlet.EStudyPortlet;
+import org.estudy.ui.view.UILessonList;
 import org.exoplatform.portal.webui.CaptchaValidator;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.config.annotation.EventConfig;
@@ -35,7 +38,7 @@ import org.exoplatform.webui.form.validator.SpecialCharacterValidator;
 public class UILessonForm extends UIForm implements UIPopupComponent{
 	
 	public UILessonForm() throws Exception {
-		addChild(new UIFormStringInput("title", "title", "").addValidator(SpecialCharacterValidator.class)) ;
+		addChild(new UIFormStringInput("title", "title", "").addValidator(SpecialCharacterValidator.class).addValidator(MandatoryValidator.class)) ;
 	    List<SelectItemOption<String>> types = new ArrayList<SelectItemOption<String>>() ;
 	    types.add(new SelectItemOption<String>("select category", "0")) ;
 	    types.add(new SelectItemOption<String>("category1","1")) ;
@@ -46,6 +49,7 @@ public class UILessonForm extends UIForm implements UIPopupComponent{
 	    //addChild(new UICaptcha("simpleCaptcha", "simpleCaptcha", null));
 	    addUIFormInput(new UICaptcha("simpleCaptcha", "simpleCaptcha", null).addValidator(MandatoryValidator.class).addValidator(CaptchaValidator.class));
 	    addChild(new UIDateInput("date", "date", new Date()));     
+	    addChild(new UIFormRichtextInput("description", "description", ""));
 	    addChild(new UISearchInput("search", "search", null));
 	}
 
@@ -70,6 +74,18 @@ public class UILessonForm extends UIForm implements UIPopupComponent{
 		@Override
 		public void execute(Event<UILessonForm> event) throws Exception {
 			UILessonForm uiForm = event.getSource() ;
+			ESession es = new ESession();
+			es.setTitle( 
+			uiForm.getUIStringInput("title").getValue());
+			es.setCat(uiForm.getUIFormSelectBox("category").getValue());
+			es.setDec(((UIFormRichtextInput)uiForm.getUIInput("description")).getValue());
+			es.setQuest(new ArrayList<String>());
+			EStudyPortlet.getDataService().saveSession(es, true);
+			EStudyPortlet calendarPortlet = uiForm.getAncestorOfType(EStudyPortlet.class) ;
+			calendarPortlet.closePopup();
+			event.getRequestContext().addUIComponentToUpdateByAjax(
+			uiForm.getAncestorOfType(EStudyPortlet.class).findFirstComponentOfType(UILessonList.class));
+			
 		}
 	}
 	static  public class OnchangeActionListener extends EventListener<UILessonForm> {
