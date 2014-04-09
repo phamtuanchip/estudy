@@ -666,6 +666,18 @@
 
     <!-- Various -->
     <dependency>
+      <groupId>org.mortbay.jetty</groupId>
+      <artifactId>cometd-bayeux</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.mortbay.jetty</groupId>
+      <artifactId>cometd-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.mortbay.jetty</groupId>
+      <artifactId>jetty-util</artifactId>
+    </dependency>
+    <dependency>
       <groupId>com.google.inject</groupId>
       <artifactId>guice</artifactId>
     </dependency>

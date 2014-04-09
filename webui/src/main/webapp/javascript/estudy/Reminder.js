@@ -1,4 +1,5 @@
 (function(gj, cometd){
+	var _module = {};
 	function Reminder() {} ;
 
 	Reminder.prototype.init = function(eXoUser, eXoToken, cometdContextName){
@@ -23,4 +24,6 @@
 	Reminder.prototype.alarm = function(eventObj){
 		console.log("reminder ........")
 	}
-})(gj,cometd);
+	_module.Reminder = new Reminder();
+	return _module ;
+})(gj, cometd);
