@@ -43,6 +43,7 @@ import org.estudy.learning.model.EQuestion;
 import org.estudy.learning.model.ESession;
 import org.estudy.learning.model.ETesting;
 import org.estudy.learning.storage.DataStorage;
+import org.estudy.notification.EventListener;
 import org.exoplatform.container.ExoContainer;
 import org.exoplatform.container.ExoContainerContext;
 import org.exoplatform.services.jcr.RepositoryService;
@@ -87,7 +88,21 @@ public class JcrDataStorage implements DataStorage {
 		}
 	}
 
-
+	private void broadcastEvent(Object t, int type){
+		for (EventListener listener : eventListeners_) {
+			switch (type) {
+			case 1: listener.preSave(t);
+			break;
+			case 2 : listener.postSave(t);	
+			break;
+			case 3 : listener.preDelete(t);
+			break;
+			case 4 : listener.postDelete(t);
+			default:
+				break;
+			}
+		}
+	}
 	private Node setSessionProp(ESession e, Node ses){
 		try {
 			ses.setProperty(ESession.P_TITLE, e.getTitle());
@@ -374,6 +389,7 @@ public class JcrDataStorage implements DataStorage {
 
 	@Override
 	public ECategory saveCategory(ECategory category, boolean isNew) throws ItemExistsException, Exception{
+		broadcastEvent(category, 1);
 		Node catHome = getECategoryHome();
 		Node cat = null;
 		if(isNew){
@@ -395,6 +411,7 @@ public class JcrDataStorage implements DataStorage {
 				e.printStackTrace();
 			}
 		}
+		broadcastEvent(category, 2);
 		return getCategoryProp(cat);
 	}
 
@@ -429,6 +446,7 @@ public class JcrDataStorage implements DataStorage {
 
 	@Override
 	public void removeCategory(String id) throws Exception {
+		broadcastEvent(id, 3);
 		Node catHome = getECategoryHome();
 		try {
 			Node cat = catHome.getNode(id);
@@ -439,11 +457,12 @@ public class JcrDataStorage implements DataStorage {
 			log.info(e.getMessage());
 			throw e;
 		}
-
+		broadcastEvent(id, 4);
 	}
 
 	@Override
 	public void saveSession(ESession session, boolean isNew) throws ItemExistsException, Exception {
+		broadcastEvent(session, 1);
 		Node sesHome = getESessionHome();
 		Node ses;
 		if(isNew){
@@ -459,6 +478,7 @@ public class JcrDataStorage implements DataStorage {
 			ses = setSessionProp(session, sesHome.getNode(session.getId()));
 			ses.save();
 		} 
+		broadcastEvent(session, 2);
 	}
 
 
@@ -492,6 +512,7 @@ public class JcrDataStorage implements DataStorage {
 	}
 	@Override
 	public void removeSession(String id) throws Exception {
+		broadcastEvent(id, 3);
 		Node sesHome = getESessionHome();
 		try {
 			Node ses = sesHome.getNode(id);
@@ -502,11 +523,13 @@ public class JcrDataStorage implements DataStorage {
 			log.info(e.getMessage());
 			throw e;
 		}
+		broadcastEvent(id, 4);
 	}
 
 	@Override
 	public EQuestion saveQuestion(EQuestion qestion, boolean isNew) throws ItemExistsException,
 	Exception {
+		broadcastEvent(qestion, 1);
 		Node qHome = getEQestionHome();
 		Node ques ;
 		if(isNew){
@@ -522,6 +545,7 @@ public class JcrDataStorage implements DataStorage {
 			ques = setQuestionProp(qestion, qHome.getNode(qestion.getId()));
 			ques.save();
 		} 
+		broadcastEvent(qestion, 2);
 		return getQuestionProp(ques);
 
 	}
@@ -558,6 +582,7 @@ public class JcrDataStorage implements DataStorage {
 
 	@Override
 	public void removeQuestion(String id) throws Exception {
+		broadcastEvent(id, 3);
 		Node sesHome = getEQestionHome();
 		try {
 			Node ses = sesHome.getNode(id);
@@ -568,11 +593,13 @@ public class JcrDataStorage implements DataStorage {
 			log.info(e.getMessage());
 			throw e;
 		}
+		broadcastEvent(id, 4);
 	}
 
 	@Override
 	public void saveTesting(User user, ETesting test, boolean isNew)
 			throws Exception {
+		broadcastEvent(test, 1);
 		Node qHome = getETestingHome(user.getUserName());
 		Node testing ;
 		if(isNew){
@@ -587,7 +614,7 @@ public class JcrDataStorage implements DataStorage {
 			testing = setTestingProp(test, qHome.getNode(test.getId()));
 			testing.save();
 		} 
-
+		broadcastEvent(test, 2);
 	}
 
 	@Override
@@ -627,6 +654,7 @@ public class JcrDataStorage implements DataStorage {
 	}
 
 	public void removeTesting(String uid, String id) throws Exception {
+		broadcastEvent(id, 3);
 		Node sesHome = getETestingHome(uid);
 		try {
 			Node ses = sesHome.getNode(id);
@@ -637,7 +665,7 @@ public class JcrDataStorage implements DataStorage {
 			log.info(e.getMessage());
 			throw e;
 		}
-
+		broadcastEvent(id, 4);
 	}
 
 	private static List<Attachment> getAttachments(Node eventNode) throws Exception {
@@ -793,5 +821,10 @@ public class JcrDataStorage implements DataStorage {
 				attachHome.save();
 			}
 		}
+	}
+
+	@Override
+	public void addEventListenerPlugin(EventListener listener) {
+		eventListeners_.add(listener);
 	}
 }

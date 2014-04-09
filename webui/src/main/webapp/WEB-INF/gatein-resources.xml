@@ -20,6 +20,12 @@
         <path>/javascript/estudy/estudy.js</path>
       </script>
       <depends>
+	      <module>UIColorPicker</module>
+	    </depends>
+	  <depends>
+	      <module>Reminder</module>
+	    </depends>  
+      <depends>
         <module>bts_tooltip</module>
       </depends>
         <depends>
@@ -60,5 +66,27 @@
 	     
     </module>
   </portlet>
-     
+    <module>
+    <name>UIColorPicker</name>
+    <script>
+      <path>/javascript/estudy/UIColorPicker.js</path>
+    </script>
+    <depends>
+      <module>jquery</module>
+    </depends>
+  </module>
+  <module>
+    <name>Reminder</name>
+    <script>
+      <path>/javascript/estudy/Reminder.js</path>
+    </script>
+    <depends>
+      <module>jquery</module>
+      <as>gj</as>
+    </depends>
+    <depends>
+	   <module>commons-cometd</module>
+	      <as>cometd</as>
+	 </depends>
+  </module>
 </gatein-resources>

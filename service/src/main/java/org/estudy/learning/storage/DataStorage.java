@@ -16,7 +16,9 @@
  */
 package org.estudy.learning.storage;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.jcr.ItemExistsException;
 import javax.jcr.ItemNotFoundException;
@@ -28,6 +30,7 @@ import org.estudy.learning.model.ECategory;
 import org.estudy.learning.model.EQuestion;
 import org.estudy.learning.model.ESession;
 import org.estudy.learning.model.ETesting;
+import org.estudy.notification.EventListener;
 import org.exoplatform.services.organization.User;
 
 /**
@@ -37,6 +40,8 @@ import org.exoplatform.services.organization.User;
  * May 2, 2013  
  */
 public interface DataStorage {
+	
+  public List<EventListener>       eventListeners_       = new ArrayList<EventListener>(3);
   public Node getEStorageHome() throws RepositoryException, Exception;
   
   public ECategory saveCategory(ECategory category, boolean isNew) throws ItemExistsException, Exception;
@@ -65,5 +70,5 @@ public interface DataStorage {
   
   public Attachment getMediaById(String id) throws Exception;
   public void removeMedia(String id) throws Exception;
-  
+  public void addEventListenerPlugin(EventListener listener) ;
 }

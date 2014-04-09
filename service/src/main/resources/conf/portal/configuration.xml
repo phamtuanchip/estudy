@@ -128,5 +128,15 @@
         </init-params>
       </component-plugin>
     </external-component-plugins>
+    
+    <external-component-plugins>
+      <target-component>org.exoplatform.services.listener.ListenerService</target-component>
+       <component-plugin>   
+            <name>org.estudy.notification</name>
+         <set-method>addEventListenerPlugin</set-method>
+            <type>org.estudy.notification.EventListener</type>
+          <description>description</description>     
+      </component-plugin>      
+    </external-component-plugins>
 	<!-- End -->
 </configuration>
