@@ -242,6 +242,9 @@ public class Util {
 
   final public static String E_STUDY               = "estudy";
   final public static String E_STUDY_APP               = "estudyhome";
+  final public static String E_STUDY_SCH               = "eschedule";
+  final public static String E_STUDY_TSK               = "escheduletask";
+  final public static String E_STUDY_EVT               = "escheduleevent";
   final public static String E_STUDY_CAT              = "ecategory";
   final public static String E_STUDY_QUEST              = "equestion";
   final public static String E_STUDY_TEST              = "etest";

@@ -45,7 +45,10 @@
     <key>org.estudy.learning.storage.DataStorage</key>
     <type>org.estudy.learning.storage.impl.JcrDataStorage</type>
   </component>
-  
+  <component>
+    <key>org.estudy.schedule.impl.Schedule</key>
+    <type>org.estudy.schedule.impl.ScheduleService</type>
+  </component>
   <component>
     <key>org.exoplatform.services.jcr.ext.hierarchy.NodeHierarchyCreator</key>
     <type>org.exoplatform.services.jcr.ext.hierarchy.impl.NodeHierarchyCreatorImpl</type>

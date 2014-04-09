@@ -19,11 +19,14 @@ package org.estudy.test;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.jcr.ItemExistsException;
+
+import net.fortuna.ical4j.model.DateTime;
 
 import org.estudy.learning.Util;
 import org.estudy.learning.model.Attachment;
@@ -33,6 +36,10 @@ import org.estudy.learning.model.ESession;
 import org.estudy.learning.model.ETesting;
 import org.estudy.learning.storage.DataStorage;
 import org.estudy.learning.storage.impl.JcrDataStorage;
+import org.estudy.schedule.ETask;
+import org.estudy.schedule.EventSchedule;
+import org.estudy.schedule.TaskSchedule;
+import org.estudy.schedule.impl.ScheduleService;
 import org.exoplatform.services.jcr.RepositoryService;
 import org.exoplatform.services.organization.OrganizationService;
 import org.exoplatform.services.organization.User;
@@ -52,6 +59,7 @@ public class EstudyServiceTest extends BaseServiceTestCase {
 
   private RepositoryService repositoryService_ ;
   private DataStorage  storage_;
+  private TaskSchedule  schedule_;
   private static String   username = "root";
   public Collection<MembershipEntry> membershipEntries = new ArrayList<MembershipEntry>();
   private OrganizationService organizationService_;
@@ -61,6 +69,7 @@ public class EstudyServiceTest extends BaseServiceTestCase {
     repositoryService_ = getService(RepositoryService.class);
     organizationService_ = (OrganizationService) getService(OrganizationService.class);
     storage_ = getService(JcrDataStorage.class);
+    schedule_ = getService(ScheduleService.class);
   }
   @Override
   public void tearDown() throws Exception {
@@ -95,7 +104,27 @@ public class EstudyServiceTest extends BaseServiceTestCase {
     //assertEquals(organizationService_.getUserHandler().findAllUsers().getSize(), 8);
 
     assertNotNull(storage_);
+    
+    assertNotNull(schedule_);
 
+  }
+  
+//mvn test -Dtest=EstudyServiceTest#testCreateTask
+  public void testCreateTask() throws Exception{
+	  java.util.Calendar start = java.util.Calendar.getInstance();
+		// tomorrow..
+		start.add(java.util.Calendar.DAY_OF_MONTH, 1);
+		start.set(java.util.Calendar.HOUR_OF_DAY, 11);
+		start.set(java.util.Calendar.MINUTE, 00);
+		java.util.Calendar end = java.util.Calendar.getInstance();
+		end = start;
+		end.add(Calendar.HOUR, 2);
+		ETask documentation = new ETask(new DateTime(start.getTime()), new DateTime(end.getTime()),
+				"Document calendar component usage");
+
+		// add timezone information..
+		
+	  assertNotNull(schedule_.saveTask(documentation));
   }
   
 //mvn test -Dtest=EstudyServiceTest#testUploadMedia
