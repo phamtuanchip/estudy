@@ -2,6 +2,7 @@ package org.estudy.notification;
 
 import org.exoplatform.container.PortalContainer;
 import org.exoplatform.container.component.BaseComponentPlugin;
+import org.exoplatform.services.security.ConversationState;
 import org.exoplatform.ws.frameworks.cometd.ContinuationService;
 
 public class EventListener extends BaseComponentPlugin implements EventLifeCycle {
@@ -10,7 +11,7 @@ public class EventListener extends BaseComponentPlugin implements EventLifeCycle
 	public void preSave(Object t) {
 		System.out.println("pre save :" + t.getClass().getName());
 		ContinuationService continuation = (ContinuationService) PortalContainer.getInstance().getComponentInstanceOfType(ContinuationService.class);
-		continuation.sendMessage("users", "/estudy/notification/messages", t.hashCode());
+		continuation.sendMessage(ConversationState.getCurrent().getIdentity().getUserId(), "/estudy/notification/messages", t.hashCode());
 	}
 
 	@Override

@@ -91,6 +91,22 @@
                 <!--<value profiles="jboss">
                    <string>gatein-wsrp-integration</string>
                 </value>-->
+                
+                 <value>
+                  <string>estudy-juzu-web</string>
+                </value>
+                <value>
+                  <string>estudyResources</string>
+                </value>
+                <value>
+                  <string>CommonsResources</string>
+                </value>
+                <value>
+                  <string>commons-extension</string>
+                </value>
+                <value>
+                  <string>commons-comet</string>
+                </value>
                 <value>
                   <string>estudyExtension</string>
                 </value>

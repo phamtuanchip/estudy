@@ -61,6 +61,7 @@ public class EStudyPortlet extends UIPortletApplication
 		context.addUIComponentToUpdateByAjax(popupAction) ;
 
 	}
+	 
 	public static DataStorage getDataService() {
 		return (DataStorage) PortalContainer.getInstance().getComponentInstanceOfType(JcrDataStorage.class);
 	}
@@ -113,15 +114,15 @@ public class EStudyPortlet extends UIPortletApplication
 	public String getUserToken()throws Exception {
 		ContinuationService continuation = (ContinuationService)PortalContainer.getInstance().getComponentInstanceOfType(ContinuationService.class);
 		try {
-			Identity instance = ConversationState.getCurrent().getIdentity();
-			String user = "users";//instance.getUserId();
-			return continuation.getUserToken(user);
+			return continuation.getUserToken(getRemoteUser());
 		} catch (Exception e) {
 			log.debug("\n\n can not get UserToken", e);
 			return "" ;
 		}
 	}
-	
+	 public String getRemoteUser() throws Exception {
+		    return ConversationState.getCurrent().getIdentity().getUserId();
+		  }
 	protected String getCometdContextName() {
 		EXoContinuationBayeux bayeux = (EXoContinuationBayeux) PortalContainer.getInstance()
 				.getComponentInstanceOfType(AbstractBayeux.class);

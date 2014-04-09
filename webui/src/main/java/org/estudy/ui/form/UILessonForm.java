@@ -14,6 +14,8 @@ import org.estudy.ui.popup.UIPopupComponent;
 import org.estudy.ui.portlet.EStudyPortlet;
 import org.estudy.ui.view.UILessonList;
 import org.exoplatform.portal.webui.CaptchaValidator;
+import org.exoplatform.web.application.RequestContext;
+import org.exoplatform.webui.application.WebuiRequestContext;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.config.annotation.EventConfig;
 import org.exoplatform.webui.core.lifecycle.UIFormLifecycle;
@@ -83,9 +85,9 @@ public class UILessonForm extends UIForm implements UIPopupComponent{
 			EStudyPortlet.getDataService().saveSession(es, true);
 			EStudyPortlet calendarPortlet = uiForm.getAncestorOfType(EStudyPortlet.class) ;
 			calendarPortlet.closePopup();
-			event.getRequestContext().addUIComponentToUpdateByAjax(
+			WebuiRequestContext context = RequestContext.getCurrentInstance() ;
+			context.addUIComponentToUpdateByAjax(
 			uiForm.getAncestorOfType(EStudyPortlet.class).findFirstComponentOfType(UILessonList.class));
-			
 		}
 	}
 	static  public class OnchangeActionListener extends EventListener<UILessonForm> {

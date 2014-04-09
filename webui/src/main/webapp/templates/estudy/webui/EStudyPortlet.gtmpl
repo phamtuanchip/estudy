@@ -9,12 +9,17 @@ import org.estudy.ui.view.UIContentViewer;
 	  requireJS.require("PORTLET/estudy/estudy","ejs");
 	  requireJS.require("SHARED/bootstrap","bootstrap");
   requireJS.addScripts('ejs.estudy.init();') ;  
-  requireJS.addScripts('ejs.Reminder.init("users","'+uicomponent.getUserToken()+ '","' + uicomponent.getCometdContextName() + '");') ;
+  requireJS.addScripts('ejs.estudy.Reminder.Reminder.init("'+uicomponent.getRemoteUser()+'","'+uicomponent.getUserToken()+ '","' + uicomponent.getCometdContextName() + '");') ;
   } catch (Exception e) {
     e.printStackTrace();
   }
 %>
 <div id="EStudyPortlet" class="EStudyPortlet border-radius">
+<div class="alert alert-block">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <h4>Warning!</h4>
+  Best check yo self, you're not...
+</div>
 <div class="container">
 
 <div class="row">

@@ -85,13 +85,15 @@
         <!-- SSO deps -->
         <version.cas.client>3.2.1</version.cas.client>
         <version.picketlink.fed>2.1.4.Final</version.picketlink.fed>
-        <org.mortbay.jetty.version>6.1.11</org.mortbay.jetty.version>
-
+         
         <!--
         Various log4j properties for unit tests, examples:
         -Dlog4j.debug=true : show log4j bootstrap (useful for debugging resolution to configuration property file)
         -Dlog4j.level=all : very verbose logging (slow down though)
         -->
+        <org.mortbay.jetty.cometd-bayeux.version>6.1.11</org.mortbay.jetty.cometd-bayeux.version>
+    <org.mortbay.jetty.cometd-api.version>0.9.20080221</org.mortbay.jetty.cometd-api.version>
+    <org.mortbay.jetty.jetty-util.version>6.1.11</org.mortbay.jetty.jetty-util.version>
         <log4j.debug>false</log4j.debug>
         <log4j.level>info</log4j.level>
 
@@ -307,10 +309,20 @@
                 <version>${quartz.version}</version>
             </dependency>
             <dependency>
-		      <groupId>org.mortbay.jetty</groupId>
-		      <artifactId>jetty-util</artifactId>
-		       <version>${org.mortbay.jetty.version}</version>
-		    </dependency>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>cometd-bayeux</artifactId>
+				<version>${org.mortbay.jetty.cometd-bayeux.version}</version>
+				</dependency>
+				<dependency>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>cometd-api</artifactId>
+				<version>${org.mortbay.jetty.cometd-api.version}</version>
+				</dependency>
+				<dependency>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-util</artifactId>
+				<version>${org.mortbay.jetty.jetty-util.version}</version>
+				</dependency>
         </dependencies>
     </dependencyManagement>
 

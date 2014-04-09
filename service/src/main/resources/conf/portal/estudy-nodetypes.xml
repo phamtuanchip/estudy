@@ -112,5 +112,8 @@
     </propertyDefinitions>
     
   </nodeType>
-   
+   <nodeType name="exo:hiddenable" isMixin="true" hasOrderableChildNodes="false" primaryItemName="">
+    <propertyDefinitions>
+    </propertyDefinitions>
+  </nodeType>
 </nodeTypes>
