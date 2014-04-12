@@ -83,11 +83,10 @@ public class UILessonForm extends UIForm implements UIPopupComponent{
 			es.setDec(((UIFormRichtextInput)uiForm.getUIInput("description")).getValue());
 			es.setQuest(new ArrayList<String>());
 			EStudyPortlet.getDataService().saveSession(es, true);
-			EStudyPortlet calendarPortlet = uiForm.getAncestorOfType(EStudyPortlet.class) ;
-			calendarPortlet.closePopup();
 			WebuiRequestContext context = RequestContext.getCurrentInstance() ;
-			context.addUIComponentToUpdateByAjax(
-			uiForm.getAncestorOfType(EStudyPortlet.class).findFirstComponentOfType(UILessonList.class));
+			EStudyPortlet portlet = uiForm.getAncestorOfType(EStudyPortlet.class) ;
+			context.addUIComponentToUpdateByAjax(portlet.findFirstComponentOfType(UILessonList.class));
+			portlet.closePopup();
 		}
 	}
 	static  public class OnchangeActionListener extends EventListener<UILessonForm> {
