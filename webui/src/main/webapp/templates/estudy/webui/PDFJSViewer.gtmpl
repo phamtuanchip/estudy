@@ -5,7 +5,8 @@
 	def timeCreated = Calendar().getInstance().getTimeInMillis();
 %>
 <div class="pdf-container">
-	<script type="text/javascript" src="/estudyResources/javascript/pdf-js/pdf.js"></script>
+	<p>PDF Link:<%=pdfUrl%></p>
+	<!--script type="text/javascript" src="/estudyResources/javascript/pdf-js/pdf.js"></script>
 	<script>
 		// prepare pdfjs worker
 		PDFJS.workerSrc = "/estudyResources/javascript/pdf-js/pdf.worker.js";
@@ -32,5 +33,5 @@
 	   	});
 	</script>
 	
-	<canvas id="pdf-canvas"></canvas>
+	<canvas id="pdf-canvas"></canvas-->
 </div>
