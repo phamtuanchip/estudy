@@ -28,6 +28,7 @@ public class UIResourceViewer extends UIContainer {
 	Collection<Attachment> mediaList = new ArrayList<Attachment>()  ;
 	String selectedFullUrl_ = null;
 	String selectedWebdavUrl_ = null;
+	String mimeType_ = null;
 	public Collection<Attachment> getMediaList(){
 		DataStorage service = EStudyPortlet.getDataService();
 		try {

@@ -58,7 +58,17 @@
 		} else if(att.getMimeType().contains("audio")) {
 			def webdavurl = uicomponent.getWebDavUrl(att);
 			uicomponent.selectedWebdavUrl_ = webdavurl;
-			  _ctx.include("app:/templates/estudy/webui/VideoAudioViewer.gtmpl"); 
+			uicomponent.mimeType_ = "audio";
+			_ctx.include("app:/templates/estudy/webui/VideoAudioViewer.gtmpl");
+		} else if(att.getMimeType().contains("video")) {
+			def webdavurl = uicomponent.getWebDavUrl(att);
+			uicomponent.selectedWebdavUrl_ = webdavurl;
+			uicomponent.mimeType_ = "video";
+			_ctx.include("app:/templates/estudy/webui/VideoAudioViewer.gtmpl");
+		//} else if(att.getMimeType().contains("pdf")) {
+		//	def webdavurl = uicomponent.getWebDavUrl(att);
+		//	uicomponent.selectedWebdavUrl_ = webdavurl;
+		//	_ctx.include("app:/templates/estudy/webui/PDFJSViewer.gtmpl");
 		}
 	%>
 	<a id="$att.resourceId" href="<%=att.getDataPath()%>" onclick="<%=uicomponent.event("Download")%>"  rel="tooltip" data-placement="bottom" title="$att.name">

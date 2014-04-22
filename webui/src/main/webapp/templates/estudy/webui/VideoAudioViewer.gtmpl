@@ -8,16 +8,16 @@
  
  
   StringBuffer urlBuf = new StringBuffer();
-  	def link = uicomponent.selectedWebdavUrl_;
-    urlBuf.append("\n {url: '").append(link).append("'");
-    urlBuf.append("},");
-    
- 
+  def link = uicomponent.selectedWebdavUrl_;
+  urlBuf.append("\n {url: '").append(link).append("'");
+  urlBuf.append("},");
+  
   def url = urlBuf.toString();
   url = url.length() == 0 ? url : url.substring(0, url.length() - 1);
   def rqcontext = _ctx.getRequestContext();
-   
-
+  
+  def type = uicomponent.mimeType_.toString();
+  
   Calendar lCDateCalendar = Calendar.getInstance();
   def timeCreated = lCDateCalendar.getTimeInMillis();
 %>
@@ -35,11 +35,17 @@
   	<div id="player-$timeCreated" class="PlayerContent" style="$style ; z-index:0;"></div>
   	<script type="text/javascript">
      var timemili = 0;
+     
      function insertFlv() {
       // install flowplayer into container
     	flowplayer("player-$timeCreated", {wmode: 'transparent', src: "/estudyResources/javascript/flowplayer/flowplayer-3.2.7.swf"}, {
       // fullscreen button not needed here
         plugins: {
+                  
+          audio: {
+          	url: '/estudyResources/javascript/flowplayer/flowplayer.audio-3.2.2.swf'
+          },
+          
           captions: {
             url: '/estudyResources/javascript/flowplayer/flowplayer.captions-3.2.3.swf',
     
@@ -96,6 +102,7 @@
         clip: {
             autoPlay: false,
             autoBuffering: true,
+            type: "${type}",
             // optional: when playback starts close the first audio playback
             onBeforeBegin: function() {
               flowplayer("player-$timeCreated").close();

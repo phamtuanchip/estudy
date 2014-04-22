@@ -1,0 +1,37 @@
+<% 
+	import java.utils.Calendar;
+
+	def pdfUrl = uicomponent.selectedWebdavUrl_;
+	def timeCreated = Calendar().getInstance().getTimeInMillis();
+%>
+<div class="pdf-container">
+	<p>PDF Link:<%=pdfUrl%></p>
+	<!--script type="text/javascript" src="/estudyResources/javascript/pdf-js/pdf.js"></script>
+	<script>
+		// prepare pdfjs worker
+		PDFJS.workerSrc = "/estudyResources/javascript/pdf-js/pdf.worker.js";
+		// fetch in pdf file
+		PDFJS.getDocument(pdfUrl).then(function(pdf) {
+			// get the first page
+			pdf.getPage(1).then(function(page) {
+				var scale = 1;
+				var viewport = page.getViewport(scale);
+				
+				// prepare canvas
+				var canvas = document.getElementById('pdf-canvas');
+				var context = canvas.getContext("2d");
+				canvas.width = viewport.width;
+				canvas.height = viewport.height;
+				
+				// render pdf
+				var renderContext = {
+	                  canvasContext: context,
+	                  viewport: viewport
+	            };
+	            page.render(renderContext);
+	        });
+	   	});
+	</script>
+	
+	<canvas id="pdf-canvas"></canvas-->
+</div>
